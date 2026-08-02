@@ -8,6 +8,7 @@ import { useSimulatorSandboxStore } from '@/hooks/useSimulatorSandboxStore';
 import { PowerSupplyNode, ElectricStrikeNode, DynamicHardwareNode, MultimeterNode } from './NodeTypes/HardwareNodes';
 import WireEdge from './EdgeTypes/WireEdge';
 import CablePalette from './CablePalette';
+import InteractiveMultimeterOverlay from './InteractiveMultimeterOverlay';
 import { CableType, CableConductor, CompositeCableBundle } from '@/types/cable';
 
 const nodeTypes = {
@@ -307,6 +308,9 @@ export default function SimulatorCanvas({
           </div>
         )}
       </div>
+
+      {/* Overlay interactivo 2D del Multímetro Digital en el Sandbox */}
+      <InteractiveMultimeterOverlay />
     </div>
   );
 }
