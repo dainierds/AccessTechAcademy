@@ -30,26 +30,27 @@ export default function InteractiveMultimeterOverlay() {
   const { nodes, edges } = useSimulatorSandboxStore();
   const reactFlowInstance = useReactFlow();
 
-  // Posición por defecto del Multímetro (centro del viewport o posición fija)
-  const [multimeterPos, setMultimeterPos] = useState({ x: 300, y: 150 });
+  // Posición por defecto del Multímetro dentro del contenedor del canvas
+  const [multimeterPos, setMultimeterPos] = useState({ x: 50, y: 50 });
+  const [isVisible, setIsVisible] = useState(true);
   const [isDraggingBody, setIsDraggingBody] = useState(false);
   const dragStartRef = useRef<{ x: number; y: number; initialPos: { x: number; y: number } }>({
     x: 0,
     y: 0,
-    initialPos: { x: 300, y: 150 }
+    initialPos: { x: 50, y: 50 }
   });
 
-  // Puntas de Prueba (Probes)
+  // Puntas de Prueba (Probes) inicializadas respecto a la pantalla del lienzo
   const [probeRed, setProbeRed] = useState<ProbeState>({
-    x: 180,
-    y: 420,
+    x: 220,
+    y: 350,
     targetCompId: null,
     targetTermId: null
   });
 
   const [probeBlack, setProbeBlack] = useState<ProbeState>({
-    x: 420,
-    y: 420,
+    x: 340,
+    y: 350,
     targetCompId: null,
     targetTermId: null
   });
@@ -281,9 +282,9 @@ export default function InteractiveMultimeterOverlay() {
   };
 
   return (
-    <>
+    <div className="absolute inset-0 pointer-events-none z-30 overflow-hidden">
       {/* Canvas SVG para Cables Coaxiales de las Puntas */}
-      <svg className="fixed inset-0 w-full h-full pointer-events-none z-40">
+      <svg className="absolute inset-0 w-full h-full pointer-events-none z-30">
         {renderCoaxialCable(jackRedPos, { x: probeRed.x, y: probeRed.y }, '#dc2626')}
         {renderCoaxialCable(jackBlackPos, { x: probeBlack.x, y: probeBlack.y }, '#1e293b')}
       </svg>
@@ -291,7 +292,7 @@ export default function InteractiveMultimeterOverlay() {
       {/* 🟢 1. MULTÍMETRO DIGITAL FLOTANTE Y ARRASTRABLE */}
       <div
         style={{ left: `${multimeterPos.x}px`, top: `${multimeterPos.y}px` }}
-        className="fixed z-50 select-none drop-shadow-2xl cursor-grab active:cursor-grabbing transition-shadow"
+        className="absolute z-40 select-none drop-shadow-2xl cursor-grab active:cursor-grabbing transition-shadow pointer-events-auto"
         onMouseDown={(e) => {
           setIsDraggingBody(true);
           dragStartRef.current = {
@@ -381,7 +382,7 @@ export default function InteractiveMultimeterOverlay() {
       {/* 🔴 2. PUNTA DE PRUEBA POSITIVA / ROJA (`probeRed`) */}
       <div
         style={{ left: `${probeRed.x}px`, top: `${probeRed.y}px` }}
-        className="fixed z-50 -translate-x-1/2 -translate-y-full cursor-grab active:cursor-grabbing group"
+        className="absolute z-40 -translate-x-1/2 -translate-y-full cursor-grab active:cursor-grabbing group pointer-events-auto"
         onMouseDown={(e) => {
           e.stopPropagation();
           setDraggingProbe('red');
@@ -407,7 +408,7 @@ export default function InteractiveMultimeterOverlay() {
       {/* 1. PUNTA DE PRUEBA NEGATIVA / NEGRA (`probeBlack`) */}
       <div
         style={{ left: `${probeBlack.x}px`, top: `${probeBlack.y}px` }}
-        className="fixed z-50 -translate-x-1/2 -translate-y-full cursor-grab active:cursor-grabbing group"
+        className="absolute z-40 -translate-x-1/2 -translate-y-full cursor-grab active:cursor-grabbing group pointer-events-auto"
         onMouseDown={(e) => {
           e.stopPropagation();
           setDraggingProbe('black');
@@ -431,7 +432,7 @@ export default function InteractiveMultimeterOverlay() {
       </div>
 
       {/* 📊 4. PANEL INSPECTOR DE ESTADO DEL MULTÍMETRO */}
-      <div className="fixed bottom-4 left-4 z-40 bg-slate-900/95 border border-slate-800 rounded-2xl p-4 w-72 text-slate-100 shadow-2xl backdrop-blur-md space-y-3">
+      <div className="absolute bottom-4 left-4 z-40 bg-slate-900/95 border border-slate-800 rounded-2xl p-4 w-72 text-slate-100 shadow-2xl backdrop-blur-md space-y-3 pointer-events-auto">
         <div className="flex items-center justify-between border-b border-slate-800 pb-2">
           <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
             <Zap className="w-4 h-4 text-amber-500" />
@@ -478,8 +479,8 @@ export default function InteractiveMultimeterOverlay() {
           <span>Modo: {dialMode}</span>
           <button
             onClick={() => {
-              setProbeRed({ x: 180, y: 420, targetCompId: null, targetTermId: null });
-              setProbeBlack({ x: 420, y: 420, targetCompId: null, targetTermId: null });
+              setProbeRed({ x: 220, y: 350, targetCompId: null, targetTermId: null });
+              setProbeBlack({ x: 340, y: 350, targetCompId: null, targetTermId: null });
             }}
             className="flex items-center gap-1 text-amber-400 hover:text-amber-300 font-bold"
           >
@@ -488,6 +489,6 @@ export default function InteractiveMultimeterOverlay() {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
