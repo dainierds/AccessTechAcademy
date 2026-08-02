@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 360" width="100%" height="100%">
+  <defs>
+    <!-- Case outer border shadow -->
+    <filter id="caseShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#020617" flood-opacity="0.6"/>
+    </filter>
+
+    <!-- Metal bracket brushed gradient -->
+    <linearGradient id="bracketMetal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="25%" stop-color="#f8fafc" />
+      <stop offset="50%" stop-color="#e2e8f0" />
+      <stop offset="75%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+
+    <!-- Dark body faceplate gradient -->
+    <linearGradient id="bodyFaceplate" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d2d2d" />
+      <stop offset="100%" stop-color="#181818" />
+    </linearGradient>
+
+    <!-- Altronix signature red gradient -->
+    <linearGradient id="altronixRed" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#991b1b" />
+    </linearGradient>
+
+    <!-- Screw cylinder gradients -->
+    <radialGradient id="screwHole" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="70%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </radialGradient>
+  </defs>
+
+  <!-- 1. BACK METAL BRACKET PLATE (With mounting holes) -->
+  <rect x="15" y="10" width="290" height="340" rx="10" fill="url(#bracketMetal)" stroke="#94a3b8" stroke-width="1.5" filter="url(#caseShadow)" />
+
+  <!-- Mounting holes (top and bottom flanges) -->
+  <rect x="135" y="18" width="50" height="14" rx="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="1" />
+  <rect x="135" y="328" width="50" height="14" rx="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="1" />
+
+  <!-- Left/Right chassis screws -->
+  <circle cx="28" cy="180" r="8" fill="url(#screwHole)" stroke="#64748b" stroke-width="1" />
+  <circle cx="292" cy="180" r="8" fill="url(#screwHole)" stroke="#64748b" stroke-width="1" />
+
+  <!-- 2. MAIN ENCLOSURE BODY (Dark grey box) -->
+  <rect x="15" y="40" width="220" height="280" rx="8" fill="url(#bodyFaceplate)" stroke="#475569" stroke-width="2" />
+
+  <!-- 3. BRAND LABEL AREA -->
+  <!-- Altronix logo background header -->
+  <rect x="25" y="55" width="200" height="60" rx="6" fill="#111" stroke="#333" stroke-width="1" />
+  <rect x="30" y="60" width="190" height="24" rx="4" fill="url(#altronixRed)" />
+  
+  <!-- Logo text -->
+  <text x="38" y="77" font-family="Arial, sans-serif" font-weight="900" font-size="14" fill="#ffffff" letter-spacing="1">Altronix</text>
+  <circle cx="188" cy="72" r="5" fill="none" stroke="#ffffff" stroke-width="1" />
+  <text x="186" y="75" font-family="Arial, sans-serif" font-weight="bold" font-size="6" fill="#ffffff">R</text>
+
+  <text x="35" y="102" font-family="Arial, sans-serif" font-weight="bold" font-size="16" fill="#ffffff" letter-spacing="0.5">AL175</text>
+  <text x="110" y="101" font-family="Arial, sans-serif" font-weight="normal" font-size="9" fill="#94a3b8">Power Supply / Charger</text>
+
+  <!-- Technical notes (dim left block) -->
+  <text x="35" y="145" font-family="Courier New, monospace" font-size="8" fill="#64748b">Input: 115VAC 60Hz</text>
+  <text x="35" y="160" font-family="Courier New, monospace" font-size="8" fill="#64748b">Output: 12VDC @ 1.75A</text>
+  <text x="35" y="175" font-family="Courier New, monospace" font-size="8" fill="#64748b">Battery: Lead Acid</text>
+  
+  <text x="35" y="270" font-family="Arial, sans-serif" font-size="7" fill="#475569">Access Control System Unit</text>
+  <text x="35" y="282" font-family="Arial, sans-serif" font-size="7" fill="#475569">Brooklyn, NY, U.S.A.</text>
+
+  <!-- CE Icon outline -->
+  <text x="35" y="306" font-family="Arial, sans-serif" font-weight="bold" font-size="14" fill="#475569">CE</text>
+
+  <!-- 4. TERMINAL BLOCK (The green board section on the right side) -->
+  <rect x="235" y="80" width="56" height="200" rx="3" fill="#15803d" stroke="#166534" stroke-width="1.5" />
+  
+  <!-- Black barrier strip on top of the green PCB board -->
+  <rect x="242" y="86" width="42" height="188" rx="2" fill="#0f172a" stroke="#020617" stroke-width="1" />
+
+  <!-- Terminal labels mapped to positions -->
+  <text x="180" y="104" font-family="Courier New, monospace" font-weight="bold" font-size="10" fill="#cbd5e1" text-anchor="end">+12VDC</text>
+  <text x="180" y="129" font-family="Courier New, monospace" font-weight="bold" font-size="10" fill="#cbd5e1" text-anchor="end">GND</text>
+  <text x="180" y="154" font-family="Courier New, monospace" font-weight="bold" font-size="10" fill="#94a3b8" text-anchor="end">AC</text>
+  <text x="180" y="179" font-family="Courier New, monospace" font-weight="bold" font-size="10" fill="#94a3b8" text-anchor="end">AC</text>
+  <text x="180" y="204" font-family="Courier New, monospace" font-weight="bold" font-size="10" fill="#94a3b8" text-anchor="end">AC</text>
+  
+  <!-- AC Bracket lines -->
+  <path d="M192,148 L197,148 L197,208 L192,208" fill="none" stroke="#64748b" stroke-width="1" />
+  <text x="210" y="182" font-family="Courier New, monospace" font-weight="bold" font-size="10" fill="#64748b" text-anchor="middle">AC</text>
+  
+  <text x="180" y="229" font-family="Courier New, monospace" font-weight="bold" font-size="10" fill="#64748b" text-anchor="end">L1</text>
+  <text x="180" y="254" font-family="Courier New, monospace" font-weight="bold" font-size="10" fill="#64748b" text-anchor="end">B+</text>
+
+  <!-- Individual screw terminals drawing (7 terminal positions) -->
+  <!-- Position 1: +12VDC (Top) -->
+  <g transform="translate(244, 90)">
+    <rect x="0" y="0" width="38" height="20" rx="1" fill="#1e293b" stroke="#334155" />
+    <circle cx="19" cy="10" r="7" fill="url(#bracketMetal)" stroke="#475569" stroke-width="0.5" />
+    <!-- Screw thread slot -->
+    <line x1="14" y1="10" x2="24" y2="10" stroke="#1e293b" stroke-width="1.5" transform="rotate(35 19 10)" />
+  </g>
+
+  <!-- Position 2: GND -->
+  <g transform="translate(244, 115)">
+    <rect x="0" y="0" width="38" height="20" rx="1" fill="#1e293b" stroke="#334155" />
+    <circle cx="19" cy="10" r="7" fill="url(#bracketMetal)" stroke="#475569" stroke-width="0.5" />
+    <line x1="14" y1="10" x2="24" y2="10" stroke="#1e293b" stroke-width="1.5" transform="rotate(-40 19 10)" />
+  </g>
+
+  <!-- Position 3: AC -->
+  <g transform="translate(244, 140)">
+    <rect x="0" y="0" width="38" height="20" rx="1" fill="#1e293b" stroke="#334155" />
+    <circle cx="19" cy="10" r="7" fill="url(#bracketMetal)" stroke="#475569" stroke-width="0.5" />
+    <line x1="14" y1="10" x2="24" y2="10" stroke="#1e293b" stroke-width="1.5" transform="rotate(15 19 10)" />
+  </g>
+
+  <!-- Position 4: AC -->
+  <g transform="translate(244, 165)">
+    <rect x="0" y="0" width="38" height="20" rx="1" fill="#1e293b" stroke="#334155" />
+    <circle cx="19" cy="10" r="7" fill="url(#bracketMetal)" stroke="#475569" stroke-width="0.5" />
+    <line x1="14" y1="10" x2="24" y2="10" stroke="#1e293b" stroke-width="1.5" transform="rotate(75 19 10)" />
+  </g>
+
+  <!-- Position 5: AC -->
+  <g transform="translate(244, 190)">
+    <rect x="0" y="0" width="38" height="20" rx="1" fill="#1e293b" stroke="#334155" />
+    <circle cx="19" cy="10" r="7" fill="url(#bracketMetal)" stroke="#475569" stroke-width="0.5" />
+    <line x1="14" y1="10" x2="24" y2="10" stroke="#1e293b" stroke-width="1.5" transform="rotate(-10 19 10)" />
+  </g>
+
+  <!-- Position 6: L1 -->
+  <g transform="translate(244, 215)">
+    <rect x="0" y="0" width="38" height="20" rx="1" fill="#1e293b" stroke="#334155" />
+    <circle cx="19" cy="10" r="7" fill="url(#bracketMetal)" stroke="#475569" stroke-width="0.5" />
+    <line x1="14" y1="10" x2="24" y2="10" stroke="#1e293b" stroke-width="1.5" transform="rotate(45 19 10)" />
+  </g>
+
+  <!-- Position 7: B+ -->
+  <g transform="translate(244, 240)">
+    <rect x="0" y="0" width="38" height="20" rx="1" fill="#1e293b" stroke="#334155" />
+    <circle cx="19" cy="10" r="7" fill="url(#bracketMetal)" stroke="#475569" stroke-width="0.5" />
+    <line x1="14" y1="10" x2="24" y2="10" stroke="#1e293b" stroke-width="1.5" transform="rotate(-65 19 10)" />
+  </g>
+</svg>

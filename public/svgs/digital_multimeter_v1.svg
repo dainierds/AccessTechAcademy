@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 360" width="240" height="360">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="body-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="rubber-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="10%" stop-color="#f59e0b" />
+      <stop offset="90%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <linearGradient id="lcd-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#708238" />
+      <stop offset="100%" stop-color="#8a9a5b" />
+    </linearGradient>
+    <radialGradient id="dial-center" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Protective Rubber Case (Amber/Yellow Fluke Style) -->
+  <rect x="10" y="10" width="220" height="340" rx="24" ry="24" fill="url(#rubber-grad)" filter="url(#shadow)" stroke="#92400e" stroke-width="2"/>
+
+  <!-- Inner Dark Body Shell -->
+  <rect x="22" y="22" width="196" height="316" rx="16" ry="16" fill="url(#body-grad)" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Brand Label -->
+  <text x="120" y="44" text-anchor="middle" fill="#f59e0b" font-family="Arial, sans-serif" font-size="11" font-weight="900" letter-spacing="1">ACCESS-TECH</text>
+  <text x="120" y="56" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="8" font-weight="bold" letter-spacing="2">DIGITAL MULTIMETER</text>
+
+  <!-- LCD Screen Container -->
+  <rect x="36" y="66" width="168" height="68" rx="8" ry="8" fill="#141c10" stroke="#334155" stroke-width="2"/>
+  <!-- LCD Display Screen -->
+  <rect x="42" y="72" width="156" height="56" rx="4" ry="4" fill="url(#lcd-grad)"/>
+
+  <!-- LCD Glass Reflection Overlay -->
+  <path d="M 42 72 L 198 72 L 150 128 L 42 128 Z" fill="#ffffff" opacity="0.08"/>
+
+  <!-- LCD Digital Readout Text -->
+  <text x="188" y="112" text-anchor="end" fill="#0f1f0a" font-family="Courier New, monospace" font-size="34" font-weight="900" letter-spacing="1">12.04</text>
+  <text x="50" y="90" fill="#1b3312" font-family="Arial, sans-serif" font-size="10" font-weight="bold">AUTO  DC</text>
+  <text x="188" y="90" fill="#1b3312" text-anchor="end" font-family="Arial, sans-serif" font-size="12" font-weight="bold">V</text>
+
+  <!-- Rotary Switch Dial Outer Ring -->
+  <circle cx="120" cy="200" r="46" fill="#0f172a" stroke="#475569" stroke-width="2" filter="url(#shadow)"/>
+  <circle cx="120" cy="200" r="40" fill="url(#dial-center)" stroke="#334155" stroke-width="1.5"/>
+  
+  <!-- Rotary Dial Knob Marker -->
+  <line x1="120" y1="200" x2="120" y2="164" stroke="#ef4444" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="120" cy="164" r="3" fill="#ffffff"/>
+
+  <!-- Dial Labels around the Rotary Switch -->
+  <!-- OFF (Top Left) -->
+  <text x="80" y="170" fill="#ef4444" font-family="Arial, sans-serif" font-size="9" font-weight="bold">OFF</text>
+  <!-- V~ (Top Right) -->
+  <text x="156" y="170" fill="#38bdf8" font-family="Arial, sans-serif" font-size="10" font-weight="bold">V~</text>
+  <!-- V= (DC Voltage - Active Position) -->
+  <text x="120" y="148" text-anchor="middle" fill="#f59e0b" font-family="Arial, sans-serif" font-size="11" font-weight="900">V⎓</text>
+  <!-- Ω (Resistance - Right) -->
+  <text x="174" y="204" fill="#4ade80" font-family="Arial, sans-serif" font-size="11" font-weight="bold">Ω</text>
+  <!-- Diode / Continuity (Bottom Right) -->
+  <text x="158" y="238" fill="#4ade80" font-family="Arial, sans-serif" font-size="9" font-weight="bold">🔊/➔|</text>
+  <!-- mA / A (Bottom Left) -->
+  <text x="76" y="238" fill="#f472b6" font-family="Arial, sans-serif" font-size="10" font-weight="bold">mA⎓</text>
+  <!-- 10A (Left) -->
+  <text x="64" y="204" fill="#f472b6" font-family="Arial, sans-serif" font-size="10" font-weight="bold">10A</text>
+
+  <!-- Function Buttons Row -->
+  <rect x="42" y="256" width="34" height="14" rx="3" fill="#334155" stroke="#475569"/>
+  <text x="59" y="266" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="7" font-weight="bold">HOLD</text>
+
+  <rect x="103" y="256" width="34" height="14" rx="3" fill="#334155" stroke="#475569"/>
+  <text x="120" y="266" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="7" font-weight="bold">RANGE</text>
+
+  <rect x="164" y="256" width="34" height="14" rx="3" fill="#334155" stroke="#475569"/>
+  <text x="181" y="266" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="7" font-weight="bold">REL</text>
+
+  <!-- Input Jacks Section (Bottom) -->
+  <!-- 10A Jack (Red/Orange) -->
+  <circle cx="56" cy="304" r="13" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="56" cy="304" r="7" fill="#020617"/>
+  <text x="56" y="326" text-anchor="middle" fill="#ef4444" font-family="Arial, sans-serif" font-size="8" font-weight="bold">10A MAX</text>
+
+  <!-- COM Jack (Black/Common) -->
+  <circle cx="120" cy="304" r="13" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+  <circle cx="120" cy="304" r="7" fill="#020617"/>
+  <text x="120" y="326" text-anchor="middle" fill="#94a3b8" font-family="Arial, sans-serif" font-size="8" font-weight="bold">COM (-)</text>
+
+  <!-- V/Ω/mA Jack (Red/Positive) -->
+  <circle cx="184" cy="304" r="13" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="184" cy="304" r="7" fill="#020617"/>
+  <text x="184" y="326" text-anchor="middle" fill="#ef4444" font-family="Arial, sans-serif" font-size="8" font-weight="bold">V / Ω / mA</text>
+</svg>

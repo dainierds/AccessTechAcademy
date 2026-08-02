@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 360" width="100%" height="100%">
+  <defs>
+    <!-- Brushed metal faceplate -->
+    <linearGradient id="metalPlate" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="20%" stop-color="#f8fafc" />
+      <stop offset="50%" stop-color="#e2e8f0" />
+      <stop offset="80%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+
+    <!-- Beveled edges -->
+    <linearGradient id="bevelEdge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" opacity="0.9" />
+      <stop offset="100%" stop-color="#475569" opacity="0.4" />
+    </linearGradient>
+
+    <!-- Outer shadow -->
+    <filter id="shadowHeavy" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="6" stdDeviation="5" flood-color="#020617" flood-opacity="0.6"/>
+    </filter>
+
+    <!-- Internal cavity depth shadow -->
+    <filter id="shadowInset" x="-10%" y="-10%" width="120%" height="120%">
+      <feOffset dx="1" dy="2"/>
+      <feGaussianBlur stdDeviation="2" result="offset-blur"/>
+      <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"/>
+      <feFlood flood-color="black" flood-opacity="0.8" result="color"/>
+      <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
+      <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <!-- 1. FACEPLATE (Metal plate back panel) -->
+  <rect x="25" y="10" width="110" height="340" rx="8" fill="url(#metalPlate)" stroke="#64748b" stroke-width="1.5" filter="url(#shadowHeavy)" />
+
+  <!-- Mounting screw holes -->
+  <circle cx="80" cy="22" r="5" fill="#0f172a" stroke="#cbd5e1" stroke-width="1" />
+  <circle cx="80" cy="338" r="5" fill="#0f172a" stroke="#cbd5e1" stroke-width="1" />
+
+  <!-- HES 5000 Title brand -->
+  <text x="80" y="55" font-family="Arial, sans-serif" font-weight="900" font-size="13" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">HES 5000</text>
+
+  <!-- 2. STRIKE MECHANISM HOUSING CAVITY (Left) -->
+  <g transform="translate(15, 75)">
+    <!-- Base dark cavity backdrop -->
+    <rect x="0" y="0" width="105" height="150" fill="#020617" rx="3" filter="url(#shadowInset)" />
+    
+    <!-- Outer metal plate insert wrap -->
+    <path d="M0,0 L10,12 L10,138 L0,150 Z" fill="#1e293b" opacity="0.8" />
+    <path d="M105,0 L95,12 L95,138 L105,150 Z" fill="#0f172a" opacity="0.9" />
+
+    <!-- Latch keeper plate -->
+    <rect x="15" y="15" width="75" height="120" rx="3" fill="#475569" stroke="#334155" stroke-width="1" />
+
+    <!-- Actual swing keeper mechanism (metal look) -->
+    <rect x="25" y="25" width="60" height="100" rx="2" fill="url(#metalPlate)" stroke="#94a3b8" stroke-width="1" />
+    <rect x="35" y="35" width="40" height="80" rx="1" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
+    
+    <!-- Center latch plunger pivot shadow -->
+    <rect x="50" y="35" width="10" height="80" fill="#020617" opacity="0.25" />
+
+    <!-- Faceplate assembly screws -->
+    <circle cx="45" cy="20" r="3" fill="#475569" />
+    <circle cx="45" cy="130" r="3" fill="#475569" />
+  </g>
+
+  <!-- 3. TERMINAL BLOCK (The black barrier connector strip bottom-right) -->
+  <rect x="80" y="240" width="50" height="80" rx="2" fill="#0f172a" stroke="#020617" stroke-width="1.5" />
+
+  <!-- Labels aligned to terminals -->
+  <text x="72" y="258" font-family="Courier New, monospace" font-weight="bold" font-size="9" fill="#1e293b" text-anchor="end">POS(+)</text>
+  <text x="72" y="283" font-family="Courier New, monospace" font-weight="bold" font-size="9" fill="#1e293b" text-anchor="end">NEG(-)</text>
+  <text x="72" y="308" font-family="Courier New, monospace" font-weight="bold" font-size="9" fill="#1e293b" text-anchor="end">COM</text>
+
+  <!-- Individual terminal blocks (3 terminals) -->
+  <!-- Position 1: POS(+) -->
+  <g transform="translate(82, 244)">
+    <rect x="0" y="0" width="42" height="20" rx="1" fill="#1e293b" stroke="#334155" />
+    <circle cx="21" cy="10" r="6" fill="url(#metalPlate)" stroke="#475569" stroke-width="0.5" />
+    <line x1="16" y1="10" x2="26" y2="10" stroke="#1e293b" stroke-width="1.5" transform="rotate(25 21 10)" />
+  </g>
+
+  <!-- Position 2: NEG(-) -->
+  <g transform="translate(82, 269)">
+    <rect x="0" y="0" width="42" height="20" rx="1" fill="#1e293b" stroke="#334155" />
+    <circle cx="21" cy="10" r="6" fill="url(#metalPlate)" stroke="#475569" stroke-width="0.5" />
+    <line x1="16" y1="10" x2="26" y2="10" stroke="#1e293b" stroke-width="1.5" transform="rotate(-65 21 10)" />
+  </g>
+
+  <!-- Position 3: COM -->
+  <g transform="translate(82, 294)">
+    <rect x="0" y="0" width="42" height="20" rx="1" fill="#1e293b" stroke="#334155" />
+    <circle cx="21" cy="10" r="6" fill="url(#metalPlate)" stroke="#475569" stroke-width="0.5" />
+    <line x1="16" y1="10" x2="26" y2="10" stroke="#1e293b" stroke-width="1.5" transform="rotate(45 21 10)" />
+  </g>
+</svg>
