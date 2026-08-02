@@ -14,6 +14,18 @@ export interface ProbeState {
   targetCompName?: string;
 }
 
+interface SnapTerminalResult {
+  compId: string;
+  compName: string;
+  termId: string;
+  termLabel: string;
+  termType: string;
+  snapX: number;
+  snapY: number;
+  dist: number;
+  voltagePotential?: number;
+}
+
 export default function InteractiveMultimeterOverlay() {
   const { nodes, edges } = useSimulatorSandboxStore();
   const reactFlowInstance = useReactFlow();
@@ -49,20 +61,10 @@ export default function InteractiveMultimeterOverlay() {
   const [dialMode, setDialMode] = useState<'DCV' | 'ACV' | 'OHM' | 'OFF'>('DCV');
 
   // --- 1. DETECCIÓN DE BORNES & MAGNET SNAP (Umbral 25px) ---
-  const findSnapTerminal = useCallback((screenX: number, screenY: number) => {
+  const findSnapTerminal = useCallback((screenX: number, screenY: number): SnapTerminalResult | null => {
     const SNAP_THRESHOLD = 25; // Distancia imán euclidiana en px
 
-    let closestTerminal: {
-      compId: string;
-      compName: string;
-      termId: string;
-      termLabel: string;
-      termType: string;
-      snapX: number;
-      snapY: number;
-      dist: number;
-      voltagePotential?: number;
-    } | null = null;
+    let closestTerminal: SnapTerminalResult | null = null;
 
     nodes.forEach((node) => {
       // Obtener posición del nodo en coordenadas de pantalla Flow
