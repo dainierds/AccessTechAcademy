@@ -1,0 +1,226 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 580" width="500" height="580" class="hid-rfid-reader-lateral-svg">
+  <defs>
+    <!-- Gradientes Chasis Lector HID Signo / iCLASS -->
+    <linearGradient id="rdrl-body-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="25%" stop-color="#1e293b" />
+      <stop offset="70%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <linearGradient id="rdrl-silver-trim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="30%" stop-color="#cbd5e1" />
+      <stop offset="70%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+
+    <linearGradient id="rdrl-pill-recess" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="50%" stop-color="#090e17" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <!-- Barra LED Superior Roja Iluminada -->
+    <linearGradient id="rdrl-led-red" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b91c1c" />
+      <stop offset="30%" stop-color="#ef4444" />
+      <stop offset="50%" stop-color="#f87171" />
+      <stop offset="70%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#b91c1c" />
+    </linearGradient>
+
+    <!-- Regleta Euroblock / Tornillos Laterales -->
+    <linearGradient id="rdrl-termblock-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="30%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <linearGradient id="rdrl-screw-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="45%" stop-color="#cbd5e1" />
+      <stop offset="70%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+
+    <!-- Filtros de Brillo y Sombra -->
+    <filter id="rdrl-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+    <filter id="rdrl-glow-red" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="rdrl-key-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Celda de Borne Lateral -->
+    <g id="rdrl-terminal-cell">
+      <rect x="0" y="0" width="138" height="52" rx="7" fill="url(#rdrl-termblock-grad)" stroke="#334155" stroke-width="1.5" />
+      <!-- Tornillo de conexión -->
+      <g transform="translate(108, 26)">
+        <circle cx="0" cy="0" r="14" fill="#020617" stroke="#1e293b" stroke-width="1.5" />
+        <circle cx="0" cy="0" r="11" fill="url(#rdrl-screw-metal)" stroke="#475569" stroke-width="1" />
+        <circle cx="0" cy="0" r="5.5" fill="#090e17" />
+        <line x1="-4.5" y1="-2.5" x2="4.5" y2="2.5" stroke="#f8fafc" stroke-width="1.3" />
+        <line x1="-2.5" y1="4.5" x2="2.5" y2="-4.5" stroke="#f8fafc" stroke-width="1.3" />
+      </g>
+    </g>
+  </defs>
+
+  <g filter="url(#rdrl-shadow)" transform="translate(20, 20)" id="rdrl-assembly">
+    
+    <!-- 1. CUERPO DEL LECTOR RFID / TECLADO HID (Frontal) -->
+    <rect x="0" y="0" width="300" height="540" rx="34" fill="url(#rdrl-silver-trim)" stroke="#475569" stroke-width="2" />
+    <rect x="4" y="4" width="292" height="532" rx="30" fill="#0b1329" />
+    <rect x="8" y="8" width="284" height="524" rx="26" fill="url(#rdrl-body-grad)" stroke="#1e293b" stroke-width="1.5" />
+    <rect x="12" y="12" width="276" height="516" rx="22" fill="#000000" opacity="0.08" />
+
+    <!-- Barra de Luz LED Superior RGB -->
+    <g transform="translate(30, 36)">
+      <rect x="0" y="0" width="240" height="20" rx="10" fill="#090e17" stroke="#334155" stroke-width="1" />
+      <rect x="2" y="2" width="236" height="16" rx="8" fill="url(#rdrl-led-red)" id="rdrl-lightbar" filter="url(#rdrl-glow-red)" />
+      <line x1="16" y1="5" x2="224" y2="5" stroke="#ffffff" stroke-width="1.2" opacity="0.7" id="rdrl-lightbar-shine" />
+    </g>
+
+    <!-- Matriz de Teclado Retroiluminado (1 - #) -->
+    <g transform="translate(30, 95)" id="rdrl-keypad-matrix">
+      <!-- Fila 1: 1, 2, 3 -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="240" height="52" rx="14" fill="url(#rdrl-pill-recess)" stroke="#1e293b" stroke-width="1.2" />
+        <rect x="2" y="2" width="236" height="48" rx="12" fill="#131d2e" opacity="0.8" />
+        <g class="rdr-key" data-key="1" transform="translate(40, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdrl-key-glow)">1</text>
+        </g>
+        <g class="rdr-key" data-key="2" transform="translate(120, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdrl-key-glow)">2</text>
+        </g>
+        <g class="rdr-key" data-key="3" transform="translate(200, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdrl-key-glow)">3</text>
+        </g>
+      </g>
+
+      <!-- Fila 2: 4, 5, 6 -->
+      <g transform="translate(0, 70)">
+        <rect x="0" y="0" width="240" height="52" rx="14" fill="url(#rdrl-pill-recess)" stroke="#1e293b" stroke-width="1.2" />
+        <rect x="2" y="2" width="236" height="48" rx="12" fill="#131d2e" opacity="0.8" />
+        <g class="rdr-key" data-key="4" transform="translate(40, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdrl-key-glow)">4</text>
+        </g>
+        <g class="rdr-key" data-key="5" transform="translate(120, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdrl-key-glow)">5</text>
+          <line x1="-6" y1="14" x2="6" y2="14" stroke="#f87171" stroke-width="1.5" opacity="0.6" />
+        </g>
+        <g class="rdr-key" data-key="6" transform="translate(200, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdrl-key-glow)">6</text>
+        </g>
+      </g>
+
+      <!-- Fila 3: 7, 8, 9 -->
+      <g transform="translate(0, 140)">
+        <rect x="0" y="0" width="240" height="52" rx="14" fill="url(#rdrl-pill-recess)" stroke="#1e293b" stroke-width="1.2" />
+        <rect x="2" y="2" width="236" height="48" rx="12" fill="#131d2e" opacity="0.8" />
+        <g class="rdr-key" data-key="7" transform="translate(40, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdrl-key-glow)">7</text>
+        </g>
+        <g class="rdr-key" data-key="8" transform="translate(120, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdrl-key-glow)">8</text>
+        </g>
+        <g class="rdr-key" data-key="9" transform="translate(200, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdrl-key-glow)">9</text>
+        </g>
+      </g>
+
+      <!-- Fila 4: *, 0, # -->
+      <g transform="translate(0, 210)">
+        <rect x="0" y="0" width="240" height="52" rx="14" fill="url(#rdrl-pill-recess)" stroke="#1e293b" stroke-width="1.2" />
+        <rect x="2" y="2" width="236" height="48" rx="12" fill="#131d2e" opacity="0.8" />
+        <g class="rdr-key" data-key="*" transform="translate(40, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="8" font-family="'Outfit', sans-serif" font-size="24" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdrl-key-glow)">*</text>
+        </g>
+        <g class="rdr-key" data-key="0" transform="translate(120, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdrl-key-glow)">0</text>
+        </g>
+        <g class="rdr-key" data-key="#" transform="translate(200, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdrl-key-glow)">#</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Insignia HID Logo -->
+    <g transform="translate(100, 430)">
+      <rect x="0" y="0" width="100" height="34" rx="4" fill="#090e17" stroke="#334155" stroke-width="1" />
+      <text x="50" y="24" font-family="'Arial Black', 'Impact', sans-serif" font-size="18" font-weight="900" fill="#f1f5f9" text-anchor="middle" letter-spacing="2">HID</text>
+    </g>
+
+    <!-- Icono Antena RFID Proximidad -->
+    <g transform="translate(150, 485)" opacity="0.6">
+      <path d="M -12 0 A 12 12 0 0 1 12 0" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+      <path d="M -7 -4 A 7 7 0 0 1 7 -4" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+      <circle cx="0" cy="-8" r="1.5" fill="#94a3b8" />
+    </g>
+
+    <!-- 2. EXTENSIÓN LATERAL DERECHA: REGLETA WIEGAND / OSDP (6 BORNES) -->
+    <!-- Base posterior de la regleta -->
+    <rect x="300" y="45" width="160" height="450" rx="10" fill="#090e17" stroke="#1e293b" stroke-width="2" />
+    <path d="M 300 60 L 316 60 L 316 480 L 300 480 Z" fill="#1e293b" opacity="0.6" />
+
+    <!-- Borne 1: +12V (VIN) -->
+    <g transform="translate(310, 56)">
+      <use href="#rdrl-terminal-cell" xlink:href="#rdrl-terminal-cell" />
+      <text x="14" y="30" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#ef4444">+12V</text>
+      <text x="14" y="43" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#fca5a5">Rojo (PWR)</text>
+    </g>
+
+    <!-- Borne 2: GND -->
+    <g transform="translate(310, 126)">
+      <use href="#rdrl-terminal-cell" xlink:href="#rdrl-terminal-cell" />
+      <text x="14" y="30" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#cbd5e1">GND</text>
+      <text x="14" y="43" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#94a3b8">Negro (0V)</text>
+    </g>
+
+    <!-- Borne 3: D0 (Data 0) -->
+    <g transform="translate(310, 196)">
+      <use href="#rdrl-terminal-cell" xlink:href="#rdrl-terminal-cell" />
+      <text x="14" y="30" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#22c55e">D0</text>
+      <text x="14" y="43" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#86efac">Verde (Data 0)</text>
+    </g>
+
+    <!-- Borne 4: D1 (Data 1) -->
+    <g transform="translate(310, 266)">
+      <use href="#rdrl-terminal-cell" xlink:href="#rdrl-terminal-cell" />
+      <text x="14" y="30" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#f8fafc">D1</text>
+      <text x="14" y="43" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#cbd5e1">Blanco (Data 1)</text>
+    </g>
+
+    <!-- Borne 5: BEEP (Buzzer Control) -->
+    <g transform="translate(310, 336)">
+      <use href="#rdrl-terminal-cell" xlink:href="#rdrl-terminal-cell" />
+      <text x="14" y="30" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#38bdf8">BEEP</text>
+      <text x="14" y="43" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#7dd3fc">Azul (Buzzer)</text>
+    </g>
+
+    <!-- Borne 6: LED (LED Control) -->
+    <g transform="translate(310, 406)">
+      <use href="#rdrl-terminal-cell" xlink:href="#rdrl-terminal-cell" />
+      <text x="14" y="30" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#fbbf24">LED</text>
+      <text x="14" y="43" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#fde047">Marrón (Ctrl)</text>
+    </g>
+
+  </g>
+</svg>

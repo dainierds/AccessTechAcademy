@@ -1,0 +1,134 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 580" width="350" height="580" class="hid-rfid-reader-svg">
+  <defs>
+    <linearGradient id="rdr-body-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="25%" stop-color="#1e293b" />
+      <stop offset="70%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="rdr-silver-trim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="30%" stop-color="#cbd5e1" />
+      <stop offset="70%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+    <linearGradient id="rdr-pill-recess" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#020617" />
+      <stop offset="50%" stop-color="#090e17" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="rdr-led-red" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b91c1c" />
+      <stop offset="30%" stop-color="#ef4444" />
+      <stop offset="50%" stop-color="#f87171" />
+      <stop offset="70%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#b91c1c" />
+    </linearGradient>
+    <filter id="rdr-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+    <filter id="rdr-glow-red" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="rdr-key-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <g filter="url(#rdr-shadow)" transform="translate(20, 20)" id="rdr-physical-reader">
+    <rect x="0" y="0" width="310" height="540" rx="34" fill="url(#rdr-silver-trim)" stroke="#475569" stroke-width="2" />
+    <rect x="4" y="4" width="302" height="532" rx="30" fill="#0b1329" />
+    <rect x="8" y="8" width="294" height="524" rx="26" fill="url(#rdr-body-grad)" stroke="#1e293b" stroke-width="1.5" />
+    <rect x="12" y="12" width="286" height="516" rx="22" fill="#000000" opacity="0.08" />
+
+    <g transform="translate(35, 36)">
+      <rect x="0" y="0" width="240" height="20" rx="10" fill="#090e17" stroke="#334155" stroke-width="1" />
+      <rect x="2" y="2" width="236" height="16" rx="8" fill="url(#rdr-led-red)" id="rdr-lightbar" filter="url(#rdr-glow-red)" />
+      <line x1="16" y1="5" x2="224" y2="5" stroke="#ffffff" stroke-width="1.2" opacity="0.7" id="rdr-lightbar-shine" />
+    </g>
+
+    <g transform="translate(35, 95)" id="rdr-keypad-matrix">
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="240" height="52" rx="14" fill="url(#rdr-pill-recess)" stroke="#1e293b" stroke-width="1.2" />
+        <rect x="2" y="2" width="236" height="48" rx="12" fill="#131d2e" opacity="0.8" />
+        <g class="rdr-key" data-key="1" transform="translate(40, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdr-key-glow)">1</text>
+        </g>
+        <g class="rdr-key" data-key="2" transform="translate(120, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdr-key-glow)">2</text>
+        </g>
+        <g class="rdr-key" data-key="3" transform="translate(200, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdr-key-glow)">3</text>
+        </g>
+      </g>
+
+      <g transform="translate(0, 70)">
+        <rect x="0" y="0" width="240" height="52" rx="14" fill="url(#rdr-pill-recess)" stroke="#1e293b" stroke-width="1.2" />
+        <rect x="2" y="2" width="236" height="48" rx="12" fill="#131d2e" opacity="0.8" />
+        <g class="rdr-key" data-key="4" transform="translate(40, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdr-key-glow)">4</text>
+        </g>
+        <g class="rdr-key" data-key="5" transform="translate(120, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdr-key-glow)">5</text>
+          <line x1="-6" y1="14" x2="6" y2="14" stroke="#f87171" stroke-width="1.5" opacity="0.6" />
+        </g>
+        <g class="rdr-key" data-key="6" transform="translate(200, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdr-key-glow)">6</text>
+        </g>
+      </g>
+
+      <g transform="translate(0, 140)">
+        <rect x="0" y="0" width="240" height="52" rx="14" fill="url(#rdr-pill-recess)" stroke="#1e293b" stroke-width="1.2" />
+        <rect x="2" y="2" width="236" height="48" rx="12" fill="#131d2e" opacity="0.8" />
+        <g class="rdr-key" data-key="7" transform="translate(40, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdr-key-glow)">7</text>
+        </g>
+        <g class="rdr-key" data-key="8" transform="translate(120, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdr-key-glow)">8</text>
+        </g>
+        <g class="rdr-key" data-key="9" transform="translate(200, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdr-key-glow)">9</text>
+        </g>
+      </g>
+
+      <g transform="translate(0, 210)">
+        <rect x="0" y="0" width="240" height="52" rx="14" fill="url(#rdr-pill-recess)" stroke="#1e293b" stroke-width="1.2" />
+        <rect x="2" y="2" width="236" height="48" rx="12" fill="#131d2e" opacity="0.8" />
+        <g class="rdr-key" data-key="*" transform="translate(40, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="8" font-family="'Outfit', sans-serif" font-size="24" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdr-key-glow)">*</text>
+        </g>
+        <g class="rdr-key" data-key="0" transform="translate(120, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdr-key-glow)">0</text>
+        </g>
+        <g class="rdr-key" data-key="#" transform="translate(200, 26)" style="cursor: pointer;">
+          <circle cx="0" cy="0" r="18" fill="transparent" />
+          <text x="0" y="7" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" fill="#f87171" text-anchor="middle" filter="url(#rdr-key-glow)">#</text>
+        </g>
+      </g>
+    </g>
+
+    <g transform="translate(105, 430)">
+      <rect x="0" y="0" width="100" height="34" rx="4" fill="#090e17" stroke="#334155" stroke-width="1" />
+      <text x="50" y="24" font-family="'Arial Black', 'Impact', sans-serif" font-size="18" font-weight="900" fill="#f1f5f9" text-anchor="middle" letter-spacing="2">HID</text>
+    </g>
+
+    <g transform="translate(155, 485)" opacity="0.6">
+      <path d="M -12 0 A 12 12 0 0 1 12 0" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+      <path d="M -7 -4 A 7 7 0 0 1 7 -4" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+      <circle cx="0" cy="-8" r="1.5" fill="#94a3b8" />
+    </g>
+  </g>
+</svg>

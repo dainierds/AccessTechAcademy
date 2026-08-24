@@ -1,0 +1,290 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 760" width="520" height="760" class="digital-multimeter-svg">
+  <defs>
+    
+    <linearGradient id="dmm-orange-boot" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb923c" />
+      <stop offset="25%" stop-color="#f97316" />
+      <stop offset="70%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#c2410c" />
+    </linearGradient>
+
+    <linearGradient id="dmm-orange-bevel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fdba74" />
+      <stop offset="50%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#9a3412" />
+    </linearGradient>
+
+    
+    <linearGradient id="dmm-body-charcoal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="30%" stop-color="#1e293b" />
+      <stop offset="80%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#090e17" />
+    </linearGradient>
+
+    
+    <linearGradient id="dmm-lcd-glass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f2b26" />
+      <stop offset="30%" stop-color="#134e4a" />
+      <stop offset="70%" stop-color="#0f3b37" />
+      <stop offset="100%" stop-color="#042f2e" />
+    </linearGradient>
+
+    <linearGradient id="dmm-lcd-recess" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#021f1d" />
+      <stop offset="50%" stop-color="#042f2e" />
+      <stop offset="100%" stop-color="#115e59" />
+    </linearGradient>
+
+    
+    <linearGradient id="dmm-knob-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="40%" stop-color="#1e293b" />
+      <stop offset="80%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <linearGradient id="dmm-knob-ridge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#64748b" />
+      <stop offset="50%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    
+    <linearGradient id="dmm-metal-screw" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+
+    <linearGradient id="dmm-gold-probe" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#eab308" />
+      <stop offset="100%" stop-color="#854d0e" />
+    </linearGradient>
+
+    
+    <filter id="dmm-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+
+    <filter id="dmm-lcd-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    
+    <g id="dmm-term-pin">
+      <circle cx="0" cy="0" r="16" fill="#f8fafc" stroke="#0b1329" stroke-width="2.5" />
+      <circle cx="0" cy="0" r="11" fill="url(#dmm-metal-screw)" stroke="#334155" stroke-width="1" />
+      <circle cx="0" cy="0" r="6" fill="#0b1329" />
+      
+      <line x1="-4" y1="-2" x2="4" y2="2" stroke="#f8fafc" stroke-width="1.2" />
+      <line x1="-2" y1="4" x2="2" y2="-4" stroke="#f8fafc" stroke-width="1.2" />
+    </g>
+  </defs>
+
+  
+  
+
+  
+  
+  
+  <g filter="url(#dmm-shadow)" transform="translate(60, 30)" id="dmm-physical-unit">
+    
+    
+    
+    
+    
+    <path d="
+      M 60 0 
+      L 320 0 
+      C 355 0, 380 25, 380 60
+      L 380 180
+      C 370 200, 370 240, 380 260
+      L 380 620
+      C 380 660, 350 690, 310 690
+      L 70 690
+      C 30 690, 0 660, 0 620
+      L 0 260
+      C 10 240, 10 200, 0 180
+      L 0 60
+      C 0 25, 25 0, 60 0 Z" 
+      fill="url(#dmm-orange-boot)" stroke="#9a3412" stroke-width="3" />
+
+    
+    <rect x="155" y="-14" width="70" height="16" rx="6" fill="#1e293b" stroke="#0f172a" stroke-width="1.5" />
+    <circle cx="190" cy="-6" r="4" fill="#ea580c" />
+
+    
+    <g fill="#9a3412" opacity="0.7">
+      <rect x="4" y="290" width="8" height="18" rx="4" />
+      <rect x="4" y="320" width="8" height="18" rx="4" />
+      <rect x="4" y="350" width="8" height="18" rx="4" />
+      <rect x="4" y="380" width="8" height="18" rx="4" />
+      <rect x="368" y="290" width="8" height="18" rx="4" />
+      <rect x="368" y="320" width="8" height="18" rx="4" />
+      <rect x="368" y="350" width="8" height="18" rx="4" />
+      <rect x="368" y="380" width="8" height="18" rx="4" />
+    </g>
+
+    
+    
+    
+    <rect x="22" y="22" width="336" height="646" rx="26" fill="url(#dmm-body-charcoal)" stroke="#0f172a" stroke-width="2" />
+
+    
+    <g transform="translate(190, 52)">
+      <text x="0" y="0" font-family="'Outfit', 'Impact', sans-serif" font-size="24" font-weight="900" fill="#f97316" text-anchor="middle" letter-spacing="2">ACCESSTECH®</text>
+      <text x="0" y="16" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#94a3b8" text-anchor="middle" letter-spacing="1">DMM-9000 PRO • TRUE RMS</text>
+    </g>
+
+    
+    
+    
+    <g transform="translate(42, 80)">
+      
+      <rect x="0" y="0" width="296" height="175" rx="14" fill="url(#dmm-lcd-recess)" stroke="#090e17" stroke-width="2.5" />
+      
+      <rect x="6" y="6" width="284" height="163" rx="10" fill="url(#dmm-lcd-glass)" stroke="#042f2e" stroke-width="1.5" />
+
+      
+      <path d="M 24 35 A 190 70 0 0 1 260 35" fill="none" stroke="#2dd4bf" stroke-width="2.5" stroke-dasharray="2 4" opacity="0.8" />
+      
+      <text x="24" y="24" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#5eead4">0</text>
+      <text x="142" y="18" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#5eead4">30</text>
+      <text x="256" y="24" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#5eead4">60</text>
+
+      
+      <text x="24" y="60" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" fill="#5eead4" id="dmm-mode-ind" filter="url(#dmm-lcd-glow)">DC</text>
+      <text x="24" y="76" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#2dd4bf">AUTO</text>
+      <text x="24" y="92" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="900" fill="#2dd4bf" id="dmm-sub-icon">⎓</text>
+
+      
+      <text x="210" y="125" font-family="'JetBrains Mono', monospace" font-size="64" font-weight="900" fill="#5eead4" text-anchor="end" id="dmm-display-val" filter="url(#dmm-lcd-glow)">12.42</text>
+      
+      
+      <text x="258" y="122" font-family="'JetBrains Mono', monospace" font-size="24" font-weight="900" fill="#5eead4" text-anchor="end" id="dmm-units-val">V</text>
+
+      
+      <text x="24" y="152" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#2dd4bf" id="dmm-status-bar">HOLD: OFF  |  MAX/MIN: NORM  |  600V CAT III</text>
+    </g>
+
+    
+    
+    
+    <g transform="translate(50, 272)" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#f8fafc">
+      
+      <g class="dmm-btn" id="btn-dmm-sel" transform="translate(0, 0)" style="cursor: pointer;">
+        <rect x="0" y="0" width="60" height="26" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.2" />
+        <text x="30" y="17" text-anchor="middle">SELECT</text>
+      </g>
+      
+      <g class="dmm-btn" id="btn-dmm-hold" transform="translate(74, 0)" style="cursor: pointer;">
+        <rect x="0" y="0" width="60" height="26" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.2" />
+        <text x="30" y="17" text-anchor="middle" fill="#fbbf24">HOLD</text>
+      </g>
+      
+      <g class="dmm-btn" id="btn-dmm-max" transform="translate(148, 0)" style="cursor: pointer;">
+        <rect x="0" y="0" width="60" height="26" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.2" />
+        <text x="30" y="17" text-anchor="middle">MAX/MIN</text>
+      </g>
+      
+      <g class="dmm-btn" id="btn-dmm-hz" transform="translate(222, 0)" style="cursor: pointer;">
+        <rect x="0" y="0" width="60" height="26" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1.2" />
+        <text x="30" y="17" text-anchor="middle">Hz / %</text>
+      </g>
+    </g>
+
+    
+    
+    
+    <g transform="translate(190, 420)" id="dmm-rotary-section">
+      
+      
+      <circle cx="0" cy="0" r="105" fill="#090e17" stroke="#1e293b" stroke-width="2.5" />
+      <circle cx="0" cy="0" r="95" fill="none" stroke="#f97316" stroke-width="2" opacity="0.6" />
+
+      
+      <g transform="translate(-56, -46)" style="cursor: pointer;" id="rot-pos-dc">
+        <circle cx="0" cy="0" r="22" fill="#0f172a" stroke="#f97316" stroke-width="1.5" />
+        <text x="0" y="2" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="900" fill="#f8fafc" text-anchor="middle">V=</text>
+        <text x="0" y="15" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#fb923c" text-anchor="middle">DC</text>
+      </g>
+
+      
+      <g transform="translate(0, -72)" style="cursor: pointer;" id="rot-pos-ac">
+        <circle cx="0" cy="0" r="22" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+        <text x="0" y="2" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="900" fill="#f8fafc" text-anchor="middle">V~</text>
+        <text x="0" y="15" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#38bdf8" text-anchor="middle">AC</text>
+      </g>
+
+      
+      <g transform="translate(56, -46)" style="cursor: pointer;" id="rot-pos-cont">
+        <circle cx="0" cy="0" r="22" fill="#0f172a" stroke="#22c55e" stroke-width="1.5" />
+        <text x="0" y="3" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="900" fill="#22c55e" text-anchor="middle">•)))</text>
+        <text x="0" y="15" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#86efac" text-anchor="middle">Ω</text>
+      </g>
+
+      
+      <g id="dmm-knob-rotor" transform="rotate(-45)" style="transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: grab;">
+        
+        <circle cx="0" cy="0" r="56" fill="url(#dmm-knob-grad)" stroke="#090e17" stroke-width="3" />
+        <circle cx="0" cy="0" r="48" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+        
+        
+        <rect x="-14" y="-48" width="28" height="96" rx="8" fill="url(#dmm-knob-ridge)" stroke="#090e17" stroke-width="1.5" />
+        
+        
+        <polygon points="0,-46 -8,-24 8,-24" fill="#facc15" stroke="#ca8a04" stroke-width="1" />
+        <circle cx="0" cy="0" r="6" fill="#090e17" />
+      </g>
+      
+      
+      <rect x="-65" y="66" width="130" height="24" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1.2" />
+      <text x="0" y="82" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#f97316" text-anchor="middle" id="dmm-knob-mode-text">MODO: V DC (⎓)</text>
+    </g>
+
+    
+    
+    
+    <g transform="translate(100, 585)">
+      
+      
+      <g transform="translate(30, 0)">
+        <circle cx="0" cy="0" r="28" fill="#090e17" stroke="#1e293b" stroke-width="2" />
+        <circle cx="0" cy="0" r="20" fill="#1e293b" stroke="#475569" stroke-width="2" />
+        <circle cx="0" cy="0" r="11" fill="#000000" />
+        
+        
+        <g class="dmm-terminal" id="term-dmm-com" data-label="COM (Sonda Negra / -)">
+          <use href="#dmm-term-pin" xlink:href="#dmm-term-pin" />
+          <circle cx="0" cy="0" r="18" fill="none" stroke="#94a3b8" stroke-width="2" opacity="0.8" />
+        </g>
+        <text x="0" y="44" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#cbd5e1" text-anchor="middle">COM</text>
+        <text x="0" y="58" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#64748b" text-anchor="middle">MAX 600V</text>
+      </g>
+
+      
+      <g transform="translate(150, 0)">
+        <circle cx="0" cy="0" r="28" fill="#090e17" stroke="#1e293b" stroke-width="2" />
+        <circle cx="0" cy="0" r="20" fill="#7f1d1d" stroke="#ef4444" stroke-width="2" />
+        <circle cx="0" cy="0" r="11" fill="#000000" />
+
+        
+        <g class="dmm-terminal" id="term-dmm-vomega" data-label="VΩ (Sonda Roja / +)">
+          <use href="#dmm-term-pin" xlink:href="#dmm-term-pin" />
+          <circle cx="0" cy="0" r="18" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.8" />
+        </g>
+        <text x="0" y="44" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#ef4444" text-anchor="middle">V Ω •)))</text>
+        <text x="0" y="58" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#fca5a5" text-anchor="middle">600V CAT III</text>
+      </g>
+
+    </g>
+
+  </g>
+
+  
+  
+  
+  </svg>

@@ -1,0 +1,172 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 560" width="460" height="560" class="push-to-exit-lateral-svg">
+  <defs>
+    <!-- Gradiente Placa Acero Inoxidable Pulido -->
+    <linearGradient id="ptel-steel-plate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="20%" stop-color="#e2e8f0" />
+      <stop offset="50%" stop-color="#cbd5e1" />
+      <stop offset="80%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+
+    <!-- Bisel Superior / Inferior -->
+    <linearGradient id="ptel-bevel-top" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </linearGradient>
+    <linearGradient id="ptel-bevel-side" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+
+    <!-- Lente Verde Iluminada HD -->
+    <radialGradient id="ptel-green-lens-lit" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#86efac" />
+      <stop offset="40%" stop-color="#22c55e" />
+      <stop offset="85%" stop-color="#16a34a" />
+      <stop offset="100%" stop-color="#15803d" />
+    </radialGradient>
+
+    <!-- Marco Biselado Botón -->
+    <linearGradient id="ptel-bezel-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Bornes Metálicos y Euroblock -->
+    <linearGradient id="ptel-termblock-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="30%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <linearGradient id="ptel-screw-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="45%" stop-color="#cbd5e1" />
+      <stop offset="70%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+
+    <linearGradient id="ptel-brass-contact" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#eab308" />
+      <stop offset="100%" stop-color="#854d0e" />
+    </linearGradient>
+
+    <!-- Sombras y Brillo -->
+    <filter id="ptel-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+    <filter id="ptel-btn-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Orificio de Montaje Tornillos Placa -->
+    <g id="ptel-mounting-hole">
+      <circle cx="0" cy="0" r="14" fill="url(#ptel-screw-metal)" stroke="#475569" stroke-width="1.2" />
+      <circle cx="0" cy="0" r="9" fill="#0b1329" />
+      <circle cx="0" cy="0" r="8" fill="#1e293b" />
+      <circle cx="0" cy="0" r="5" fill="#0b1329" />
+    </g>
+
+    <!-- Borne / Tornillo Euroblock Lateral -->
+    <g id="ptel-terminal-cell">
+      <rect x="0" y="0" width="130" height="54" rx="7" fill="url(#ptel-termblock-grad)" stroke="#334155" stroke-width="1.5" />
+      <!-- Tornillo de conexión -->
+      <g transform="translate(100, 27)">
+        <circle cx="0" cy="0" r="15" fill="#020617" stroke="#1e293b" stroke-width="1.5" />
+        <circle cx="0" cy="0" r="12" fill="url(#ptel-screw-metal)" stroke="#475569" stroke-width="1" />
+        <circle cx="0" cy="0" r="6" fill="#090e17" />
+        <!-- Ranura tornillo cruz/plano -->
+        <line x1="-5" y1="-3" x2="5" y2="3" stroke="#f8fafc" stroke-width="1.5" />
+        <line x1="-3" y1="5" x2="3" y2="-5" stroke="#f8fafc" stroke-width="1.5" />
+      </g>
+    </g>
+  </defs>
+
+  <g filter="url(#ptel-shadow)" transform="translate(20, 20)" id="ptel-full-assembly">
+    
+    <!-- 1. PLACA FRONTAL DE ACERO INOXIDABLE -->
+    <polygon points="0,0 270,0 254,16 16,16" fill="url(#ptel-bevel-top)" />
+    <polygon points="0,520 270,520 254,504 16,504" fill="#64748b" />
+    <polygon points="0,0 16,16 16,504 0,520" fill="url(#ptel-bevel-side)" />
+    <polygon points="270,0 270,520 254,504 254,16" fill="url(#ptel-bevel-side)" />
+    <rect x="16" y="16" width="238" height="488" fill="url(#ptel-steel-plate)" stroke="#475569" stroke-width="1.2" />
+    
+    <!-- Líneas de cepillado del metal -->
+    <g opacity="0.25" stroke="#ffffff" stroke-width="0.7">
+      <line x1="30" y1="16" x2="30" y2="504" />
+      <line x1="45" y1="16" x2="45" y2="504" />
+      <line x1="70" y1="16" x2="70" y2="504" />
+      <line x1="100" y1="16" x2="100" y2="504" />
+      <line x1="135" y1="16" x2="135" y2="504" />
+      <line x1="170" y1="16" x2="170" y2="504" />
+      <line x1="205" y1="16" x2="205" y2="504" />
+      <line x1="235" y1="16" x2="235" y2="504" />
+    </g>
+
+    <!-- Tornillos de fijación arriba y abajo -->
+    <use href="#ptel-mounting-hole" xlink:href="#ptel-mounting-hole" x="135" y="65" />
+    <use href="#ptel-mounting-hole" xlink:href="#ptel-mounting-hole" x="135" y="455" />
+
+    <!-- Botón Central Pulsador Iluminado PUSH TO EXIT -->
+    <g transform="translate(40, 160)">
+      <rect x="0" y="0" width="190" height="190" rx="14" fill="url(#ptel-bezel-grad)" stroke="#0f172a" stroke-width="2.5" />
+      <rect x="6" y="6" width="178" height="178" rx="10" fill="none" stroke="#475569" stroke-width="1.5" />
+      <rect x="12" y="12" width="166" height="166" rx="8" fill="#0b1329" />
+
+      <g id="ptel-push-button" filter="url(#ptel-btn-glow)" style="cursor: pointer;">
+        <rect x="18" y="18" width="154" height="154" rx="8" fill="url(#ptel-green-lens-lit)" stroke="#14532d" stroke-width="2" />
+        <rect x="22" y="22" width="146" height="36" rx="4" fill="#ffffff" opacity="0.35" />
+        <line x1="24" y1="24" x2="162" y2="24" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+        <text x="95" y="66" font-family="'Outfit', 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="900" fill="#052e16" text-anchor="middle" letter-spacing="2">PUSH</text>
+        <text x="95" y="104" font-family="'Outfit', 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="900" fill="#052e16" text-anchor="middle" letter-spacing="2">TO</text>
+        <text x="95" y="142" font-family="'Outfit', 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="900" fill="#052e16" text-anchor="middle" letter-spacing="2">EXIT</text>
+      </g>
+    </g>
+
+    <!-- 2. EXTENSIÓN LATERAL DERECHA: REGLETA / BORNERA DE CONEXIÓN INDUSTRIAL -->
+    <!-- Base / Soporte posterior de la bornera -->
+    <rect x="270" y="80" width="148" height="360" rx="10" fill="#090e17" stroke="#1e293b" stroke-width="2" />
+    <path d="M 270 95 L 285 95 L 285 425 L 270 425 Z" fill="#1e293b" opacity="0.6" />
+
+    <!-- Terminales laterales con nombres técnicos (COM, NO, NC, LED+, LED-) -->
+    <!-- Borne 1: COM -->
+    <g transform="translate(278, 92)">
+      <use href="#ptel-terminal-cell" xlink:href="#ptel-terminal-cell" />
+      <text x="14" y="32" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" fill="#f8fafc">COM</text>
+      <text x="14" y="45" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#94a3b8">Común REX</text>
+    </g>
+
+    <!-- Borne 2: NO -->
+    <g transform="translate(278, 158)">
+      <use href="#ptel-terminal-cell" xlink:href="#ptel-terminal-cell" />
+      <text x="14" y="32" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" fill="#38bdf8">NO</text>
+      <text x="14" y="45" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#94a3b8">Norm. Abierto</text>
+    </g>
+
+    <!-- Borne 3: NC -->
+    <g transform="translate(278, 224)">
+      <use href="#ptel-terminal-cell" xlink:href="#ptel-terminal-cell" />
+      <text x="14" y="32" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" fill="#fbbf24">NC</text>
+      <text x="14" y="45" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#94a3b8">Norm. Cerrado</text>
+    </g>
+
+    <!-- Borne 4: LED (+) -->
+    <g transform="translate(278, 290)">
+      <use href="#ptel-terminal-cell" xlink:href="#ptel-terminal-cell" />
+      <text x="14" y="32" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" fill="#ef4444">+12V</text>
+      <text x="14" y="45" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#fca5a5">LED Pos (+)</text>
+    </g>
+
+    <!-- Borne 5: LED (-) -->
+    <g transform="translate(278, 356)">
+      <use href="#ptel-terminal-cell" xlink:href="#ptel-terminal-cell" />
+      <text x="14" y="32" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" fill="#cbd5e1">GND</text>
+      <text x="14" y="45" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#94a3b8">LED Neg (-)</text>
+    </g>
+
+  </g>
+</svg>

@@ -1,0 +1,245 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" width="100%" height="100%" class="push-to-exit-svg">
+  <defs>
+    <!-- Brushed Stainless Steel Plate Gradients -->
+    <linearGradient id="pte-steel-plate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="20%" stop-color="#e2e8f0" />
+      <stop offset="50%" stop-color="#cbd5e1" />
+      <stop offset="80%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+
+    <linearGradient id="pte-bevel-top" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </linearGradient>
+    <linearGradient id="pte-bevel-side" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+
+    <!-- Illuminated Green Button Gradients -->
+    <radialGradient id="pte-green-lens-lit" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#86efac" />
+      <stop offset="40%" stop-color="#22c55e" />
+      <stop offset="85%" stop-color="#16a34a" />
+      <stop offset="100%" stop-color="#15803d" />
+    </radialGradient>
+
+    <linearGradient id="pte-bezel-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="pte-metal-screw" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+
+    <!-- Drop Shadows & LED Glow -->
+    <filter id="pte-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+
+    <filter id="pte-btn-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="pte-inner-bevel" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="3" stdDeviation="2" flood-color="#000000" flood-opacity="0.3" />
+    </filter>
+
+    <!-- Countersunk Mounting Screw Hole -->
+    <g id="pte-mounting-hole">
+      <circle cx="0" cy="0" r="14" fill="url(#pte-metal-screw)" stroke="#475569" stroke-width="1.2" />
+      <circle cx="0" cy="0" r="9" fill="#0b1329" />
+      <circle cx="0" cy="0" r="8" fill="#1e293b" />
+      <circle cx="0" cy="0" r="5" fill="#0b1329" />
+    </g>
+
+    <!-- Reusable Terminal Node Pin -->
+    <g id="pte-term-pin">
+      <circle cx="0" cy="0" r="16" fill="#f8fafc" stroke="#0b1329" stroke-width="2.5" />
+      <circle cx="0" cy="0" r="11" fill="url(#pte-metal-screw)" stroke="#334155" stroke-width="1" />
+      <circle cx="0" cy="0" r="6" fill="#0b1329" />
+      <circle cx="0" cy="0" r="3" fill="#38bdf8" />
+      <line x1="-4" y1="-2" x2="4" y2="2" stroke="#f8fafc" stroke-width="1.2" />
+      <line x1="-2" y1="4" x2="2" y2="-4" stroke="#f8fafc" stroke-width="1.2" />
+    </g>
+  </defs>
+
+  <!-- Dark Background Canvas -->
+  <rect width="900" height="680" fill="#0b1329" rx="16" />
+
+  <!-- ================================================================= -->
+  <!-- LEFT SIDE: REALISTIC FRONT VIEW (BRUSHED STAINLESS STEEL PLATE)   -->
+  <!-- ================================================================= -->
+  <g filter="url(#pte-shadow)" transform="translate(60, 40)" id="pte-front-plate-group">
+    
+    <!-- Outer Chamfer Beveled Border -->
+    <!-- Top Chamfer -->
+    <polygon points="0,0 280,0 264,16 16,16" fill="url(#pte-bevel-top)" />
+    <!-- Bottom Chamfer -->
+    <polygon points="0,520 280,520 264,504 16,504" fill="#64748b" />
+    <!-- Left Chamfer -->
+    <polygon points="0,0 16,16 16,504 0,520" fill="url(#pte-bevel-side)" />
+    <!-- Right Chamfer -->
+    <polygon points="280,0 280,520 264,504 264,16" fill="url(#pte-bevel-side)" />
+
+    <!-- Main Flat Brushed Stainless Faceplate -->
+    <rect x="16" y="16" width="248" height="488" fill="url(#pte-steel-plate)" stroke="#475569" stroke-width="1.2" />
+    
+    <!-- Brushed Vertical Grain Texture Lines -->
+    <g opacity="0.25" stroke="#ffffff" stroke-width="0.7">
+      <line x1="30" y1="16" x2="30" y2="504" />
+      <line x1="45" y1="16" x2="45" y2="504" />
+      <line x1="70" y1="16" x2="70" y2="504" />
+      <line x1="100" y1="16" x2="100" y2="504" />
+      <line x1="140" y1="16" x2="140" y2="504" />
+      <line x1="180" y1="16" x2="180" y2="504" />
+      <line x1="215" y1="16" x2="215" y2="504" />
+      <line x1="240" y1="16" x2="240" y2="504" />
+    </g>
+
+    <!-- Top Mounting Screw Hole -->
+    <use href="#pte-mounting-hole" x="140" y="65" />
+    <!-- Bottom Mounting Screw Hole -->
+    <use href="#pte-mounting-hole" x="140" y="455" />
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- ILLUMINATED GREEN SQUARE PUSH BUTTON (PUSH TO EXIT)           -->
+    <!-- ------------------------------------------------------------- -->
+    <!-- Outer Black Beveled Bezel Frame -->
+    <g transform="translate(45, 160)">
+      <rect x="0" y="0" width="190" height="190" rx="14" fill="url(#pte-bezel-grad)" stroke="#0f172a" stroke-width="2.5" />
+      <rect x="6" y="6" width="178" height="178" rx="10" fill="none" stroke="#475569" stroke-width="1.5" />
+      <rect x="12" y="12" width="166" height="166" rx="8" fill="#0b1329" />
+
+      <!-- Translucent Emerald Green Button Lens -->
+      <g id="pte-push-button" filter="url(#pte-btn-glow)" style="cursor: pointer;">
+        <rect x="18" y="18" width="154" height="154" rx="8" fill="url(#pte-green-lens-lit)" stroke="#14532d" stroke-width="2" id="pte-lens-rect" />
+        
+        <!-- Acrylic Glass Surface Bevel Highlight -->
+        <rect x="22" y="22" width="146" height="36" rx="4" fill="#ffffff" opacity="0.35" />
+        <line x1="24" y1="24" x2="162" y2="24" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+        
+        <!-- Crisp Bold Black Typography (Exact Font & Proportions) -->
+        <text x="95" y="66" font-family="'Outfit', 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="900" fill="#052e16" text-anchor="middle" letter-spacing="2">PUSH</text>
+        <text x="95" y="104" font-family="'Outfit', 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="900" fill="#052e16" text-anchor="middle" letter-spacing="2">TO</text>
+        <text x="95" y="142" font-family="'Outfit', 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="900" fill="#052e16" text-anchor="middle" letter-spacing="2">EXIT</text>
+      </g>
+    </g>
+
+    <!-- Plate Bottom Spec Marking -->
+    <text x="140" y="490" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="800" fill="#64748b" text-anchor="middle">STAINLESS STEEL 304</text>
+  </g>
+
+  <!-- ================================================================= -->
+  <!-- RIGHT SIDE: 5 TERMINAL CONNECTIONS DIAGRAM & WIRING MATRIX        -->
+  <!-- ================================================================= -->
+  <g transform="translate(390, 40)">
+    
+    <!-- Main Wiring Panel Container -->
+    <rect x="0" y="0" width="460" height="520" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+    
+    <!-- Header Box -->
+    <rect x="0" y="0" width="460" height="54" rx="16" fill="#0b1329" stroke="#1e293b" stroke-width="1.5" />
+    <text x="230" y="26" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#38bdf8" text-anchor="middle" letter-spacing="1">MAPEO DE CONEXIÓN (5 BORNES)</text>
+    <text x="230" y="42" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#94a3b8" text-anchor="middle">ILUMINACIÓN LED 12VDC + CONTACTOS FORM-C (NO/NC/COM)</text>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- THE 5 BORNES DE CONEXIÓN (EXACT SPECIFICATION FROM IMAGE 1)   -->
+    <!-- ------------------------------------------------------------- -->
+
+    <!-- 1. BORNE COM (VERDE / GREEN) - COMMON -->
+    <g class="pte-terminal-row" transform="translate(30, 80)">
+      <rect x="0" y="0" width="400" height="68" rx="8" fill="#1e293b" stroke="#15803d" stroke-width="1.5" />
+      <!-- Snap Terminal Pin -->
+      <g class="pte-terminal" id="term-pte-com" data-label="COM (Verde)" transform="translate(42, 34)">
+        <use href="#pte-term-pin" />
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#22c55e" stroke-width="2" opacity="0.8" />
+      </g>
+      <!-- Label Details -->
+      <text x="80" y="28" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" fill="#22c55e">COM : Green (Verde)</text>
+      <text x="80" y="48" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="600" fill="#cbd5e1">Común del Interruptor Pulsador</text>
+      <rect x="300" y="20" width="85" height="26" rx="4" fill="#052e16" stroke="#22c55e" stroke-width="1" />
+      <text x="342" y="37" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#86efac" text-anchor="middle">COMÚN</text>
+    </g>
+
+    <!-- 2. BORNE N.O. (BLANCO / WHITE) - NORMALLY OPEN -->
+    <g class="pte-terminal-row" transform="translate(30, 160)">
+      <rect x="0" y="0" width="400" height="68" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
+      <!-- Snap Terminal Pin -->
+      <g class="pte-terminal" id="term-pte-no" data-label="N.O. (Blanco)" transform="translate(42, 34)">
+        <use href="#pte-term-pin" />
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+      </g>
+      <!-- Label Details -->
+      <text x="80" y="28" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" fill="#ffffff">N.O. : White (Blanco)</text>
+      <text x="80" y="48" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="600" fill="#cbd5e1">Contacto Normalmente Abierto (REX)</text>
+      <rect x="300" y="20" width="85" height="26" rx="4" fill="#0f172a" stroke="#cbd5e1" stroke-width="1" />
+      <text x="342" y="37" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#ffffff" text-anchor="middle">NORM. ABIERTO</text>
+    </g>
+
+    <!-- 3. BORNE N.C. (NARANJA / ORANGE) - NORMALLY CLOSED -->
+    <g class="pte-terminal-row" transform="translate(30, 240)">
+      <rect x="0" y="0" width="400" height="68" rx="8" fill="#1e293b" stroke="#c2410c" stroke-width="1.5" />
+      <!-- Snap Terminal Pin -->
+      <g class="pte-terminal" id="term-pte-nc" data-label="N.C. (Naranja)" transform="translate(42, 34)">
+        <use href="#pte-term-pin" />
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#f97316" stroke-width="2" opacity="0.8" />
+      </g>
+      <!-- Label Details -->
+      <text x="80" y="28" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" fill="#f97316">N.C. : Orange (Naranja)</text>
+      <text x="80" y="48" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="600" fill="#cbd5e1">Contacto Normalmente Cerrado</text>
+      <rect x="300" y="20" width="85" height="26" rx="4" fill="#431407" stroke="#f97316" stroke-width="1" />
+      <text x="342" y="37" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="800" fill="#fdba74" text-anchor="middle">NORM. CERRADO</text>
+    </g>
+
+    <!-- 4. BORNE + (ROJO / RED) - +12VDC LED POWER -->
+    <g class="pte-terminal-row" transform="translate(30, 320)">
+      <rect x="0" y="0" width="400" height="68" rx="8" fill="#1e293b" stroke="#991b1b" stroke-width="1.5" />
+      <!-- Snap Terminal Pin -->
+      <g class="pte-terminal" id="term-pte-pos" data-label="+ (Rojo)" transform="translate(42, 34)">
+        <use href="#pte-term-pin" />
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.8" />
+      </g>
+      <!-- Label Details -->
+      <text x="80" y="28" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" fill="#ef4444">+ : Red (Rojo)</text>
+      <text x="80" y="48" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="600" fill="#cbd5e1">Alimentación Positiva LED (+12VDC)</text>
+      <rect x="300" y="20" width="85" height="26" rx="4" fill="#450a0a" stroke="#ef4444" stroke-width="1" />
+      <text x="342" y="37" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#fca5a5" text-anchor="middle">+12V LED</text>
+    </g>
+
+    <!-- 5. BORNE - (NEGRO / BLACK) - GND LED POWER -->
+    <g class="pte-terminal-row" transform="translate(30, 400)">
+      <rect x="0" y="0" width="400" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+      <!-- Snap Terminal Pin -->
+      <g class="pte-terminal" id="term-pte-neg" data-label="- (Negro)" transform="translate(42, 34)">
+        <use href="#pte-term-pin" />
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#94a3b8" stroke-width="2" opacity="0.8" />
+      </g>
+      <!-- Label Details -->
+      <text x="80" y="28" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" fill="#cbd5e1">- : Black (Negro)</text>
+      <text x="80" y="48" font-family="'Outfit', sans-serif" font-size="11.5" font-weight="600" fill="#cbd5e1">Tierra / Negativo LED (GND 0V)</text>
+      <rect x="300" y="20" width="85" height="26" rx="4" fill="#0b1329" stroke="#64748b" stroke-width="1" />
+      <text x="342" y="37" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#e2e8f0" text-anchor="middle">GND (0V)</text>
+    </g>
+
+    <!-- Bottom Pinout Summary -->
+    <g transform="translate(20, 480)">
+      <text x="210" y="20" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700" fill="#64748b" text-anchor="middle">P/N: PTE-GREEN-12V • COMPATIBLE CON CONTROLADORAS &amp; FUENTES 12VDC</text>
+    </g>
+  </g>
+
+  <!-- Bottom Global Device Brand Legend -->
+  <g transform="translate(350, 600)">
+    <rect x="0" y="0" width="200" height="44" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1.2" />
+    <text x="100" y="18" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#38bdf8" text-anchor="middle">PUSH TO EXIT (REX)</text>
+    <text x="100" y="32" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700" fill="#22c55e" text-anchor="middle">5 TERMINALES INDEPENDIENTES</text>
+  </g>
+
+</svg>

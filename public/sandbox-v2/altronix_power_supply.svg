@@ -1,0 +1,617 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1380" width="100%" height="100%" class="altronix-power-supply-svg">
+  <defs>
+    <!-- Cabinet & Board Gradients -->
+    <linearGradient id="ps-cabinet-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="50%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#64748b" />
+    </linearGradient>
+
+    <linearGradient id="ps-pcb-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="40%" stop-color="#172554" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="ps-blue-relay" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="30%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+
+    <linearGradient id="ps-blue-termblock" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="25%" stop-color="#2563eb" />
+      <stop offset="80%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </linearGradient>
+
+    <linearGradient id="ps-green-termblock" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4ade80" />
+      <stop offset="25%" stop-color="#16a34a" />
+      <stop offset="100%" stop-color="#14532d" />
+    </linearGradient>
+
+    <linearGradient id="ps-heatsink" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="25%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="75%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+
+    <linearGradient id="ps-metal-screw" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+
+    <linearGradient id="ps-glass-fuse" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8" />
+      <stop offset="20%" stop-color="#e2e8f0" stop-opacity="0.3" />
+      <stop offset="80%" stop-color="#ffffff" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.6" />
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="ps-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+
+    <filter id="ps-led-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Screw Terminal Snap Point Overlaid on Board -->
+    <g id="ps-screw-pin">
+      <rect x="-11" y="-12" width="22" height="24" rx="2" fill="none" />
+      <circle cx="0" cy="0" r="8" fill="url(#ps-metal-screw)" stroke="#1e293b" stroke-width="0.8" />
+      <circle cx="0" cy="0" r="4.5" fill="#0b1329" />
+      <circle cx="0" cy="0" r="2.2" fill="#38bdf8" />
+      <line x1="-3" y1="-1.5" x2="3" y2="1.5" stroke="#f8fafc" stroke-width="0.9" />
+      <line x1="-1.5" y1="3" x2="1.5" y2="-3" stroke="#f8fafc" stroke-width="0.9" />
+    </g>
+
+    <!-- Glass Fuse Unit -->
+    <g id="ps-fuse-assembly">
+      <!-- Top Nickel Cap -->
+      <rect x="-6" y="0" width="12" height="10" rx="1.5" fill="url(#ps-metal-screw)" stroke="#334155" stroke-width="0.8" />
+      <!-- Glass Tube Body -->
+      <rect x="-5" y="10" width="10" height="52" rx="1" fill="url(#ps-glass-fuse)" stroke="#94a3b8" stroke-width="0.5" />
+      <!-- Internal Filament Wire -->
+      <line x1="0" y1="10" x2="0" y2="62" stroke="#e2e8f0" stroke-width="0.8" stroke-dasharray="1 0" />
+      <!-- Bottom Nickel Cap -->
+      <rect x="-6" y="62" width="12" height="10" rx="1.5" fill="url(#ps-metal-screw)" stroke="#334155" stroke-width="0.8" />
+      <!-- Fuse Clip Mounts -->
+      <path d="M -8 2 L -6 2 L -6 8 L -8 8 Z M 6 2 L 8 2 L 8 8 L 6 8 Z" fill="#cbd5e1" />
+      <path d="M -8 64 L -6 64 L -6 70 L -8 70 Z M 6 64 L 8 64 L 8 70 L 6 70 Z" fill="#cbd5e1" />
+    </g>
+  </defs>
+
+  <!-- ================================================================= -->
+  <!-- 0. ENCLOSURE CABINET BACKGROUND (GABINETE METÁLICO GRIS)          -->
+  <!-- ================================================================= -->
+  <rect width="1100" height="1380" fill="#e2e8f0" rx="14" stroke="#94a3b8" stroke-width="4" />
+  <!-- Enclosure Inner Backplate -->
+  <rect x="25" y="25" width="1050" height="1330" fill="#d1d5db" rx="8" stroke="#9ca3af" stroke-width="2" />
+  
+  <!-- Enclosure Keyholes (Mounting Slots) -->
+  <path d="M 50 60 A 8 8 0 0 1 66 60 L 62 85 A 4 4 0 0 1 54 85 Z" fill="#6b7280" />
+  <path d="M 1034 60 A 8 8 0 0 1 1050 60 L 1046 85 A 4 4 0 0 1 1038 85 Z" fill="#6b7280" />
+  <path d="M 50 1300 A 8 8 0 0 1 66 1300 L 62 1325 A 4 4 0 0 1 54 1325 Z" fill="#6b7280" />
+  <path d="M 1034 1300 A 8 8 0 0 1 1050 1300 L 1046 1325 A 4 4 0 0 1 1038 1325 Z" fill="#6b7280" />
+
+  <!-- ================================================================= -->
+  <!-- 1. TOP BOARD: ALTRONIX AL400ULXB2 / AL300ULXB2 POWER SUPPLY/CHARGER-->
+  <!-- ================================================================= -->
+  <g filter="url(#ps-shadow)" transform="translate(60, 60)" id="board-al400-top">
+    <!-- PCB Base -->
+    <rect x="0" y="0" width="980" height="490" rx="10" fill="url(#ps-pcb-blue)" stroke="#38bdf8" stroke-width="2" />
+
+    <!-- Corner Mounting Screws -->
+    <circle cx="20" cy="20" r="7" fill="url(#ps-metal-screw)" stroke="#1e293b" />
+    <circle cx="960" cy="20" r="7" fill="url(#ps-metal-screw)" stroke="#1e293b" />
+    <circle cx="20" cy="470" r="7" fill="url(#ps-metal-screw)" stroke="#1e293b" />
+    <circle cx="960" cy="470" r="7" fill="url(#ps-metal-screw)" stroke="#1e293b" />
+
+    <!-- Big Electrolytic Filter Capacitors (Top Left) -->
+    <g transform="translate(130, 130)">
+      <circle cx="0" cy="0" r="58" fill="#1e293b" stroke="#0f172a" stroke-width="3" />
+      <circle cx="0" cy="0" r="52" fill="#334155" />
+      <path d="M -45 -15 L 45 -15 L 45 15 L -45 15 Z" fill="#94a3b8" opacity="0.4" />
+      <text x="0" y="5" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#f8fafc" text-anchor="middle">RUBYCON 4700uF</text>
+      <text x="0" y="22" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="700" fill="#cbd5e1" text-anchor="middle">50V 105°C</text>
+    </g>
+    <g transform="translate(260, 240)">
+      <circle cx="0" cy="0" r="48" fill="#1e293b" stroke="#0f172a" stroke-width="3" />
+      <circle cx="0" cy="0" r="42" fill="#334155" />
+      <text x="0" y="4" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="900" fill="#f8fafc" text-anchor="middle">250V 470uF</text>
+    </g>
+
+    <!-- Aluminum Heatsinks & Voltage Regulators -->
+    <rect x="290" y="30" width="80" height="95" rx="3" fill="url(#ps-heatsink)" stroke="#0f172a" stroke-width="1.5" />
+    <line x1="310" y1="30" x2="310" y2="125" stroke="#475569" stroke-width="2" />
+    <line x1="330" y1="30" x2="330" y2="125" stroke="#475569" stroke-width="2" />
+    <line x1="350" y1="30" x2="350" y2="125" stroke="#475569" stroke-width="2" />
+
+    <rect x="290" y="145" width="80" height="95" rx="3" fill="url(#ps-heatsink)" stroke="#0f172a" stroke-width="1.5" />
+    <line x1="310" y1="145" x2="310" y2="240" stroke="#475569" stroke-width="2" />
+    <line x1="330" y1="145" x2="330" y2="240" stroke="#475569" stroke-width="2" />
+    <line x1="350" y1="145" x2="350" y2="240" stroke="#475569" stroke-width="2" />
+
+    <!-- Switching Transformer (Center Yellow Block) -->
+    <g transform="translate(430, 70)">
+      <rect x="0" y="0" width="115" height="150" rx="6" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+      <rect x="15" y="15" width="85" height="120" rx="3" fill="#facc15" stroke="#a16207" stroke-width="1" />
+      <text x="57" y="65" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#713f12" text-anchor="middle">POL-30030</text>
+      <text x="57" y="85" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#713f12" text-anchor="middle">E1920 cRUus</text>
+      <text x="57" y="110" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="700" fill="#854d0e" text-anchor="middle">ALTRONIX</text>
+    </g>
+
+    <!-- Secondary Filter Capacitors (Top Right Green/Silver) -->
+    <g transform="translate(630, 160)">
+      <circle cx="0" cy="0" r="38" fill="#15803d" stroke="#14532d" stroke-width="2.5" />
+      <circle cx="0" cy="0" r="32" fill="#22c55e" opacity="0.8" />
+      <text x="0" y="4" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="900" fill="#ffffff" text-anchor="middle">2200uF</text>
+    </g>
+    <g transform="translate(730, 110)">
+      <circle cx="0" cy="0" r="36" fill="#15803d" stroke="#14532d" stroke-width="2.5" />
+      <circle cx="0" cy="0" r="30" fill="#22c55e" opacity="0.8" />
+      <text x="0" y="4" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="900" fill="#ffffff" text-anchor="middle">2200uF</text>
+    </g>
+
+    <!-- Voltage Selector Switch (12V / 24V) -->
+    <g transform="translate(630, 40)">
+      <rect x="0" y="0" width="130" height="32" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1.2" />
+      <rect x="75" y="4" width="48" height="24" rx="3" fill="#ef4444" stroke="#991b1b" stroke-width="1" />
+      <text x="65" y="21" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="900" fill="#ffffff" text-anchor="end">12V | 24V</text>
+    </g>
+
+    <!-- ALTRONIX Logo & Specifications -->
+    <g transform="translate(380, 260)">
+      <!-- Altronix Triangle Logo -->
+      <polygon points="40,10 65,50 15,50" fill="none" stroke="#38bdf8" stroke-width="3" />
+      <circle cx="40" cy="34" r="12" fill="none" stroke="#38bdf8" stroke-width="2.5" />
+      <text x="100" y="24" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="900" fill="#ffffff">AL400ULXB2</text>
+      <text x="100" y="42" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#94a3b8">AL300ULXB2</text>
+      <text x="100" y="58" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#64748b">Altronix Corp. Brooklyn, NY 11220 Made in USA</text>
+    </g>
+
+    <!-- Supervised Trouble Relays (Black cubes) -->
+    <rect x="520" y="320" width="46" height="60" rx="3" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+    <rect x="580" y="320" width="46" height="60" rx="3" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Diagnostic LEDs (AC, DC, BAT) -->
+    <g transform="translate(420, 390)">
+      <!-- AC LED (Green) -->
+      <circle cx="0" cy="0" r="7" fill="#14532d" stroke="#16a34a" stroke-width="1" />
+      <circle cx="0" cy="0" r="5" fill="#22c55e" id="al400-led-ac" filter="url(#ps-led-glow)" />
+      <text x="0" y="20" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">AC</text>
+      
+      <!-- DC LED (Red) -->
+      <circle cx="35" cy="0" r="7" fill="#450a0a" stroke="#dc2626" stroke-width="1" />
+      <circle cx="35" cy="0" r="5" fill="#ef4444" id="al400-led-dc" filter="url(#ps-led-glow)" />
+      <text x="35" y="20" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">DC</text>
+
+      <!-- BAT LED (Yellow) -->
+      <circle cx="70" cy="0" r="7" fill="#422006" stroke="#ca8a04" stroke-width="1" />
+      <circle cx="70" cy="0" r="5" fill="#eab308" id="al400-led-bat" />
+      <text x="70" y="20" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#ffffff" text-anchor="middle">Bat</text>
+    </g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- TOP BOARD TERMINAL BLOCKS (AC IN, BATTERY, SUPERVISORY RELAYS)-->
+    <!-- ------------------------------------------------------------- -->
+    <!-- 1. AC Input Green Block (Bottom Left): L, G, N -->
+    <g transform="translate(150, 305)">
+      <rect x="0" y="0" width="130" height="100" rx="6" fill="url(#ps-green-termblock)" stroke="#14532d" stroke-width="2" />
+      <rect x="10" y="8" width="110" height="26" rx="3" fill="#14532d" />
+      <text x="65" y="25" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">115VAC IN</text>
+
+      <!-- Screw Terminal L -->
+      <g class="ps-terminal" id="term-ac-l" data-label="AC Line (L)" transform="translate(25, 60)">
+        <use href="#ps-screw-pin" />
+      </g>
+      <text x="25" y="90" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">L</text>
+
+      <!-- Screw Terminal G (Ground) -->
+      <g class="ps-terminal" id="term-ac-g" data-label="AC Ground (G)" transform="translate(65, 60)">
+        <use href="#ps-screw-pin" />
+      </g>
+      <text x="65" y="90" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">G</text>
+
+      <!-- Screw Terminal N (Neutral) -->
+      <g class="ps-terminal" id="term-ac-n" data-label="AC Neutral (N)" transform="translate(105, 60)">
+        <use href="#ps-screw-pin" />
+      </g>
+      <text x="105" y="90" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#ffffff" text-anchor="middle">N</text>
+    </g>
+
+    <!-- 2. Supervisory Relays Green Terminal Strip (AC Fail / Bat Fail) -->
+    <g transform="translate(520, 380)">
+      <rect x="0" y="0" width="140" height="36" rx="4" fill="url(#ps-green-termblock)" stroke="#14532d" stroke-width="1.2" />
+      <!-- NC C NO NC C NO Pins -->
+      <g class="ps-terminal" id="term-batfail-nc" data-label="Bat Fail NC" transform="translate(14, 18)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-batfail-c" data-label="Bat Fail C" transform="translate(36, 18)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-batfail-no" data-label="Bat Fail NO" transform="translate(58, 18)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acfail-nc" data-label="AC Fail NC" transform="translate(82, 18)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acfail-c" data-label="AC Fail C" transform="translate(104, 18)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acfail-no" data-label="AC Fail NO" transform="translate(126, 18)"><use href="#ps-screw-pin" /></g>
+      <text x="36" y="48" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="800" fill="#cbd5e1" text-anchor="middle">Bat Fail</text>
+      <text x="104" y="48" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="800" fill="#cbd5e1" text-anchor="middle">AC Fail</text>
+    </g>
+
+    <!-- 3. Battery Backup Screw Terminals (+ BAT -) Top Right -->
+    <g transform="translate(780, 230)">
+      <rect x="0" y="0" width="80" height="90" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+      <text x="40" y="20" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="900" fill="#ef4444" text-anchor="middle">+ BAT -</text>
+      <g class="ps-terminal" id="term-bat-pos" data-label="Battery (+)" transform="translate(22, 52)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-bat-neg" data-label="Battery (-)" transform="translate(58, 52)"><use href="#ps-screw-pin" /></g>
+      <text x="22" y="78" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#ef4444" text-anchor="middle">+</text>
+      <text x="58" y="78" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#cbd5e1" text-anchor="middle">-</text>
+    </g>
+
+  </g>
+
+  <!-- ================================================================= -->
+  <!-- CENTER DIVIDER BRACKET & INTERCONNECT HARNESS                     -->
+  <!-- ================================================================= -->
+  <g transform="translate(40, 565)">
+    <!-- Black Steel Shelf Bracket -->
+    <rect x="0" y="0" width="1020" height="40" rx="3" fill="#1e293b" stroke="#0f172a" stroke-width="2" />
+    <!-- Center Pass-Through Lip -->
+    <rect x="400" y="8" width="220" height="24" rx="4" fill="#0b1329" stroke="#334155" stroke-width="1" />
+    <text x="510" y="24" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#64748b" text-anchor="middle">MAIN DC HARNESS (AL400 -> ACM8)</text>
+    <!-- DC Interconnect Cables -->
+    <path d="M 850 -20 Q 860 20 860 60" stroke="#ef4444" stroke-width="6" fill="none" />
+    <path d="M 870 -20 Q 880 20 880 60" stroke="#0f172a" stroke-width="6" fill="none" />
+  </g>
+
+  <!-- ================================================================= -->
+  <!-- 2. BOTTOM BOARD: ACM8 - ACCESS POWER CONTROLLER (8 IN / 8 OUT)   -->
+  <!-- ================================================================= -->
+  <g filter="url(#ps-shadow)" transform="translate(60, 620)" id="board-acm8-bottom">
+    <!-- PCB Base -->
+    <rect x="0" y="0" width="980" height="680" rx="10" fill="url(#ps-pcb-blue)" stroke="#38bdf8" stroke-width="2" />
+
+    <!-- Corner Mounting Screws -->
+    <circle cx="20" cy="20" r="7" fill="url(#ps-metal-screw)" stroke="#1e293b" />
+    <circle cx="960" cy="20" r="7" fill="url(#ps-metal-screw)" stroke="#1e293b" />
+    <circle cx="20" cy="660" r="7" fill="url(#ps-metal-screw)" stroke="#1e293b" />
+    <circle cx="960" cy="660" r="7" fill="url(#ps-metal-screw)" stroke="#1e293b" />
+
+    <!-- Board Title Header -->
+    <g transform="translate(30, 20)">
+      <text x="120" y="24" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="900" fill="#ffffff" letter-spacing="1">ACM8</text>
+      <text x="120" y="40" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#38bdf8">ACCESS POWER CONTROLLER</text>
+    </g>
+
+    <g transform="translate(670, 20)">
+      <text x="140" y="20" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="900" fill="#ffffff">ALTRONIX CORP.</text>
+      <text x="140" y="34" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" fill="#94a3b8">BKLYN, NY 11220 MADE IN U.S.A.</text>
+      <!-- Altronix Triangle Logo -->
+      <polygon points="250,5 265,30 235,30" fill="none" stroke="#38bdf8" stroke-width="2" />
+      <circle cx="250" cy="20" r="7" fill="none" stroke="#38bdf8" stroke-width="1.5" />
+    </g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 8 TRIGGER INPUTS (TOP ROW OF ACM8) - 2 BORNES EACH (16 PINS)  -->
+    <!-- ------------------------------------------------------------- -->
+    <!-- Trigger Input Header Label -->
+    <text x="640" y="74" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="800" fill="#38bdf8">TRIGGER INPUT (IN 1 - 8)</text>
+
+    <!-- Blue Terminal Block 1 (Inputs 1 to 4: 8 Terminals) -->
+    <g transform="translate(180, 20)">
+      <rect x="0" y="0" width="224" height="46" rx="4" fill="url(#ps-blue-termblock)" stroke="#1e3a8a" stroke-width="1.5" />
+      
+      <!-- IN 1: IN, GND -->
+      <g class="ps-terminal" id="term-acm8-in1" data-label="ACM8 IN 1" transform="translate(14, 23)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-gnd1" data-label="ACM8 GND 1" transform="translate(42, 23)"><use href="#ps-screw-pin" /></g>
+      <!-- IN 2: IN, GND -->
+      <g class="ps-terminal" id="term-acm8-in2" data-label="ACM8 IN 2" transform="translate(70, 23)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-gnd2" data-label="ACM8 GND 2" transform="translate(98, 23)"><use href="#ps-screw-pin" /></g>
+      <!-- IN 3: IN, GND -->
+      <g class="ps-terminal" id="term-acm8-in3" data-label="ACM8 IN 3" transform="translate(126, 23)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-gnd3" data-label="ACM8 GND 3" transform="translate(154, 23)"><use href="#ps-screw-pin" /></g>
+      <!-- IN 4: IN, GND -->
+      <g class="ps-terminal" id="term-acm8-in4" data-label="ACM8 IN 4" transform="translate(182, 23)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-gnd4" data-label="ACM8 GND 4" transform="translate(210, 23)"><use href="#ps-screw-pin" /></g>
+
+      <!-- Pin Labels -->
+      <text x="28" y="58" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">IN 1 GND</text>
+      <text x="84" y="58" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">IN 2 GND</text>
+      <text x="140" y="58" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">IN 3 GND</text>
+      <text x="196" y="58" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">IN 4 GND</text>
+    </g>
+
+    <!-- Blue Terminal Block 2 (Inputs 5 to 8: 8 Terminals) -->
+    <g transform="translate(420, 20)">
+      <rect x="0" y="0" width="224" height="46" rx="4" fill="url(#ps-blue-termblock)" stroke="#1e3a8a" stroke-width="1.5" />
+      
+      <!-- IN 5: IN, GND -->
+      <g class="ps-terminal" id="term-acm8-in5" data-label="ACM8 IN 5" transform="translate(14, 23)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-gnd5" data-label="ACM8 GND 5" transform="translate(42, 23)"><use href="#ps-screw-pin" /></g>
+      <!-- IN 6: IN, GND -->
+      <g class="ps-terminal" id="term-acm8-in6" data-label="ACM8 IN 6" transform="translate(70, 23)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-gnd6" data-label="ACM8 GND 6" transform="translate(98, 23)"><use href="#ps-screw-pin" /></g>
+      <!-- IN 7: IN, GND -->
+      <g class="ps-terminal" id="term-acm8-in7" data-label="ACM8 IN 7" transform="translate(126, 23)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-gnd7" data-label="ACM8 GND 7" transform="translate(154, 23)"><use href="#ps-screw-pin" /></g>
+      <!-- IN 8: IN, GND -->
+      <g class="ps-terminal" id="term-acm8-in8" data-label="ACM8 IN 8" transform="translate(182, 23)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-gnd8" data-label="ACM8 GND 8" transform="translate(210, 23)"><use href="#ps-screw-pin" /></g>
+
+      <!-- Pin Labels -->
+      <text x="28" y="58" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">IN 5 GND</text>
+      <text x="84" y="58" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">IN 6 GND</text>
+      <text x="140" y="58" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">IN 7 GND</text>
+      <text x="196" y="58" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">IN 8 GND</text>
+    </g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 8 GLASS FUSES (F1 - F8) + 8 STATUS LEDS                      -->
+    <!-- ------------------------------------------------------------- -->
+    <!-- F1 to F8 Column Units -->
+    <g transform="translate(45, 95)">
+      <!-- F1 -->
+      <g transform="translate(0, 0)">
+        <use href="#ps-fuse-assembly" x="35" y="10" />
+        <text x="35" y="100" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="900" fill="#cbd5e1" text-anchor="middle">F1</text>
+        <circle cx="35" cy="120" r="5" fill="#14532d" stroke="#16a34a" stroke-width="1" />
+        <circle cx="35" cy="120" r="3.5" fill="#22c55e" id="acm8-led-1" filter="url(#ps-led-glow)" />
+        <text x="35" y="136" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">LED1</text>
+      </g>
+      <!-- F2 -->
+      <g transform="translate(90, 0)">
+        <use href="#ps-fuse-assembly" x="35" y="10" />
+        <text x="35" y="100" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="900" fill="#cbd5e1" text-anchor="middle">F2</text>
+        <circle cx="35" cy="120" r="5" fill="#14532d" stroke="#16a34a" stroke-width="1" />
+        <circle cx="35" cy="120" r="3.5" fill="#22c55e" id="acm8-led-2" filter="url(#ps-led-glow)" />
+        <text x="35" y="136" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">LED2</text>
+      </g>
+      <!-- F3 -->
+      <g transform="translate(180, 0)">
+        <use href="#ps-fuse-assembly" x="35" y="10" />
+        <text x="35" y="100" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="900" fill="#cbd5e1" text-anchor="middle">F3</text>
+        <circle cx="35" cy="120" r="5" fill="#14532d" stroke="#16a34a" stroke-width="1" />
+        <circle cx="35" cy="120" r="3.5" fill="#22c55e" id="acm8-led-3" filter="url(#ps-led-glow)" />
+        <text x="35" y="136" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">LED3</text>
+      </g>
+      <!-- F4 -->
+      <g transform="translate(270, 0)">
+        <use href="#ps-fuse-assembly" x="35" y="10" />
+        <text x="35" y="100" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="900" fill="#cbd5e1" text-anchor="middle">F4</text>
+        <circle cx="35" cy="120" r="5" fill="#14532d" stroke="#16a34a" stroke-width="1" />
+        <circle cx="35" cy="120" r="3.5" fill="#22c55e" id="acm8-led-4" filter="url(#ps-led-glow)" />
+        <text x="35" y="136" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">LED4</text>
+      </g>
+      <!-- F5 -->
+      <g transform="translate(360, 0)">
+        <use href="#ps-fuse-assembly" x="35" y="10" />
+        <text x="35" y="100" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="900" fill="#cbd5e1" text-anchor="middle">F5</text>
+        <circle cx="35" cy="120" r="5" fill="#14532d" stroke="#16a34a" stroke-width="1" />
+        <circle cx="35" cy="120" r="3.5" fill="#22c55e" id="acm8-led-5" filter="url(#ps-led-glow)" />
+        <text x="35" y="136" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">LED5</text>
+      </g>
+      <!-- F6 -->
+      <g transform="translate(450, 0)">
+        <use href="#ps-fuse-assembly" x="35" y="10" />
+        <text x="35" y="100" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="900" fill="#cbd5e1" text-anchor="middle">F6</text>
+        <circle cx="35" cy="120" r="5" fill="#14532d" stroke="#16a34a" stroke-width="1" />
+        <circle cx="35" cy="120" r="3.5" fill="#22c55e" id="acm8-led-6" filter="url(#ps-led-glow)" />
+        <text x="35" y="136" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">LED6</text>
+      </g>
+      <!-- F7 -->
+      <g transform="translate(540, 0)">
+        <use href="#ps-fuse-assembly" x="35" y="10" />
+        <text x="35" y="100" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="900" fill="#cbd5e1" text-anchor="middle">F7</text>
+        <circle cx="35" cy="120" r="5" fill="#14532d" stroke="#16a34a" stroke-width="1" />
+        <circle cx="35" cy="120" r="3.5" fill="#22c55e" id="acm8-led-7" filter="url(#ps-led-glow)" />
+        <text x="35" y="136" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">LED7</text>
+      </g>
+      <!-- F8 -->
+      <g transform="translate(630, 0)">
+        <use href="#ps-fuse-assembly" x="35" y="10" />
+        <text x="35" y="100" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="900" fill="#cbd5e1" text-anchor="middle">F8</text>
+        <circle cx="35" cy="120" r="5" fill="#14532d" stroke="#16a34a" stroke-width="1" />
+        <circle cx="35" cy="120" r="3.5" fill="#22c55e" id="acm8-led-8" filter="url(#ps-led-glow)" />
+        <text x="35" y="136" font-family="'JetBrains Mono', monospace" font-size="7" font-weight="800" fill="#ffffff" text-anchor="middle">LED8</text>
+      </g>
+    </g>
+
+    <!-- FACP DIP Switches & Main Fuse (Right Section) -->
+    <g transform="translate(760, 100)">
+      <text x="0" y="10" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#ffffff">Turn Switch 1-8 ON</text>
+      <text x="0" y="22" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#cbd5e1">To de-activate FACP</text>
+      
+      <!-- 2 Red DIP Switch Blocks (4 positions each) -->
+      <rect x="0" y="32" width="46" height="32" rx="2" fill="#ef4444" stroke="#991b1b" stroke-width="1" />
+      <rect x="52" y="32" width="46" height="32" rx="2" fill="#ef4444" stroke="#991b1b" stroke-width="1" />
+      <text x="23" y="44" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="900" fill="#ffffff" text-anchor="middle">ON DIP</text>
+      <text x="75" y="44" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="900" fill="#ffffff" text-anchor="middle">ON DIP</text>
+      <text x="23" y="58" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="900" fill="#ffffff" text-anchor="middle">1 2 3 4</text>
+      <text x="75" y="58" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="900" fill="#ffffff" text-anchor="middle">5 6 7 8</text>
+
+      <!-- Main Power Fuse (10A 250V) -->
+      <g transform="translate(130, 0)">
+        <use href="#ps-fuse-assembly" x="10" y="20" />
+        <text x="10" y="110" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="900" fill="#ffffff" text-anchor="middle">MAIN 10A</text>
+      </g>
+    </g>
+
+    <!-- FACP Interface & Control Terminals (Far Right Edge of ACM8) -->
+    <g transform="translate(900, 70)">
+      <rect x="0" y="0" width="55" height="150" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+      <!-- INTERFACE (+ IN -) -->
+      <g class="ps-terminal" id="term-facp-pos" data-label="FACP Interface (+)" transform="translate(28, 20)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-facp-in" data-label="FACP Interface (IN)" transform="translate(28, 45)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-facp-neg" data-label="FACP Interface (-)" transform="translate(28, 70)"><use href="#ps-screw-pin" /></g>
+      <text x="28" y="92" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="900" fill="#38bdf8" text-anchor="middle">INTERFACE</text>
+      
+      <!-- FACP Relay (NO C NC) -->
+      <g class="ps-terminal" id="term-facp-no" data-label="FACP Relay NO" transform="translate(28, 105)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-facp-c" data-label="FACP Relay C" transform="translate(28, 125)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-facp-nc" data-label="FACP Relay NC" transform="translate(28, 145)"><use href="#ps-screw-pin" /></g>
+      <text x="-10" y="110" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="800" fill="#cbd5e1" text-anchor="end">FACP NO/C/NC</text>
+    </g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 8 BLUE POWER RELAYS (GOODSKY RW-SS-112D)                     -->
+    <!-- ------------------------------------------------------------- -->
+    <g transform="translate(45, 270)">
+      <!-- Relay 1 -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="70" height="95" rx="4" fill="url(#ps-blue-relay)" stroke="#1e3a8a" stroke-width="1.5" />
+        <text x="35" y="24" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">GOODSKY</text>
+        <text x="35" y="38" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="800" fill="#f8fafc" text-anchor="middle">RW-SS-112D</text>
+        <text x="35" y="58" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">10A 120VAC</text>
+        <text x="35" y="74" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">Coil: 12VDC</text>
+      </g>
+      <!-- Relay 2 -->
+      <g transform="translate(90, 0)">
+        <rect x="0" y="0" width="70" height="95" rx="4" fill="url(#ps-blue-relay)" stroke="#1e3a8a" stroke-width="1.5" />
+        <text x="35" y="24" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">GOODSKY</text>
+        <text x="35" y="38" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="800" fill="#f8fafc" text-anchor="middle">RW-SS-112D</text>
+        <text x="35" y="58" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">10A 120VAC</text>
+        <text x="35" y="74" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">Coil: 12VDC</text>
+      </g>
+      <!-- Relay 3 -->
+      <g transform="translate(180, 0)">
+        <rect x="0" y="0" width="70" height="95" rx="4" fill="url(#ps-blue-relay)" stroke="#1e3a8a" stroke-width="1.5" />
+        <text x="35" y="24" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">GOODSKY</text>
+        <text x="35" y="38" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="800" fill="#f8fafc" text-anchor="middle">RW-SS-112D</text>
+        <text x="35" y="58" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">10A 120VAC</text>
+        <text x="35" y="74" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">Coil: 12VDC</text>
+      </g>
+      <!-- Relay 4 -->
+      <g transform="translate(270, 0)">
+        <rect x="0" y="0" width="70" height="95" rx="4" fill="url(#ps-blue-relay)" stroke="#1e3a8a" stroke-width="1.5" />
+        <text x="35" y="24" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">GOODSKY</text>
+        <text x="35" y="38" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="800" fill="#f8fafc" text-anchor="middle">RW-SS-112D</text>
+        <text x="35" y="58" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">10A 120VAC</text>
+        <text x="35" y="74" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">Coil: 12VDC</text>
+      </g>
+      <!-- Relay 5 -->
+      <g transform="translate(360, 0)">
+        <rect x="0" y="0" width="70" height="95" rx="4" fill="url(#ps-blue-relay)" stroke="#1e3a8a" stroke-width="1.5" />
+        <text x="35" y="24" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">GOODSKY</text>
+        <text x="35" y="38" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="800" fill="#f8fafc" text-anchor="middle">RW-SS-112D</text>
+        <text x="35" y="58" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">10A 120VAC</text>
+        <text x="35" y="74" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">Coil: 12VDC</text>
+      </g>
+      <!-- Relay 6 -->
+      <g transform="translate(450, 0)">
+        <rect x="0" y="0" width="70" height="95" rx="4" fill="url(#ps-blue-relay)" stroke="#1e3a8a" stroke-width="1.5" />
+        <text x="35" y="24" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">GOODSKY</text>
+        <text x="35" y="38" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="800" fill="#f8fafc" text-anchor="middle">RW-SS-112D</text>
+        <text x="35" y="58" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">10A 120VAC</text>
+        <text x="35" y="74" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">Coil: 12VDC</text>
+      </g>
+      <!-- Relay 7 -->
+      <g transform="translate(540, 0)">
+        <rect x="0" y="0" width="70" height="95" rx="4" fill="url(#ps-blue-relay)" stroke="#1e3a8a" stroke-width="1.5" />
+        <text x="35" y="24" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">GOODSKY</text>
+        <text x="35" y="38" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="800" fill="#f8fafc" text-anchor="middle">RW-SS-112D</text>
+        <text x="35" y="58" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">10A 120VAC</text>
+        <text x="35" y="74" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">Coil: 12VDC</text>
+      </g>
+      <!-- Relay 8 -->
+      <g transform="translate(630, 0)">
+        <rect x="0" y="0" width="70" height="95" rx="4" fill="url(#ps-blue-relay)" stroke="#1e3a8a" stroke-width="1.5" />
+        <text x="35" y="24" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#ffffff" text-anchor="middle">GOODSKY</text>
+        <text x="35" y="38" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="800" fill="#f8fafc" text-anchor="middle">RW-SS-112D</text>
+        <text x="35" y="58" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">10A 120VAC</text>
+        <text x="35" y="74" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="700" fill="#e0f2fe" text-anchor="middle">Coil: 12VDC</text>
+      </g>
+    </g>
+
+    <!-- Silk Warning Text -->
+    <text x="380" y="390" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">RISK OF FIRE REPLACE FUSES AS MARKED</text>
+
+    <!-- Silk Pinout Labels for Outputs (NC, C, NO) -->
+    <g transform="translate(45, 410)">
+      <!-- OUT 1 -->
+      <text x="35" y="0" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#38bdf8" text-anchor="middle">OUTPUT 1</text>
+      <text x="35" y="16" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">NC C NO</text>
+      <!-- OUT 2 -->
+      <text x="125" y="0" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#38bdf8" text-anchor="middle">OUTPUT 2</text>
+      <text x="125" y="16" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">NC C NO</text>
+      <!-- OUT 3 -->
+      <text x="215" y="0" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#38bdf8" text-anchor="middle">OUTPUT 3</text>
+      <text x="215" y="16" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">NC C NO</text>
+      <!-- OUT 4 -->
+      <text x="305" y="0" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#38bdf8" text-anchor="middle">OUTPUT 4</text>
+      <text x="305" y="16" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">NC C NO</text>
+      <!-- OUT 5 -->
+      <text x="395" y="0" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#38bdf8" text-anchor="middle">OUTPUT 5</text>
+      <text x="395" y="16" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">NC C NO</text>
+      <!-- OUT 6 -->
+      <text x="485" y="0" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#38bdf8" text-anchor="middle">OUTPUT 6</text>
+      <text x="485" y="16" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">NC C NO</text>
+      <!-- OUT 7 -->
+      <text x="575" y="0" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#38bdf8" text-anchor="middle">OUTPUT 7</text>
+      <text x="575" y="16" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">NC C NO</text>
+      <!-- OUT 8 -->
+      <text x="665" y="0" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="800" fill="#38bdf8" text-anchor="middle">OUTPUT 8</text>
+      <text x="665" y="16" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="900" fill="#ffffff" text-anchor="middle">NC C NO</text>
+    </g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 8 POWER OUTPUTS (BOTTOM ROW OF ACM8) - 3 BORNES EACH (24 PINS)-->
+    <!-- ------------------------------------------------------------- -->
+    <!-- Block 1: Output 1 & 2 (6 Terminals: NC C NO NC C NO) -->
+    <g transform="translate(40, 445)">
+      <rect x="0" y="0" width="168" height="60" rx="5" fill="url(#ps-blue-termblock)" stroke="#1e3a8a" stroke-width="1.8" />
+      <!-- Out 1 -->
+      <g class="ps-terminal" id="term-acm8-out1-nc" data-label="OUT 1 NC" transform="translate(14, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out1-c" data-label="OUT 1 COM" transform="translate(42, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out1-no" data-label="OUT 1 NO" transform="translate(70, 30)"><use href="#ps-screw-pin" /></g>
+      <!-- Out 2 -->
+      <g class="ps-terminal" id="term-acm8-out2-nc" data-label="OUT 2 NC" transform="translate(98, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out2-c" data-label="OUT 2 COM" transform="translate(126, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out2-no" data-label="OUT 2 NO" transform="translate(154, 30)"><use href="#ps-screw-pin" /></g>
+    </g>
+
+    <!-- Block 2: Output 3 & 4 (6 Terminals: NC C NO NC C NO) -->
+    <g transform="translate(220, 445)">
+      <rect x="0" y="0" width="168" height="60" rx="5" fill="url(#ps-blue-termblock)" stroke="#1e3a8a" stroke-width="1.8" />
+      <!-- Out 3 -->
+      <g class="ps-terminal" id="term-acm8-out3-nc" data-label="OUT 3 NC" transform="translate(14, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out3-c" data-label="OUT 3 COM" transform="translate(42, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out3-no" data-label="OUT 3 NO" transform="translate(70, 30)"><use href="#ps-screw-pin" /></g>
+      <!-- Out 4 -->
+      <g class="ps-terminal" id="term-acm8-out4-nc" data-label="OUT 4 NC" transform="translate(98, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out4-c" data-label="OUT 4 COM" transform="translate(126, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out4-no" data-label="OUT 4 NO" transform="translate(154, 30)"><use href="#ps-screw-pin" /></g>
+    </g>
+
+    <!-- Block 3: Output 5 & 6 (6 Terminals: NC C NO NC C NO) -->
+    <g transform="translate(400, 445)">
+      <rect x="0" y="0" width="168" height="60" rx="5" fill="url(#ps-blue-termblock)" stroke="#1e3a8a" stroke-width="1.8" />
+      <!-- Out 5 -->
+      <g class="ps-terminal" id="term-acm8-out5-nc" data-label="OUT 5 NC" transform="translate(14, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out5-c" data-label="OUT 5 COM" transform="translate(42, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out5-no" data-label="OUT 5 NO" transform="translate(70, 30)"><use href="#ps-screw-pin" /></g>
+      <!-- Out 6 -->
+      <g class="ps-terminal" id="term-acm8-out6-nc" data-label="OUT 6 NC" transform="translate(98, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out6-c" data-label="OUT 6 COM" transform="translate(126, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out6-no" data-label="OUT 6 NO" transform="translate(154, 30)"><use href="#ps-screw-pin" /></g>
+    </g>
+
+    <!-- Block 4: Output 7 & 8 (6 Terminals: NC C NO NC C NO) -->
+    <g transform="translate(580, 445)">
+      <rect x="0" y="0" width="168" height="60" rx="5" fill="url(#ps-blue-termblock)" stroke="#1e3a8a" stroke-width="1.8" />
+      <!-- Out 7 -->
+      <g class="ps-terminal" id="term-acm8-out7-nc" data-label="OUT 7 NC" transform="translate(14, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out7-c" data-label="OUT 7 COM" transform="translate(42, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out7-no" data-label="OUT 7 NO" transform="translate(70, 30)"><use href="#ps-screw-pin" /></g>
+      <!-- Out 8 -->
+      <g class="ps-terminal" id="term-acm8-out8-nc" data-label="OUT 8 NC" transform="translate(98, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out8-c" data-label="OUT 8 COM" transform="translate(126, 30)"><use href="#ps-screw-pin" /></g>
+      <g class="ps-terminal" id="term-acm8-out8-no" data-label="OUT 8 NO" transform="translate(154, 30)"><use href="#ps-screw-pin" /></g>
+    </g>
+
+  </g>
+
+</svg>

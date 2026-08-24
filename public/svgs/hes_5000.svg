@@ -1,0 +1,106 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 480" width="200" height="480">
+  <defs>
+    
+    <linearGradient id="metalPlateGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="12%" stop-color="#cbd5e1" />
+      <stop offset="45%" stop-color="#ffffff" />
+      <stop offset="75%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+
+    
+    <linearGradient id="plungerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="35%" stop-color="#94a3b8" />
+      <stop offset="70%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    
+    <radialGradient id="screwMetal" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#cbd5e1" />
+      <stop offset="85%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#334155" />
+    </radialGradient>
+
+    
+    <linearGradient id="blackLipGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#09090b" />
+    </linearGradient>
+
+    
+    <filter id="hesShadow" x="-20%" y="-10%" width="140%" height="120%">
+      <feDropShadow dx="4" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  
+  <rect x="40" y="10" width="145" height="460" rx="18" fill="url(#metalPlateGrad)" stroke="#1e293b" stroke-width="2.5" filter="url(#hesShadow)" />
+
+  
+  <circle cx="112.5" cy="35" r="9" fill="#09090b" stroke="#475569" stroke-width="2.5" />
+  <circle cx="112.5" cy="35" r="6" fill="#000000" />
+
+  
+  <circle cx="112.5" cy="445" r="9" fill="#09090b" stroke="#475569" stroke-width="2.5" />
+  <circle cx="112.5" cy="445" r="6" fill="#000000" />
+
+  
+  <text x="112.5" y="75" font-family="'Segoe UI', Roboto, Inter, sans-serif" font-weight="700" font-size="21" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">HES 5000</text>
+
+  
+  <rect x="12" y="100" width="64" height="180" rx="8" fill="url(#blackLipGrad)" stroke="#020617" stroke-width="2.5" />
+
+  
+  <rect x="62" y="122" width="44" height="136" rx="4" fill="url(#metalPlateGrad)" stroke="#334155" stroke-width="1.8" />
+
+  
+  <circle cx="84" cy="138" r="6.5" fill="url(#screwMetal)" stroke="#334155" stroke-width="0.8" />
+  <line x1="79.5" y1="138" x2="88.5" y2="138" stroke="#1e293b" stroke-width="1.5" />
+  <line x1="84" y1="133.5" x2="84" y2="142.5" stroke="#1e293b" stroke-width="1.5" />
+
+  
+  <circle cx="84" cy="242" r="6.5" fill="url(#screwMetal)" stroke="#334155" stroke-width="0.8" />
+  <line x1="79.5" y1="242" x2="88.5" y2="242" stroke="#1e293b" stroke-width="1.5" />
+  <line x1="84" y1="237.5" x2="84" y2="246.5" stroke="#1e293b" stroke-width="1.5" />
+
+  
+  <rect x="66" y="152" width="36" height="76" rx="3" fill="#09090b" />
+  <path d="M 66 154 Q 96 166 96 190 Q 96 214 66 226 Z" fill="url(#plungerGrad)" stroke="#475569" stroke-width="1" />
+  <path d="M 67 160 Q 90 170 90 190 Q 90 210 67 220 Z" fill="#cbd5e1" opacity="0.3" />
+
+  
+  <rect x="118" y="146" width="28" height="92" fill="none" stroke="#334155" stroke-width="1.2" />
+  <rect x="112" y="166" width="38" height="52" fill="none" stroke="#334155" stroke-width="1.2" />
+  <rect x="126" y="184" width="10" height="16" fill="#94a3b8" stroke="#1e293b" stroke-width="1.2" />
+  <circle cx="131" cy="140" r="1.5" fill="#334155" />
+  <circle cx="131" cy="244" r="1.5" fill="#334155" />
+
+  
+  <g transform="translate(48, 300)">
+    
+    <rect x="0" y="0" width="36" height="34" fill="#18181b" stroke="#09090b" stroke-width="2" />
+    <circle cx="18" cy="17" r="9" fill="url(#screwMetal)" stroke="#334155" stroke-width="1" />
+    <line x1="10" y1="21" x2="26" y2="13" stroke="#0f172a" stroke-width="2.2" />
+
+    
+    <rect x="0" y="34" width="36" height="34" fill="#18181b" stroke="#09090b" stroke-width="2" />
+    <circle cx="18" cy="51" r="9" fill="url(#screwMetal)" stroke="#334155" stroke-width="1" />
+    <line x1="10" y1="55" x2="26" y2="47" stroke="#0f172a" stroke-width="2.2" />
+
+    
+    <rect x="0" y="68" width="36" height="34" fill="#18181b" stroke="#09090b" stroke-width="2" />
+    <circle cx="18" cy="85" r="9" fill="url(#screwMetal)" stroke="#334155" stroke-width="1" />
+    <line x1="10" y1="89" x2="26" y2="81" stroke="#0f172a" stroke-width="2.2" />
+  </g>
+
+  
+  <text x="96" y="322" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="14" fill="#0f172a">POS(+)</text>
+  <text x="96" y="356" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="14" fill="#0f172a">POS(+)</text>
+  <text x="96" y="356" fill="#0f172a" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="14">NEG(-)</text>
+  <text x="96" y="390" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="14" fill="#0f172a">COM</text>
+</svg>

@@ -1,0 +1,389 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 840" width="100%" height="100%" class="door-controller-svg">
+  <defs>
+    <!-- Background Canvas Gradients -->
+    <linearGradient id="dc-plate-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#edf2f7" />
+      <stop offset="60%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </linearGradient>
+
+    <linearGradient id="dc-metal-screw" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f1f5f9" />
+      <stop offset="40%" stop-color="#94a3b8" />
+      <stop offset="70%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Drop Shadows for 3D realism -->
+    <filter id="dc-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+
+    <filter id="dc-led-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Reusable Corner Slotted Screw -->
+    <g id="dc-screw">
+      <circle cx="0" cy="0" r="14" fill="url(#dc-metal-screw)" stroke="#0b1329" stroke-width="2" />
+      <circle cx="0" cy="0" r="10" fill="#1e293b" />
+      <circle cx="0" cy="0" r="9" fill="url(#dc-metal-screw)" />
+      <line x1="-7" y1="-5" x2="7" y2="5" stroke="#0b1329" stroke-width="3" stroke-linecap="round" />
+    </g>
+
+    <!-- Reusable Side / Top Terminal Ring (Door Controller Exact Image Style) -->
+    <!-- Solid White Ring with dark center dot & outer border for wiring simulator snapping -->
+    <g id="dc-terminal-pin">
+      <circle cx="0" cy="0" r="7.5" fill="#ffffff" stroke="#0b1329" stroke-width="1.8" />
+      <circle cx="0" cy="0" r="2.8" fill="#0b1329" />
+    </g>
+  </defs>
+
+  <!-- Dark Navy Outer Canvas Background -->
+  <rect width="1000" height="840" fill="#0b1329" rx="16" />
+
+  <!-- ================================================================= -->
+  <!-- SIDE & EDGE BLACK TERMINAL BLOCK EXTENSION TABS                   -->
+  <!-- ================================================================= -->
+  <!-- Left Tabs -->
+  <!-- Left Tab 1: Reader 1 (10 terminals) -->
+  <path d="M 68 120 L 100 120 L 100 440 L 68 440 A 6 6 0 0 1 62 434 L 62 126 A 6 6 0 0 1 68 120 Z" fill="#0b1329" />
+  <!-- Left Tab 2: Inputs 1 & 2 (4 terminals) -->
+  <path d="M 68 460 L 100 460 L 100 590 L 68 590 A 6 6 0 0 1 62 584 L 62 466 A 6 6 0 0 1 68 460 Z" fill="#0b1329" />
+  <!-- Left Tab 3: Relays 1 & 2 (5 terminals) -->
+  <path d="M 68 610 L 100 610 L 100 770 L 68 770 A 6 6 0 0 1 62 764 L 62 616 A 6 6 0 0 1 68 610 Z" fill="#0b1329" />
+
+  <!-- Right Tabs -->
+  <!-- Right Tab 1: Reader 2 (10 terminals) -->
+  <path d="M 900 120 L 932 120 A 6 6 0 0 1 938 126 L 938 434 A 6 6 0 0 1 932 440 L 900 440 Z" fill="#0b1329" />
+  <!-- Right Tab 2: Inputs 3 & 4 (4 terminals) -->
+  <path d="M 900 460 L 932 460 A 6 6 0 0 1 938 466 L 938 584 A 6 6 0 0 1 932 590 L 900 590 Z" fill="#0b1329" />
+  <!-- Right Tab 3: Relays 3 & 4 (5 terminals) -->
+  <path d="M 900 610 L 932 610 A 6 6 0 0 1 938 616 L 938 764 A 6 6 0 0 1 932 770 L 900 770 Z" fill="#0b1329" />
+
+  <!-- Bottom Tab (USB / TCP-IP Terminals) -->
+  <path d="M 540 760 L 730 760 L 730 796 A 8 8 0 0 1 722 804 L 548 804 A 8 8 0 0 1 540 796 Z" fill="#0b1329" />
+
+  <!-- ================================================================= -->
+  <!-- MAIN CONTROLLER FACEPLATE CHASSIS                                 -->
+  <!-- ================================================================= -->
+  <g filter="url(#dc-shadow)">
+    <!-- Main Gray Faceplate Body with Precise Cutouts on Borders -->
+    <rect x="75" y="70" width="850" height="700" rx="36" fill="url(#dc-plate-grad)" stroke="#0b1329" stroke-width="3.5" />
+  </g>
+
+  <!-- 2 Corner Mounting Screws (Top Left & Top Right) -->
+  <use href="#dc-screw" x="115" y="112" />
+  <use href="#dc-screw" x="885" y="112" />
+
+  <!-- Bottom Right Grounding / Screw Mark -->
+  <g transform="translate(885, 725)">
+    <circle cx="0" cy="0" r="14" fill="#0b1329" />
+    <path d="M -7 4 L 0 -7 L 7 4 Z" fill="#cbd5e1" />
+    <line x1="0" y1="-7" x2="0" y2="7" stroke="#0b1329" stroke-width="2" />
+    <line x1="-5" y1="4" x2="5" y2="4" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="-3" y1="7" x2="3" y2="7" stroke="#cbd5e1" stroke-width="2" />
+  </g>
+
+  <!-- ================================================================= -->
+  <!-- TOP TERMINAL ROW & LABELS                                         -->
+  <!-- ================================================================= -->
+  <!-- Labels: TAMPER, AC FAIL, BATT FAIL, 12 - 24 VDC -->
+  <text x="300" y="58" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1">TAMPER</text>
+  <text x="430" y="58" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1">AC FAIL</text>
+  <text x="560" y="58" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1">BATT FAIL</text>
+  <text x="685" y="58" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="800" fill="#ffffff" text-anchor="middle" letter-spacing="1">12 - 24 VDC</text>
+
+  <!-- Top Terminal Pins (Above the chassis border) -->
+  <!-- Tamper (2 pins) -->
+  <g class="dc-terminal" id="term-top-tamper1" data-label="TAMPER 1" transform="translate(280, 26)"><use href="#dc-terminal-pin" /></g>
+  <g class="dc-terminal" id="term-top-tamper2" data-label="TAMPER 2" transform="translate(340, 26)"><use href="#dc-terminal-pin" /></g>
+
+  <!-- AC Fail (2 pins) -->
+  <g class="dc-terminal" id="term-top-acfail1" data-label="AC FAIL 1" transform="translate(400, 26)"><use href="#dc-terminal-pin" /></g>
+  <g class="dc-terminal" id="term-top-acfail2" data-label="AC FAIL 2" transform="translate(460, 26)"><use href="#dc-terminal-pin" /></g>
+
+  <!-- Batt Fail (2 pins) -->
+  <g class="dc-terminal" id="term-top-battfail1" data-label="BATT FAIL 1" transform="translate(530, 26)"><use href="#dc-terminal-pin" /></g>
+  <g class="dc-terminal" id="term-top-battfail2" data-label="BATT FAIL 2" transform="translate(590, 26)"><use href="#dc-terminal-pin" /></g>
+
+  <!-- Dot Indicators between Batt Fail & 12-24VDC -->
+  <circle cx="630" cy="26" r="3" fill="#ffffff" />
+  <circle cx="650" cy="26" r="8" fill="#ffffff" />
+
+  <!-- 12-24VDC Power Pin -->
+  <g class="dc-terminal" id="term-top-pwr" data-label="12-24VDC" transform="translate(715, 26)"><use href="#dc-terminal-pin" /></g>
+
+  <!-- ================================================================= -->
+  <!-- HEADER TITLE & TOP CONTROLS                                       -->
+  <!-- ================================================================= -->
+  <!-- DIP SWITCH 1 (Top Left) -->
+  <g transform="translate(210, 88)">
+    <text x="45" y="0" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" fill="#0b1329" text-anchor="middle" letter-spacing="4">4 3 2 1</text>
+    <text x="45" y="14" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="800" fill="#0b1329" text-anchor="middle" letter-spacing="0.5">DIP SWITCH 1</text>
+    <!-- 4-Switch Black Enclosure -->
+    <rect x="15" y="20" width="60" height="22" rx="2" fill="#0b1329" stroke="#334155" stroke-width="1.5" />
+    <rect x="20" y="24" width="8" height="14" fill="#ffffff" rx="1" />
+    <rect x="34" y="24" width="8" height="14" fill="#ffffff" rx="1" />
+    <rect x="48" y="24" width="8" height="14" fill="#ffffff" rx="1" />
+    <rect x="62" y="24" width="8" height="14" fill="#ffffff" rx="1" />
+  </g>
+
+  <!-- MAIN HEADER: DOOR CONTROLLER BOX -->
+  <g transform="translate(330, 92)">
+    <rect x="0" y="0" width="340" height="54" rx="8" fill="none" stroke="#0b1329" stroke-width="3.5" />
+    <text x="170" y="37" font-family="'Outfit', 'Segoe UI', Arial, sans-serif" font-size="28" font-weight="900" fill="#0b1329" text-anchor="middle" letter-spacing="4">DOOR CONTROLLER</text>
+  </g>
+
+  <!-- RESET BUTTON (Top Right) -->
+  <g transform="translate(685, 102)">
+    <circle cx="10" cy="11" r="5.5" fill="#0b1329" />
+    <text x="26" y="16" font-family="'Outfit', sans-serif" font-size="14" font-weight="900" fill="#0b1329" letter-spacing="1">RESET</text>
+  </g>
+
+  <!-- ================================================================= -->
+  <!-- LEFT COLUMN: READER 1, INPUTS 1 & 2, RELAYS 1 & 2                 -->
+  <!-- ================================================================= -->
+  <!-- READER 1 TERMINALS (10 Pins) -->
+  <!-- Pin 1: READER POWER -->
+  <g class="dc-terminal" id="term-l-rdr-pwr" data-label="READER POWER" transform="translate(74, 140)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="145" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">READER POWER</text>
+
+  <!-- Pin 2: GROUND -->
+  <g class="dc-terminal" id="term-l-gnd1" data-label="GROUND" transform="translate(74, 172)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="177" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">GROUND</text>
+
+  <!-- Pin 3: D0 / DAT / B -->
+  <g class="dc-terminal" id="term-l-d0" data-label="D0 / DAT / B" transform="translate(74, 204)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="209" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">D0 / DAT / B</text>
+
+  <!-- Pin 4: D1 / CLK / A -->
+  <g class="dc-terminal" id="term-l-d1" data-label="D1 / CLK / A" transform="translate(74, 236)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="241" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">D1 / CLK / A</text>
+
+  <!-- Pin 5: GROUND -->
+  <g class="dc-terminal" id="term-l-gnd2" data-label="GROUND" transform="translate(74, 268)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="273" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">GROUND</text>
+
+  <!-- Pin 6: GREEN LED -->
+  <g class="dc-terminal" id="term-l-grn-led" data-label="GREEN LED" transform="translate(74, 300)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="305" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">GREEN LED</text>
+
+  <!-- Pin 7: RED LED -->
+  <g class="dc-terminal" id="term-l-red-led" data-label="RED LED" transform="translate(74, 332)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="337" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">RED LED</text>
+
+  <!-- Pin 8: BEEPER -->
+  <g class="dc-terminal" id="term-l-beeper" data-label="BEEPER" transform="translate(74, 364)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="369" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">BEEPER</text>
+
+  <!-- Pin 9: NO CONNECTION -->
+  <g class="dc-terminal" id="term-l-nc" data-label="NO CONNECTION" transform="translate(74, 396)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="401" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">NO CONNECTION</text>
+
+  <!-- Pin 10: GROUND -->
+  <g class="dc-terminal" id="term-l-gnd3" data-label="GROUND" transform="translate(74, 428)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="433" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">GROUND</text>
+
+  <!-- INPUTS 1 & 2 (4 Pins) -->
+  <!-- IN 1 (+) and (-) -->
+  <g class="dc-terminal" id="term-l-in1-pos" data-label="+ IN 1" transform="translate(74, 478)"><use href="#dc-terminal-pin" /></g>
+  <g class="dc-terminal" id="term-l-in1-neg" data-label="- IN 1" transform="translate(74, 506)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="488" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" fill="#0b1329">+ IN 1 -</text>
+
+  <!-- IN 2 (+) and (-) -->
+  <g class="dc-terminal" id="term-l-in2-pos" data-label="+ IN 2" transform="translate(74, 542)"><use href="#dc-terminal-pin" /></g>
+  <g class="dc-terminal" id="term-l-in2-neg" data-label="- IN 2" transform="translate(74, 570)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="552" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" fill="#0b1329">+ IN 2 -</text>
+
+  <!-- RELAYS 1 & 2 TERMINALS (5 Pins: NO, C, NC, NO, NC) -->
+  <g class="dc-terminal" id="term-l-rly1-no" data-label="RLY 1 NO" transform="translate(74, 626)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="630" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">NO</text>
+
+  <g class="dc-terminal" id="term-l-rly1-c" data-label="RLY 1 C" transform="translate(74, 658)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="662" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">C</text>
+
+  <g class="dc-terminal" id="term-l-rly1-nc" data-label="RLY 1 NC" transform="translate(74, 690)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="694" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">NC</text>
+
+  <g class="dc-terminal" id="term-l-rly2-no" data-label="RLY 2 NO" transform="translate(74, 722)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="726" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">NO</text>
+
+  <g class="dc-terminal" id="term-l-rly2-nc" data-label="RLY 2 NC" transform="translate(74, 754)"><use href="#dc-terminal-pin" /></g>
+  <text x="96" y="758" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329">NC</text>
+
+  <!-- ================================================================= -->
+  <!-- RIGHT COLUMN: READER 2, INPUTS 3 & 4, RELAYS 3 & 4                -->
+  <!-- ================================================================= -->
+  <!-- READER 2 TERMINALS (10 Pins) -->
+  <!-- Pin 1: READER POWER -->
+  <g class="dc-terminal" id="term-r-rdr-pwr" data-label="READER POWER" transform="translate(926, 140)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="145" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">READER POWER</text>
+
+  <!-- Pin 2: GROUND -->
+  <g class="dc-terminal" id="term-r-gnd1" data-label="GROUND" transform="translate(926, 172)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="177" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">GROUND</text>
+
+  <!-- Pin 3: D0 / DAT / B -->
+  <g class="dc-terminal" id="term-r-d0" data-label="D0 / DAT / B" transform="translate(926, 204)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="209" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">D0 / DAT / B</text>
+
+  <!-- Pin 4: D1 / CLK / A -->
+  <g class="dc-terminal" id="term-r-d1" data-label="D1 / CLK / A" transform="translate(926, 236)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="241" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">D1 / CLK / A</text>
+
+  <!-- Pin 5: GROUND -->
+  <g class="dc-terminal" id="term-r-gnd2" data-label="GROUND" transform="translate(926, 268)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="273" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">GROUND</text>
+
+  <!-- Pin 6: GREEN LED -->
+  <g class="dc-terminal" id="term-r-grn-led" data-label="GREEN LED" transform="translate(926, 300)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="305" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">GREEN LED</text>
+
+  <!-- Pin 7: RED LED -->
+  <g class="dc-terminal" id="term-r-red-led" data-label="RED LED" transform="translate(926, 332)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="337" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">RED LED</text>
+
+  <!-- Pin 8: BEEPER -->
+  <g class="dc-terminal" id="term-r-beeper" data-label="BEEPER" transform="translate(926, 364)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="369" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">BEEPER</text>
+
+  <!-- Pin 9: NO CONNECTION -->
+  <g class="dc-terminal" id="term-r-nc" data-label="NO CONNECTION" transform="translate(926, 396)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="401" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">NO CONNECTION</text>
+
+  <!-- Pin 10: GROUND -->
+  <g class="dc-terminal" id="term-r-gnd3" data-label="GROUND" transform="translate(926, 428)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="433" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">GROUND</text>
+
+  <!-- INPUTS 3 & 4 (4 Pins) -->
+  <!-- IN 3 (+) and (-) -->
+  <g class="dc-terminal" id="term-r-in3-pos" data-label="+ IN 3" transform="translate(926, 478)"><use href="#dc-terminal-pin" /></g>
+  <g class="dc-terminal" id="term-r-in3-neg" data-label="- IN 3" transform="translate(926, 506)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="488" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" fill="#0b1329" text-anchor="end">+ IN 3 -</text>
+
+  <!-- IN 4 (+) and (-) -->
+  <g class="dc-terminal" id="term-r-in4-pos" data-label="+ IN 4" transform="translate(926, 542)"><use href="#dc-terminal-pin" /></g>
+  <g class="dc-terminal" id="term-r-in4-neg" data-label="- IN 4" transform="translate(926, 570)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="552" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="800" fill="#0b1329" text-anchor="end">+ IN 4 -</text>
+
+  <!-- RELAYS 3 & 4 TERMINALS (5 Pins: NO, C, NC, NO, NC) -->
+  <g class="dc-terminal" id="term-r-rly3-no" data-label="RLY 3 NO" transform="translate(926, 626)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="630" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">NO</text>
+
+  <g class="dc-terminal" id="term-r-rly3-c" data-label="RLY 3 C" transform="translate(926, 658)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="662" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">C</text>
+
+  <g class="dc-terminal" id="term-r-rly3-nc" data-label="RLY 3 NC" transform="translate(926, 690)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="694" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">NC</text>
+
+  <g class="dc-terminal" id="term-r-rly4-no" data-label="RLY 4 NO" transform="translate(926, 722)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="726" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">NO</text>
+
+  <g class="dc-terminal" id="term-r-rly4-nc" data-label="RLY 4 NC" transform="translate(926, 754)"><use href="#dc-terminal-pin" /></g>
+  <text x="904" y="758" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#0b1329" text-anchor="end">NC</text>
+
+  <!-- ================================================================= -->
+  <!-- CENTER SECTION: RELAYS 1..4 & STATUS LED / SYSTEM MATRIX          -->
+  <!-- ================================================================= -->
+  <!-- RELAY 1 & RELAY 2 (Left Center Dark Blocks) -->
+  <rect x="230" y="470" width="88" height="74" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+  <text x="330" y="514" font-family="'Outfit', sans-serif" font-size="16" font-weight="800" fill="#0b1329">RELAY 1</text>
+
+  <rect x="230" y="565" width="88" height="74" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+  <text x="330" y="609" font-family="'Outfit', sans-serif" font-size="16" font-weight="800" fill="#0b1329">RELAY 2</text>
+
+  <!-- RELAY 3 & RELAY 4 (Right Center Dark Blocks) -->
+  <rect x="680" y="470" width="88" height="74" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+  <text x="668" y="514" font-family="'Outfit', sans-serif" font-size="16" font-weight="800" fill="#0b1329" text-anchor="end">RELAY 3</text>
+
+  <rect x="680" y="565" width="88" height="74" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="2" />
+  <text x="668" y="609" font-family="'Outfit', sans-serif" font-size="16" font-weight="800" fill="#0b1329" text-anchor="end">RELAY 4</text>
+
+  <!-- CENTER STATUS INDICATOR GRID (Door Controller Exact Image Layout) -->
+  <g transform="translate(420, 240)">
+    <!-- ONLINE -->
+    <text x="135" y="16" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#0b1329" text-anchor="end">ONLINE</text>
+    <rect x="144" y="4" width="16" height="15" fill="#cbd5e1" stroke="#0b1329" stroke-width="1.5" id="led-online" />
+
+    <!-- HOST COMM -->
+    <text x="135" y="38" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#0b1329" text-anchor="end">HOST COMM</text>
+    <rect x="144" y="26" width="16" height="15" fill="#cbd5e1" stroke="#0b1329" stroke-width="1.5" id="led-host-comm" />
+
+    <!-- IO INTERNAL -->
+    <text x="135" y="60" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#0b1329" text-anchor="end">IO INTERNAL</text>
+    <rect x="144" y="48" width="16" height="15" fill="#cbd5e1" stroke="#0b1329" stroke-width="1.5" id="led-io-internal" />
+
+    <!-- Tree Bracket lines leading from online/comm/io to Relays -->
+    <path d="M 160 11 L 204 11 L 204 290" fill="none" stroke="#0b1329" stroke-width="1.2" />
+    <path d="M 160 33 L 204 33" fill="none" stroke="#0b1329" stroke-width="1.2" />
+    <path d="M 160 55 L 204 55" fill="none" stroke="#0b1329" stroke-width="1.2" />
+
+    <!-- BATT FAIL -->
+    <text x="135" y="94" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#0b1329" text-anchor="end">BATT FAIL</text>
+    <rect x="144" y="82" width="16" height="15" fill="#cbd5e1" stroke="#0b1329" stroke-width="1.5" id="led-batt-fail" />
+
+    <!-- AC FAIL -->
+    <text x="135" y="116" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#0b1329" text-anchor="end">AC FAIL</text>
+    <rect x="144" y="104" width="16" height="15" fill="#cbd5e1" stroke="#0b1329" stroke-width="1.5" id="led-ac-fail" />
+
+    <!-- TAMPER -->
+    <text x="135" y="138" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#0b1329" text-anchor="end">TAMPER</text>
+    <rect x="144" y="126" width="16" height="15" fill="#cbd5e1" stroke="#0b1329" stroke-width="1.5" id="led-tamper" />
+
+    <!-- IN 1 -->
+    <text x="135" y="160" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#0b1329" text-anchor="end">IN 1</text>
+    <rect x="144" y="148" width="16" height="15" fill="#cbd5e1" stroke="#0b1329" stroke-width="1.5" id="led-in1" />
+
+    <!-- IN 2 -->
+    <text x="135" y="182" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#0b1329" text-anchor="end">IN 2</text>
+    <rect x="144" y="170" width="16" height="15" fill="#cbd5e1" stroke="#0b1329" stroke-width="1.5" id="led-in2" />
+
+    <!-- IN 3 -->
+    <text x="135" y="204" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#0b1329" text-anchor="end">IN 3</text>
+    <rect x="144" y="192" width="16" height="15" fill="#cbd5e1" stroke="#0b1329" stroke-width="1.5" id="led-in3" />
+
+    <!-- IN 4 -->
+    <text x="135" y="226" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#0b1329" text-anchor="end">IN 4</text>
+    <rect x="144" y="214" width="16" height="15" fill="#cbd5e1" stroke="#0b1329" stroke-width="1.5" id="led-in4" />
+
+    <!-- ETHERNET -->
+    <text x="135" y="248" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="800" fill="#0b1329" text-anchor="end">ETHERNET</text>
+    <rect x="144" y="236" width="16" height="15" fill="#cbd5e1" stroke="#0b1329" stroke-width="1.5" id="led-ethernet" />
+  </g>
+
+  <!-- CENTER BOTTOM SYSTEM LABELS -->
+  <g transform="translate(500, 526)">
+    <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="800" fill="#0b1329" text-anchor="middle">IO MODULE PORT 1</text>
+    <text x="0" y="20" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="800" fill="#0b1329" text-anchor="middle">IO MODULE PORT 2</text>
+    <text x="0" y="40" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="800" fill="#0b1329" text-anchor="middle">READER 1</text>
+    <text x="0" y="60" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="800" fill="#0b1329" text-anchor="middle">READER 2</text>
+  </g>
+
+  <!-- ================================================================= -->
+  <!-- BOTTOM-LEFT TECH SUPPORT & PART NUMBER CARD (IMAGE 1 EXACT)       -->
+  <!-- ================================================================= -->
+  <g transform="translate(142, 650)">
+    <rect x="0" y="0" width="180" height="66" rx="6" fill="#ffffff" stroke="#94a3b8" stroke-width="1.8" />
+    <text x="14" y="22" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="900" fill="#0b1329">P/N: NTX700-CTLR</text>
+    <text x="14" y="38" font-family="'Outfit', sans-serif" font-size="9" font-weight="600" fill="#475569">Product Tech Support</text>
+    <text x="14" y="52" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="800" fill="#0b1329">Call: 1-800-810-WIRE</text>
+  </g>
+
+  <!-- ================================================================= -->
+  <!-- BOTTOM USB & TCP/IP ETHERNET TERMINALS                            -->
+  <!-- ================================================================= -->
+  <!-- Bottom Text Labels -->
+  <text x="400" y="764" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="900" fill="#0b1329">USB</text>
+  <text x="480" y="756" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="800" fill="#0b1329">TCP/IP</text>
+  <text x="480" y="768" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="800" fill="#0b1329">ETHERNET</text>
+
+  <!-- 5 Bottom Terminals on the protruding tab -->
+  <g class="dc-terminal" id="term-bot-1" data-label="ETH TX+" transform="translate(565, 782)"><use href="#dc-terminal-pin" /></g>
+  <g class="dc-terminal" id="term-bot-2" data-label="ETH TX-" transform="translate(598, 782)"><use href="#dc-terminal-pin" /></g>
+  <g class="dc-terminal" id="term-bot-3" data-label="ETH RX+" transform="translate(631, 782)"><use href="#dc-terminal-pin" /></g>
+  <g class="dc-terminal" id="term-bot-4" data-label="ETH RX-" transform="translate(664, 782)"><use href="#dc-terminal-pin" /></g>
+  <g class="dc-terminal" id="term-bot-5" data-label="ETH GND" transform="translate(697, 782)"><use href="#dc-terminal-pin" /></g>
+
+</svg>

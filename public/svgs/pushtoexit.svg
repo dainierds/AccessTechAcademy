@@ -1,0 +1,85 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 560" width="320" height="560" class="push-to-exit-svg">
+  <defs>
+    <linearGradient id="pte-steel-plate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="20%" stop-color="#e2e8f0" />
+      <stop offset="50%" stop-color="#cbd5e1" />
+      <stop offset="80%" stop-color="#f1f5f9" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+    <linearGradient id="pte-bevel-top" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </linearGradient>
+    <linearGradient id="pte-bevel-side" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+    <radialGradient id="pte-green-lens-lit" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#86efac" />
+      <stop offset="40%" stop-color="#22c55e" />
+      <stop offset="85%" stop-color="#16a34a" />
+      <stop offset="100%" stop-color="#15803d" />
+    </radialGradient>
+    <linearGradient id="pte-bezel-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="50%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="pte-metal-screw" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+    <filter id="pte-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+    <filter id="pte-btn-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <g id="pte-mounting-hole">
+      <circle cx="0" cy="0" r="14" fill="url(#pte-metal-screw)" stroke="#475569" stroke-width="1.2" />
+      <circle cx="0" cy="0" r="9" fill="#0b1329" />
+      <circle cx="0" cy="0" r="8" fill="#1e293b" />
+      <circle cx="0" cy="0" r="5" fill="#0b1329" />
+    </g>
+  </defs>
+
+  <g filter="url(#pte-shadow)" transform="translate(20, 20)" id="pte-front-plate-group">
+    <polygon points="0,0 280,0 264,16 16,16" fill="url(#pte-bevel-top)" />
+    <polygon points="0,520 280,520 264,504 16,504" fill="#64748b" />
+    <polygon points="0,0 16,16 16,504 0,520" fill="url(#pte-bevel-side)" />
+    <polygon points="280,0 280,520 264,504 264,16" fill="url(#pte-bevel-side)" />
+    <rect x="16" y="16" width="248" height="488" fill="url(#pte-steel-plate)" stroke="#475569" stroke-width="1.2" />
+    
+    <g opacity="0.25" stroke="#ffffff" stroke-width="0.7">
+      <line x1="30" y1="16" x2="30" y2="504" />
+      <line x1="45" y1="16" x2="45" y2="504" />
+      <line x1="70" y1="16" x2="70" y2="504" />
+      <line x1="100" y1="16" x2="100" y2="504" />
+      <line x1="140" y1="16" x2="140" y2="504" />
+      <line x1="180" y1="16" x2="180" y2="504" />
+      <line x1="215" y1="16" x2="215" y2="504" />
+      <line x1="240" y1="16" x2="240" y2="504" />
+    </g>
+
+    <use href="#pte-mounting-hole" xlink:href="#pte-mounting-hole" x="140" y="65" />
+    <use href="#pte-mounting-hole" xlink:href="#pte-mounting-hole" x="140" y="455" />
+
+    <g transform="translate(45, 160)">
+      <rect x="0" y="0" width="190" height="190" rx="14" fill="url(#pte-bezel-grad)" stroke="#0f172a" stroke-width="2.5" />
+      <rect x="6" y="6" width="178" height="178" rx="10" fill="none" stroke="#475569" stroke-width="1.5" />
+      <rect x="12" y="12" width="166" height="166" rx="8" fill="#0b1329" />
+
+      <g id="pte-push-button" filter="url(#pte-btn-glow)" style="cursor: pointer;">
+        <rect x="18" y="18" width="154" height="154" rx="8" fill="url(#pte-green-lens-lit)" stroke="#14532d" stroke-width="2" id="pte-lens-rect" />
+        <rect x="22" y="22" width="146" height="36" rx="4" fill="#ffffff" opacity="0.35" />
+        <line x1="24" y1="24" x2="162" y2="24" stroke="#ffffff" stroke-width="2" opacity="0.8" />
+        <text x="95" y="66" font-family="'Outfit', 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="900" fill="#052e16" text-anchor="middle" letter-spacing="2">PUSH</text>
+        <text x="95" y="104" font-family="'Outfit', 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="900" fill="#052e16" text-anchor="middle" letter-spacing="2">TO</text>
+        <text x="95" y="142" font-family="'Outfit', 'Segoe UI', Arial, sans-serif" font-size="24" font-weight="900" fill="#052e16" text-anchor="middle" letter-spacing="2">EXIT</text>
+      </g>
+    </g>
+  </g>
+</svg>

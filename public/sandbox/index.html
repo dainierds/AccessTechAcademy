@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>AccessControl Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header id="topbar" style="display:none">
+  <div id="tabs">
+    <button class="tab active" data-view="editor">Editor de Escenarios</button>
+  </div>
+</header>
+
+<main>
+  <!-- ==================== BIBLIOTECA DEDICADA ==================== -->
+  <div id="view-library" class="view">
+    <div class="section-head">
+      <h1>Biblioteca de Dispositivos & Componentes</h1>
+      <p>Catálogo completo de equipos PACS de control de acceso. Haz clic en cualquiera para consultar su ficha técnica, bornes de conexión y diagramas eléctricos.</p>
+    </div>
+    <div id="library-grid"></div>
+  </div>
+
+  <!-- ==================== EDITOR & SIMULADOR INTEGRADO ==================== -->
+  <div id="view-editor" class="view active">
+    
+    <!-- CARCASA PRINCIPAL DEL SIMULADOR SANDBOX (IMAGEN REFERENCIA) -->
+    <div class="sandbox-lab-card">
+      
+      <!-- HEADER INTERNO DEL LABORATORIO -->
+      <div class="lab-header">
+        <div class="lab-header-left">
+          <button class="lab-badge-btn" id="btn-toggle-library">🔖 Biblioteca Componentes</button>
+          <div class="lab-title-group">
+            <h3>Simulador Sandbox de Pruebas</h3>
+            <p>Selecciona cables del sandbox para probar circuitos de experimentación.</p>
+          </div>
+        </div>
+        
+        <div class="lab-header-right">
+          <button class="lab-btn" id="btn-undo" title="Deshacer última acción (Ctrl + Z)">↩️ Deshacer</button>
+          <button class="lab-btn" id="btn-redo" title="Rehacer acción (Ctrl + Y)">↪️ Rehacer</button>
+          <button class="lab-btn sim-toggle-btn" id="btn-toggle-sim-mode">▶️ Probar Simulación</button>
+          <button class="lab-btn" id="btn-toggle-terminals" title="Mostrar/ocultar puntos de conexión de los componentes">🎯 Puntos de Conexión</button>
+          <button class="lab-btn" id="btn-term-edit-mode" title="Editar y mover las posiciones de los puntos de conexión arrastrándolos">✏️ Mover Bornes</button>
+          <button class="lab-btn danger" id="btn-reset-term-overrides" title="Restablecer posiciones originales por defecto" style="display:none">↺ Reset Bornes</button>
+          <button class="lab-btn" id="btn-toggle-cables">^ Paleta Cables</button>
+          <button class="lab-btn highlight" id="btn-toggle-ifthen">⚡ Reglas IF/THEN</button>
+          <button class="lab-btn" id="btn-clear-canvas-top">Reiniciar Canvas</button>
+          <button class="lab-btn primary" id="btn-fullscreen-top">⛶ Fullscreen</button>
+        </div>
+      </div>
+
+      <!-- BARRA DE SELECCIÓN DE CABLES DENTRO DEL LABORATORIO -->
+      <div class="lab-cable-bar" id="lab-cable-bar">
+        <div class="cable-bar-title">PALETA DE CABLES DISPONIBLES (SANDBOX)</div>
+        <div class="cable-types-horizontal" id="cable-types"></div>
+      </div>
+
+      <!-- CUERPO PRINCIPAL (PANEL IZQUIERDO BIBLIOTECA + CANVAS + PANEL DERECHO IF/THEN) -->
+      <div class="lab-body-layout">
+        
+        <!-- PANEL IZQUIERDO: BIBLIOTECA DE COMPONENTES DE HARDWARE -->
+        <div class="lab-panel-left" id="panel-library">
+          <div class="panel-header">
+            <h4><span>🔖</span> Biblioteca de Componentes</h4>
+            <button class="panel-close-btn" id="close-library-btn">✕</button>
+          </div>
+          <div class="panel-body">
+            <p style="font-size:11px;color:var(--muted);margin-bottom:12px">Haz clic en cualquier componente para añadirlo al lienzo de trabajo.</p>
+            <div id="palette-devices" class="sidebar-palette-list"></div>
+          </div>
+        </div>
+
+        <!-- CENTRO: CANVAS DE DIBUJO Y CABLEADO -->
+        <div class="lab-canvas-wrap">
+          <canvas id="editor-canvas"></canvas>
+
+          <!-- CONTROLES FLOTANTES DE ZOOM Y PANORÁMICA INFINITA -->
+          <div class="canvas-viewport-controls">
+            <button class="zoom-btn btn-undo" title="Deshacer (Ctrl + Z)">↩</button>
+            <button class="zoom-btn btn-redo" title="Rehacer (Ctrl + Y)">↪</button>
+            <div style="width: 1px; height: 18px; background: rgba(255,255,255,0.15); margin: 0 2px;"></div>
+            <button class="zoom-btn" id="btn-zoom-in" title="Acercar (Zoom In)">+</button>
+            <span class="zoom-badge" id="zoom-badge" title="Nivel de Zoom (Clic para restablecer 100%)">100%</span>
+            <button class="zoom-btn" id="btn-zoom-out" title="Alejar (Zoom Out)">−</button>
+            <button class="zoom-btn reset" id="btn-zoom-reset" title="Centrar todo el contenido (Fit / Centrar)">⟲</button>
+          </div>
+
+          <!-- PÍLDORA DE AYUDA DE NAVEGACIÓN -->
+          <div class="canvas-nav-hint">
+            <span>🖱️ Rueda: Zoom | Clic en fondo o Botón central: Paneo infinito</span>
+          </div>
+        </div>
+
+        <!-- PANEL DERECHO: MOTOR IF/THEN -->
+        <div class="lab-panel-right" id="panel-ifthen">
+          <div class="panel-header">
+            <h4><span>⚡</span> Motor IF/THEN</h4>
+            <button class="panel-close-btn" id="close-ifthen-btn">✕</button>
+          </div>
+          <div class="panel-body space-y-3">
+            <button class="btn-new-rule">+ NUEVA REGLA LÓGICA</button>
+            <div class="rule-box">
+              <label class="rule-section-label">IF (CONDICIÓN)</label>
+              <div class="form-group">
+                <label>Componente A (Origen)</label>
+                <select><option>Seleccionar Componente A...</option></select>
+              </div>
+              <div class="form-group">
+                <label>Condición de Cableado</label>
+                <select><option>ESTÁ CONECTADO A</option></select>
+              </div>
+              <div class="form-group">
+                <label>Componente B (Destino)</label>
+                <select><option>Seleccionar Componente B...</option></select>
+              </div>
+            </div>
+
+            <div class="rule-box">
+              <label class="rule-section-label">THEN (ACCIÓN EJECUTABLE)</label>
+              <div class="form-group">
+                <label>Tipo de Acción</label>
+                <select><option>Cambiar Color de Componente</option></select>
+              </div>
+              <div class="form-group">
+                <label>Color a Aplicar</label>
+                <div class="color-picker-dots">
+                  <span style="background:#f87171"></span>
+                  <span style="background:#fb923c"></span>
+                  <span style="background:#facc15"></span>
+                  <span style="background:#60a5fa"></span>
+                  <span style="background:#c084fc"></span>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn-add-rule">+ Agregar Regla Lógica</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<div id="toast"></div>
+
+<!-- ==================== MODALES ==================== -->
+<div class="modal hidden" id="device-modal">
+  <div class="modal-box">
+    <button class="modal-close" id="device-modal-close">×</button>
+    <div id="device-modal-content"></div>
+  </div>
+</div>
+
+<div class="modal hidden" id="load-modal">
+  <div class="modal-box" style="max-width:440px">
+    <button class="modal-close" id="load-modal-close">×</button>
+    <h2>Cargar Escenario</h2>
+    <div id="load-list"></div>
+  </div>
+</div>
+
+<script src="native_vectors.js"></script>
+<script src="devices.js"></script>
+<script src="engine.js"></script>
+<script src="workbench.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

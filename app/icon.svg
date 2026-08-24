@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Fondo blanco sólido con esquinas redondeadas suaves y 20% de padding generoso -->
+  <rect width="100" height="100" rx="22" fill="#FFFFFF" />
+
+  <defs>
+    <!-- Gradiente oficial de la marca: Verde Esmeralda -> Turquesa/Cian -> Azul Violeta -->
+    <linearGradient id="fav-brand-grad" x1="15" y1="15" x2="85" y2="85" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="50%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+
+    <filter id="fav-shadow-subtle" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <!-- Monograma Geométrico Entrelazado (A+T Abstracto) -->
+  <g filter="url(#fav-shadow-subtle)">
+    <!-- Brazo/Pilar Principal entrelazado -->
+    <path
+      d="M 38 18 L 54 18 L 68 82 L 52 82 L 47 54 L 27 54 L 21 82 L 8 82 Z M 31 38 L 41 38 L 36 22 Z"
+      fill="url(#fav-brand-grad)"
+    />
+
+    <!-- Trazo superior entrelazado de la T de la marca -->
+    <path
+      d="M 44 24 L 84 24 L 84 36 L 72 36 L 72 82 L 58 82 L 58 36 L 44 36 Z"
+      fill="url(#fav-brand-grad)"
+      opacity="0.9"
+    />
+
+    <!-- Swoosh de conexión cruzada que unifica ambas formas -->
+    <path
+      d="M 12 68 C 28 54, 48 32, 90 12 C 68 34, 42 66, 18 78 Z"
+      fill="url(#fav-brand-grad)"
+    />
+  </g>
+</svg>

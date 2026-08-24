@@ -1,0 +1,160 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" class="magnetic-door-sensor-svg">
+  <defs>
+    
+    <linearGradient id="dps-white-plastic" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="35%" stop-color="#f8fafc" />
+      <stop offset="70%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </linearGradient>
+
+    <linearGradient id="dps-cylinder-cyl" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="20%" stop-color="#f1f5f9" />
+      <stop offset="60%" stop-color="#cbd5e1" />
+      <stop offset="90%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#64748b" />
+    </linearGradient>
+
+    <linearGradient id="dps-flange-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#f1f5f9" />
+      <stop offset="85%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+
+    <linearGradient id="dps-black-barrel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="40%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="dps-magnet-core" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="50%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+
+    <linearGradient id="dps-metal-screw" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+
+    
+    <filter id="dps-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+
+    <filter id="dps-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    
+    <g id="dps-terminal-pin">
+      <circle cx="0" cy="0" r="16" fill="#f8fafc" stroke="#0b1329" stroke-width="2.5" />
+      <circle cx="0" cy="0" r="11" fill="url(#dps-metal-screw)" stroke="#334155" stroke-width="1" />
+      <circle cx="0" cy="0" r="6" fill="#0b1329" />
+      
+      <line x1="-4" y1="-2" x2="4" y2="2" stroke="#f8fafc" stroke-width="1.2" />
+      <line x1="-2" y1="4" x2="2" y2="-4" stroke="#f8fafc" stroke-width="1.2" />
+    </g>
+  </defs>
+
+  
+  
+
+  
+  
+  
+  
+  <g filter="url(#dps-shadow)" id="dps-magnet-assembly" transform="translate(196, 140)" style="transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);">
+    
+    
+    <path d="M 30 92 L 120 72 L 120 168 L 30 148 Z" fill="url(#dps-cylinder-cyl)" stroke="#64748b" stroke-width="1.2" />
+    <ellipse cx="30" cy="120" rx="14" ry="28" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1" />
+
+    
+    <path d="M 120 54 L 260 42 L 260 198 L 120 186 Z" fill="url(#dps-cylinder-cyl)" stroke="#94a3b8" stroke-width="1.2" />
+    
+    
+    <g stroke="#94a3b8" stroke-width="2" opacity="0.6">
+      <line x1="150" y1="52" x2="150" y2="188" />
+      <line x1="175" y1="49" x2="175" y2="191" />
+      <line x1="200" y1="46" x2="200" y2="194" />
+      <line x1="225" y1="43" x2="225" y2="197" />
+    </g>
+
+    
+    <ellipse cx="270" cy="120" rx="18" ry="76" fill="url(#dps-flange-grad)" stroke="#64748b" stroke-width="1.8" />
+    <ellipse cx="274" cy="120" rx="14" ry="72" fill="url(#dps-white-plastic)" stroke="#ffffff" stroke-width="1.2" />
+
+    
+    <ellipse cx="276" cy="120" rx="8" ry="36" fill="url(#dps-magnet-core)" stroke="#1e293b" stroke-width="1.2" />
+    <ellipse cx="277" cy="120" rx="4" ry="20" fill="#334155" />
+
+    
+    <text x="140" y="245" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#94a3b8" text-anchor="middle">IMÁN PERMANENTE</text>
+    <text x="140" y="262" font-family="'Outfit', sans-serif" font-size="10" font-weight="600" fill="#64748b" text-anchor="middle">(Montado en Hoja de Puerta)</text>
+  </g>
+
+  
+  
+  
+  <g transform="translate(480, 240)" id="dps-flux-group" style="transition: opacity 0.3s ease;">
+    
+    <line x1="0" y1="-80" x2="0" y2="80" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" opacity="0.9" id="dps-contact-seam" />
+    
+    <circle cx="0" cy="0" r="14" fill="#0f172a" stroke="#22c55e" stroke-width="2" id="dps-seam-dot" />
+    <path d="M -4 0 L -1 3 L 5 -3" stroke="#22c55e" stroke-width="2" fill="none" stroke-linecap="round" id="dps-check-icon" />
+
+    <text x="0" y="-95" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#22c55e" text-anchor="middle" id="dps-gap-text">GAP: 0.0mm (UNIÓN COMPLETA)</text>
+    <text x="0" y="105" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="800" fill="#38bdf8" text-anchor="middle" id="dps-status-text">CONTACTO CERRADO (LAZO ACTIVO)</text>
+  </g>
+
+  
+  
+  
+  <g filter="url(#dps-shadow)" id="dps-switch-assembly" transform="translate(480, 140)">
+    
+    
+    <ellipse cx="0" cy="120" rx="18" ry="76" fill="url(#dps-flange-grad)" stroke="#64748b" stroke-width="2" />
+    <ellipse cx="4" cy="120" rx="14" ry="70" fill="url(#dps-white-plastic)" stroke="#ffffff" stroke-width="1.5" />
+
+    
+    <g transform="translate(14, 115) rotate(-5)">
+      
+      <text x="0" y="-8" font-family="'Outfit', 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="900" font-style="italic" fill="#64748b" text-anchor="middle" letter-spacing="1">ENFORCER®</text>
+      
+      
+      <circle cx="0" cy="16" r="13" fill="none" stroke="#64748b" stroke-width="1.8" />
+      <text x="0" y="21" font-family="'Outfit', sans-serif" font-size="11" font-weight="900" fill="#64748b" text-anchor="middle">UL</text>
+    </g>
+
+    
+    <path d="M 12 42 L 150 54 L 150 186 L 12 198 Z" fill="url(#dps-cylinder-cyl)" stroke="#94a3b8" stroke-width="1.2" />
+    <ellipse cx="150" cy="120" rx="14" ry="48" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1" />
+
+    
+    <g stroke="#94a3b8" stroke-width="2" opacity="0.6">
+      <line x1="36" y1="44" x2="36" y2="196" />
+      <line x1="60" y1="47" x2="60" y2="193" />
+      <line x1="84" y1="50" x2="84" y2="190" />
+      <line x1="108" y1="53" x2="108" y2="187" />
+    </g>
+
+    
+    <path d="M 150 94 L 220 88 L 220 152 L 150 146 Z" fill="url(#dps-black-barrel)" stroke="#0f172a" stroke-width="1.2" />
+    <ellipse cx="220" cy="120" rx="10" ry="26" fill="#0f172a" stroke="#334155" stroke-width="1" />
+
+    
+    <text x="120" y="245" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="#94a3b8" text-anchor="middle">INTERRUPTOR REED MAGNÉTICO</text>
+    <text x="120" y="262" font-family="'Outfit', sans-serif" font-size="10" font-weight="600" fill="#64748b" text-anchor="middle">(Montado en Marco de Puerta)</text>
+  </g>
+
+  
+  
+  
+  
+  </svg>

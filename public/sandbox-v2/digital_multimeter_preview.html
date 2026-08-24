@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multímetro Digital Pro - Componente Vectorial Profesional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070d19;
+      --card-bg: #0f172a;
+      --card-border: #1e293b;
+      --accent: #f97316;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --accent-blue: #38bdf8;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-ui: 'Outfit', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-ui);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-icon {
+      width: 40px; height: 40px; background: #0b1329;
+      border: 2px solid #f97316; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; color: #f97316;
+    }
+
+    .brand-title h1 { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
+    .brand-title span { font-size: 12px; font-family: var(--font-mono); color: var(--accent); }
+
+    .btn-group { display: flex; gap: 8px; }
+    .btn {
+      font-family: var(--font-ui); font-size: 13px; font-weight: 600;
+      padding: 8px 14px; border-radius: 8px; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.2s ease; border: none; text-decoration: none;
+    }
+
+    .btn-primary { background: #ea580c; color: #fff; }
+    .btn-primary:hover { background: #c2410c; }
+    .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--card-border); }
+    .btn-outline:hover { background: #1e293b; }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 20px;
+      padding: 20px 28px;
+      max-width: 1750px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    @media (max-width: 1250px) { main { grid-template-columns: 1fr; } }
+
+    .viewport-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 20px; display: flex; flex-direction: column;
+      gap: 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .canvas-wrapper {
+      position: relative; background: #060b14; border: 1px solid #1e293b;
+      border-radius: 12px; padding: 20px; display: flex; align-items: center;
+      justify-content: center; min-height: 620px; overflow: hidden;
+    }
+
+    #svg-container { width: 100%; max-width: 950px; position: relative; user-select: none; }
+    #svg-container svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.5)); }
+
+    .terminal-hitbox { cursor: crosshair; transition: transform 0.15s ease; }
+    .terminal-hitbox:hover circle:first-child {
+      stroke: #38bdf8 !important; stroke-width: 3.5px !important;
+      filter: drop-shadow(0 0 8px #38bdf8);
+    }
+
+    #interactive-wires-svg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 20;
+    }
+
+    .wire-controls {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #090e1a; border: 1px solid #1e293b; border-radius: 10px;
+      padding: 10px 16px;
+    }
+
+    .color-picker { display: flex; align-items: center; gap: 8px; }
+    .color-btn {
+      width: 24px; height: 24px; border-radius: 50%; border: 2px solid transparent; cursor: pointer;
+    }
+    .color-btn.active { transform: scale(1.2); border-color: #fff; box-shadow: 0 0 8px var(--c); }
+
+    .sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; padding: 16px; display: flex; flex-direction: column;
+      gap: 12px;
+    }
+
+    .card-title {
+      font-size: 14px; font-weight: 700; display: flex; align-items: center;
+      gap: 8px; color: #fff;
+    }
+
+    .mode-btn-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+    }
+    .mode-btn {
+      padding: 10px 4px; border-radius: 8px; border: 1px solid #334155;
+      background: #0f172a; color: #f8fafc; font-family: var(--font-mono);
+      font-size: 12px; font-weight: 800; cursor: pointer; transition: all 0.15s;
+      text-align: center;
+    }
+    .mode-btn:hover { background: #1e293b; border-color: #f97316; }
+    .mode-btn.active {
+      background: #ea580c; border-color: #f97316; color: #fff;
+      box-shadow: 0 0 12px rgba(234, 88, 12, 0.4);
+    }
+
+    .preset-btn {
+      padding: 9px 12px; border-radius: 6px; border: 1px solid #1e293b;
+      background: #090e1a; color: #cbd5e1; font-family: var(--font-mono);
+      font-size: 11.5px; font-weight: 700; cursor: pointer; transition: all 0.15s;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .preset-btn:hover { background: #1e293b; border-color: #38bdf8; color: #fff; }
+
+    .code-modal {
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center; z-index: 100;
+      opacity: 0; pointer-events: none; transition: opacity 0.25s ease; padding: 20px;
+    }
+    .code-modal.active { opacity: 1; pointer-events: auto; }
+    .modal-box {
+      background: #0f172a; border: 1px solid #334155; border-radius: 14px;
+      width: 100%; max-width: 800px; max-height: 85vh; display: flex;
+      flex-direction: column; overflow: hidden;
+    }
+    .modal-header { padding: 14px 20px; background: #1e293b; display: flex; justify-content: space-between; align-items: center; }
+    .modal-body { padding: 16px; overflow-y: auto; }
+    .modal-body textarea { width: 100%; height: 350px; background: #070d19; color: #38bdf8; border: 1px solid #1e293b; border-radius: 6px; padding: 10px; font-family: var(--font-mono); font-size: 11px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none">
+          <rect x="5" y="2" width="14" height="20" rx="3"></rect>
+          <line x1="9" y1="7" x2="15" y2="7"></line>
+          <circle cx="12" cy="14" r="3"></circle>
+        </svg>
+      </div>
+      <div class="brand-title">
+        <h1>Multímetro Digital Industrial Pro</h1>
+        <span>SELECTOR DE 3 POSICIONES (V= DC, V~ AC, •))) CONTINUIDAD) • TRUE RMS</span>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-outline" id="btn-view-code">
+        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        Ver / Copiar SVG
+      </button>
+      <a href="camden_relay_preview.html" class="btn btn-outline">Relé Camden</a>
+      <a href="rfid_reader_preview.html" class="btn btn-outline">Lectora HID</a>
+      <a href="altronix_power_supply_preview.html" class="btn btn-outline">Altronix</a>
+      <a href="index.html" class="btn btn-primary">Simulador AccessLab</a>
+    </div>
+  </header>
+
+  <main>
+    
+    <!-- Left: Canvas Viewport -->
+    <section class="viewport-card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h2>Multímetro Digital con Selector de 3 Posiciones (SVG)</h2>
+          <p style="font-size: 13px; color: var(--text-muted);">
+            Gira la rueda selectora entre <strong>V= (DC)</strong>, <strong>V~ (AC)</strong> y <strong>•))) (Continuidad)</strong> o usa las puntas de prueba para medir voltajes en el simulador.
+          </p>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 11px; background: rgba(249,115,22,0.15); color: #f97316; padding: 4px 8px; border-radius: 4px;">600V CAT III TRUE RMS</span>
+      </div>
+
+      <div class="canvas-wrapper" id="canvas-wrapper">
+        <div id="svg-container"></div>
+        <svg id="interactive-wires-svg"></svg>
+      </div>
+
+      <div class="wire-controls">
+        <div class="color-picker">
+          <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Color de Cable:</span>
+          <button class="color-btn active" data-color="#ef4444" style="background: #ef4444; --c: #ef4444;" title="Sonda Roja (+ / Señal)"></button>
+          <button class="color-btn" data-color="#1e293b" style="background: #1e293b; --c: #1e293b;" title="Sonda Negra (- / GND)"></button>
+          <button class="color-btn" data-color="#f59e0b" style="background: #f59e0b; --c: #f59e0b;" title="Línea de Medición (Ámbar)"></button>
+          <button class="color-btn" data-color="#38bdf8" style="background: #38bdf8; --c: #38bdf8;" title="Voltaje AC (Azul)"></button>
+        </div>
+        <button class="btn btn-outline" id="btn-clear-wires" style="padding: 5px 10px; font-size: 12px;">Limpiar Cables</button>
+      </div>
+    </section>
+
+    <!-- Right: Physics & Simulation Sidebar -->
+    <aside class="sidebar">
+      
+      <!-- Rotary Mode Selector -->
+      <div class="card">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="#f97316" stroke-width="2" fill="none">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 7v5l3 3"></path>
+          </svg>
+          Posición de la Rueda Selectora
+        </div>
+
+        <div class="mode-btn-grid">
+          <button class="mode-btn active" id="btn-mode-dc" data-mode="dc">
+            V= (DC)
+          </button>
+          <button class="mode-btn" id="btn-mode-ac" data-mode="ac">
+            V~ (AC)
+          </button>
+          <button class="mode-btn" id="btn-mode-cont" data-mode="cont">
+            •))) (BEEP)
+          </button>
+        </div>
+      </div>
+
+      <!-- Voltage Simulation Presets -->
+      <div class="card">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="#38bdf8" stroke-width="2" fill="none">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+          Inyección de Señales / Mediciones
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <button class="preset-btn" data-mode="dc" data-val="12.42" data-unit="V" data-desc="Fuente de Poder 12VDC">
+            <span>🔋 +12.42 VDC</span>
+            <span style="color: var(--text-muted); font-size: 10px;">Controladora</span>
+          </button>
+          <button class="preset-btn" data-mode="dc" data-val="24.05" data-unit="V" data-desc="Alimentación 24VDC">
+            <span>⚡ +24.05 VDC</span>
+            <span style="color: var(--text-muted); font-size: 10px;">Electroimán</span>
+          </button>
+          <button class="preset-btn" data-mode="ac" data-val="120.3" data-unit="V" data-desc="Línea 120VAC">
+            <span>🔌 120.3 VAC</span>
+            <span style="color: var(--text-muted); font-size: 10px;">Red Eléctrica</span>
+          </button>
+          <button class="preset-btn" data-mode="cont" data-val="0.2" data-unit="Ω" data-desc="Lazo Cerrado OK">
+            <span>🔊 0.2 Ω (Buzzer Beep)</span>
+            <span style="color: #22c55e; font-size: 10px;">Continuidad OK</span>
+          </button>
+          <button class="preset-btn" data-mode="cont" data-val="O.L" data-unit="MΩ" data-desc="Circuito Abierto">
+            <span>⛔ O.L (Open Loop)</span>
+            <span style="color: #ef4444; font-size: 10px;">Sin Continuidad</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Safety & Terminals Pinout -->
+      <div class="card">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="#f97316" stroke-width="2" fill="none">
+            <rect x="2" y="2" width="20" height="20" rx="4"></rect>
+          </svg>
+          Bornes de Sonda Jack (2 Terminales)
+        </div>
+
+        <div style="font-size: 11px; font-family: var(--font-mono); display: flex; flex-direction: column; gap: 6px;">
+          <div style="background: #090e1a; padding: 6px 10px; border-radius: 4px; border-left: 3px solid #64748b;">
+            <strong style="color: #cbd5e1;">COM (Jack Negro):</strong> Tierra / Común / Negativo (-)
+          </div>
+          <div style="background: #090e1a; padding: 6px 10px; border-radius: 4px; border-left: 3px solid #ef4444;">
+            <strong style="color: #ef4444;">V Ω •))) (Jack Rojo):</strong> Tensión / Resistencia / Positivo (+)
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- SVG Modal -->
+  <div class="code-modal" id="code-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="font-size: 15px; font-weight: 700; color: #fff;">Código SVG - Multímetro Digital Pro</h3>
+        <button class="btn btn-outline" id="btn-close-modal" style="padding: 4px 8px;">✕</button>
+      </div>
+      <div class="modal-body">
+        <textarea id="svg-code-textarea" readonly></textarea>
+        <div style="margin-top: 12px; display: flex; justify-content: flex-end;">
+          <button class="btn btn-primary" id="btn-copy-code">Copiar Código SVG</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let rawSvgContent = '';
+    let selectedColor = '#ef4444';
+    let wires = [];
+    let activeWireStart = null;
+    let currentMode = 'dc';
+
+    async function loadSvg() {
+      try {
+        const response = await fetch('digital_multimeter.svg');
+        rawSvgContent = await response.text();
+        document.getElementById('svg-container').innerHTML = rawSvgContent;
+        setupTerminals();
+        setupRotaryDial();
+        setupPresets();
+      } catch (err) {
+        console.error('Error loading SVG:', err);
+      }
+    }
+
+    function setupTerminals() {
+      const terminals = document.querySelectorAll('.dmm-terminal');
+      terminals.forEach(term => {
+        term.classList.add('terminal-hitbox');
+        term.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const termId = term.getAttribute('id');
+          const label = term.getAttribute('data-label');
+          const rect = term.getBoundingClientRect();
+          const containerRect = document.getElementById('canvas-wrapper').getBoundingClientRect();
+          
+          const point = {
+            x: rect.left + rect.width / 2 - containerRect.left,
+            y: rect.top + rect.height / 2 - containerRect.top,
+            id: termId,
+            label: label
+          };
+
+          if (!activeWireStart) {
+            activeWireStart = point;
+            term.style.filter = 'drop-shadow(0 0 10px #f97316)';
+          } else {
+            if (activeWireStart.id !== point.id) {
+              wires.push({ from: activeWireStart, to: point, color: selectedColor });
+              renderWires();
+            }
+            document.querySelectorAll('.dmm-terminal').forEach(t => t.style.filter = '');
+            activeWireStart = null;
+          }
+        });
+      });
+    }
+
+    function renderWires() {
+      const wiresSvg = document.getElementById('interactive-wires-svg');
+      let html = '';
+      wires.forEach(w => {
+        const dx = Math.abs(w.to.x - w.from.x);
+        const cpY = Math.max(dx * 0.4, 40);
+        const d = `M ${w.from.x} ${w.from.y} C ${w.from.x} ${w.from.y + cpY}, ${w.to.x} ${w.to.y - cpY}, ${w.to.x} ${w.to.y}`;
+        html += `<path d="${d}" stroke="${w.color}" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.9" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.6))" />`;
+        html += `<circle cx="${w.from.x}" cy="${w.from.y}" r="4.5" fill="${w.color}" />`;
+        html += `<circle cx="${w.to.x}" cy="${w.to.y}" r="4.5" fill="${w.color}" />`;
+      });
+      wiresSvg.innerHTML = html;
+    }
+
+    document.querySelectorAll('.color-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedColor = btn.getAttribute('data-color');
+      });
+    });
+
+    document.getElementById('btn-clear-wires').addEventListener('click', () => {
+      wires = [];
+      activeWireStart = null;
+      document.querySelectorAll('.dmm-terminal').forEach(t => t.style.filter = '');
+      renderWires();
+    });
+
+    function setMultimeterMode(mode, customVal, customUnit) {
+      currentMode = mode;
+      const knob = document.getElementById('dmm-knob-rotor');
+      const modeInd = document.getElementById('dmm-mode-ind');
+      const subIcon = document.getElementById('dmm-sub-icon');
+      const dispVal = document.getElementById('dmm-display-val');
+      const unitsVal = document.getElementById('dmm-units-val');
+      const modeText = document.getElementById('dmm-knob-mode-text');
+
+      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById(`btn-mode-${mode}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      if (mode === 'dc') {
+        if (knob) knob.style.transform = 'rotate(-45deg)';
+        if (modeInd) modeInd.textContent = 'DC';
+        if (subIcon) subIcon.textContent = '⎓';
+        if (dispVal) dispVal.textContent = customVal || '12.42';
+        if (unitsVal) unitsVal.textContent = customUnit || 'V';
+        if (modeText) { modeText.textContent = 'MODO: V DC (⎓)'; modeText.setAttribute('fill', '#f97316'); }
+      } else if (mode === 'ac') {
+        if (knob) knob.style.transform = 'rotate(0deg)';
+        if (modeInd) modeInd.textContent = 'AC';
+        if (subIcon) subIcon.textContent = '∿';
+        if (dispVal) dispVal.textContent = customVal || '120.3';
+        if (unitsVal) unitsVal.textContent = customUnit || 'V';
+        if (modeText) { modeText.textContent = 'MODO: V AC (∿)'; modeText.setAttribute('fill', '#38bdf8'); }
+      } else if (mode === 'cont') {
+        if (knob) knob.style.transform = 'rotate(45deg)';
+        if (modeInd) modeInd.textContent = '•)))';
+        if (subIcon) subIcon.textContent = 'Ω';
+        if (dispVal) dispVal.textContent = customVal || '0.2';
+        if (unitsVal) unitsVal.textContent = customUnit || 'Ω';
+        if (modeText) { modeText.textContent = 'MODO: CONTINUIDAD (•)))'; modeText.setAttribute('fill', '#22c55e'); }
+      }
+    }
+
+    function setupRotaryDial() {
+      document.getElementById('btn-mode-dc').addEventListener('click', () => setMultimeterMode('dc'));
+      document.getElementById('btn-mode-ac').addEventListener('click', () => setMultimeterMode('ac'));
+      document.getElementById('btn-mode-cont').addEventListener('click', () => setMultimeterMode('cont'));
+
+      // In-SVG clickable dial markers
+      const rotDc = document.getElementById('rot-pos-dc');
+      const rotAc = document.getElementById('rot-pos-ac');
+      const rotCont = document.getElementById('rot-pos-cont');
+      if (rotDc) rotDc.addEventListener('click', () => setMultimeterMode('dc'));
+      if (rotAc) rotAc.addEventListener('click', () => setMultimeterMode('ac'));
+      if (rotCont) rotCont.addEventListener('click', () => setMultimeterMode('cont'));
+    }
+
+    function setupPresets() {
+      document.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const m = btn.getAttribute('data-mode');
+          const val = btn.getAttribute('data-val');
+          const unit = btn.getAttribute('data-unit');
+          setMultimeterMode(m, val, unit);
+        });
+      });
+    }
+
+    // Modal
+    const modal = document.getElementById('code-modal');
+    const textarea = document.getElementById('svg-code-textarea');
+    document.getElementById('btn-view-code').addEventListener('click', () => {
+      textarea.value = rawSvgContent;
+      modal.classList.add('active');
+    });
+    document.getElementById('btn-close-modal').addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+    document.getElementById('btn-copy-code').addEventListener('click', () => {
+      navigator.clipboard.writeText(textarea.value);
+      alert('¡Código SVG del Multímetro copiado al portapapeles!');
+    });
+
+    window.addEventListener('DOMContentLoaded', loadSvg);
+  </script>
+</body>
+</html>

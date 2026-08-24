@@ -1,0 +1,275 @@
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 380" width="460" height="380">
+  <defs>
+    
+    <linearGradient id="metalPlate" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="25%" stop-color="#f8fafc" />
+      <stop offset="50%" stop-color="#e2e8f0" />
+      <stop offset="75%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#94a3b8" />
+    </linearGradient>
+
+    
+    <filter id="shadowHeavy" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="3" dy="6" stdDeviation="5" flood-color="#020617" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  
+  <rect x="25" y="20" width="410" height="340" rx="14" fill="url(#metalPlate)" stroke="#0f172a" stroke-width="2.5" filter="url(#shadowHeavy)" />
+
+  
+  <circle cx="45" cy="40" r="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="1" />
+  <line x1="40" y1="40" x2="50" y2="40" stroke="#cbd5e1" stroke-width="1.5" transform="rotate(45 45 40)" />
+  
+  <circle cx="415" cy="40" r="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="1" />
+  <line x1="410" y1="40" x2="420" y2="40" stroke="#cbd5e1" stroke-width="1.5" transform="rotate(-30 415 40)" />
+
+  <circle cx="45" cy="340" r="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="1" />
+  <line x1="40" y1="340" x2="50" y2="340" stroke="#cbd5e1" stroke-width="1.5" transform="rotate(15 45 340)" />
+
+  <circle cx="415" cy="340" r="7" fill="#0f172a" stroke="#cbd5e1" stroke-width="1" />
+  <line x1="410" y1="340" x2="420" y2="340" stroke="#cbd5e1" stroke-width="1.5" transform="rotate(-75 415 340)" />
+
+  
+  <rect x="170" y="32" width="120" height="30" fill="#ffffff" stroke="#0f172a" stroke-width="1.5" rx="1" />
+  <text x="230" y="47" font-family="Arial, sans-serif" font-weight="900" font-size="11" fill="#0f172a" text-anchor="middle" letter-spacing="1">ACCENTRA</text>
+  <text x="230" y="58" font-family="Arial, sans-serif" font-weight="bold" font-size="8" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">ASSA ABLOY</text>
+
+  
+  <g transform="translate(130, 30)">
+    <text x="15" y="10" font-family="Courier New, monospace" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="middle">4 3 2 1</text>
+    <text x="15" y="18" font-family="Arial, sans-serif" font-weight="bold" font-size="6" fill="#0f172a" text-anchor="middle">DIP SWITCH 1</text>
+    <rect x="0" y="20" width="30" height="12" fill="#0f172a" rx="1" />
+    <rect x="3" y="23" width="5" height="6" fill="#ffffff" />
+    <rect x="10" y="23" width="5" height="6" fill="#ffffff" />
+    <rect x="17" y="23" width="5" height="6" fill="#ffffff" />
+    <rect x="24" y="23" width="5" height="6" fill="#ffffff" />
+  </g>
+
+  
+  <text x="310" y="40" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a">RESET</text>
+  <circle cx="300" cy="37" r="3" fill="#0f172a" />
+
+  
+  <g transform="translate(200, 105)">
+    
+    <text x="50" y="10" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">ONLINE</text>
+    <rect x="55" y="4" width="8" height="7" fill="#cbd5e1" stroke="#475569" stroke-width="0.5" />
+    <line x1="63" y1="7.5" x2="85" y2="7.5" stroke="#475569" stroke-width="0.75" />
+
+    <text x="50" y="20" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">HOST COMM</text>
+    <rect x="55" y="14" width="8" height="7" fill="#cbd5e1" stroke="#475569" stroke-width="0.5" />
+    <line x1="63" y1="17.5" x2="85" y2="17.5" stroke="#475569" stroke-width="0.75" />
+
+    <text x="50" y="30" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">IO INTERNAL</text>
+    <rect x="55" y="24" width="8" height="7" fill="#cbd5e1" stroke="#475569" stroke-width="0.5" />
+    <line x1="63" y1="27.5" x2="85" y2="27.5" stroke="#475569" stroke-width="0.75" />
+
+    <text x="50" y="45" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">BATT FAIL</text>
+    <rect x="55" y="39" width="8" height="7" fill="#cbd5e1" stroke="#475569" stroke-width="0.5" />
+
+    <text x="50" y="55" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">AC FAIL</text>
+    <rect x="55" y="49" width="8" height="7" fill="#cbd5e1" stroke="#475569" stroke-width="0.5" />
+
+    <text x="50" y="65" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">TAMPER</text>
+    <rect x="55" y="59" width="8" height="7" fill="#cbd5e1" stroke="#475569" stroke-width="0.5" />
+
+    <text x="50" y="75" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">IN 1</text>
+    <rect x="55" y="69" width="8" height="7" fill="#cbd5e1" stroke="#475569" stroke-width="0.5" />
+
+    <text x="50" y="85" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">IN 2</text>
+    <rect x="55" y="79" width="8" height="7" fill="#cbd5e1" stroke="#475569" stroke-width="0.5" />
+
+    <text x="50" y="95" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">IN 3</text>
+    <rect x="55" y="89" width="8" height="7" fill="#cbd5e1" stroke="#475569" stroke-width="0.5" />
+
+    <text x="50" y="105" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">IN 4</text>
+    <rect x="55" y="99" width="8" height="7" fill="#cbd5e1" stroke="#475569" stroke-width="0.5" />
+
+    <text x="50" y="115" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">ETHERNET</text>
+    <rect x="55" y="109" width="8" height="7" fill="#cbd5e1" stroke="#475569" stroke-width="0.5" />
+
+    <text x="45" y="130" font-family="Arial, sans-serif" font-weight="bold" font-size="6.5" fill="#0f172a" text-anchor="end">IO MODULE PORT 1</text>
+    <text x="45" y="140" font-family="Arial, sans-serif" font-weight="bold" font-size="6.5" fill="#0f172a" text-anchor="end">IO MODULE PORT 2</text>
+    <text x="45" y="150" font-family="Arial, sans-serif" font-weight="bold" font-size="6.5" fill="#0f172a" text-anchor="end">READER 1</text>
+    <text x="45" y="160" font-family="Arial, sans-serif" font-weight="bold" font-size="6.5" fill="#0f172a" text-anchor="end">READER 2</text>
+
+    
+    <path d="M85 7.5 L85 160" stroke="#475569" stroke-width="0.75" fill="none" />
+  </g>
+
+  
+  
+  <rect x="100" y="210" width="45" height="35" rx="2" fill="#0f172a" stroke="#334155" />
+  <rect x="100" y="250" width="45" height="35" rx="2" fill="#0f172a" stroke="#334155" />
+  <text x="150" y="228" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a">RELAY 1</text>
+  <text x="150" y="268" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a">RELAY 2</text>
+
+  
+  <rect x="310" y="210" width="45" height="35" rx="2" fill="#0f172a" stroke="#334155" />
+  <rect x="310" y="250" width="45" height="35" rx="2" fill="#0f172a" stroke="#334155" />
+  <text x="305" y="228" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">RELAY 3</text>
+  <text x="305" y="268" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" text-anchor="end">RELAY 4</text>
+
+  
+  <g transform="translate(60, 288)">
+    <rect x="0" y="0" width="90" height="32" fill="#ffffff" stroke="#94a3b8" stroke-width="1" rx="2" />
+    <text x="5" y="10" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">P/N: NTX700-CTLR</text>
+    <text x="5" y="18" font-family="Arial, sans-serif" font-size="5" fill="#475569">Product Tech Support</text>
+    <text x="5" y="26" font-family="Arial, sans-serif" font-weight="bold" font-size="5" fill="#0f172a">Call: 1-800-810-WIRE</text>
+  </g>
+
+  
+  
+  
+  <g transform="translate(110, 0)">
+    <rect x="0" y="0" width="240" height="20" fill="#0f172a" rx="2" />
+    
+    <circle cx="15" cy="10" r="4.5" fill="url(#metalPlate)" stroke="#475569" stroke-width="0.5" />
+    <circle cx="45" cy="10" r="4.5" fill="url(#metalPlate)" stroke="#475569" stroke-width="0.5" />
+    <circle cx="75" cy="10" r="4.5" fill="url(#metalPlate)" stroke="#475569" stroke-width="0.5" />
+    <circle cx="105" cy="10" r="4.5" fill="url(#metalPlate)" stroke="#475569" stroke-width="0.5" />
+    <circle cx="135" cy="10" r="4.5" fill="url(#metalPlate)" stroke="#475569" stroke-width="0.5" />
+    <circle cx="165" cy="10" r="4.5" fill="url(#metalPlate)" stroke="#475569" stroke-width="0.5" />
+    <circle cx="195" cy="10" r="4.5" fill="url(#metalPlate)" stroke="#475569" stroke-width="0.5" />
+    <circle cx="225" cy="10" r="4.5" fill="url(#metalPlate)" stroke="#475569" stroke-width="0.5" />
+  </g>
+  <text x="125" y="28" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">TAMPER</text>
+  <text x="185" y="28" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">AC FAIL</text>
+  <text x="245" y="28" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">BATT FAIL</text>
+  <text x="305" y="28" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">12 - 24 VDC</text>
+
+  
+  
+  <g transform="translate(0, 45)">
+    <rect x="0" y="0" width="22" height="150" fill="#0f172a" rx="2" />
+    <circle cx="11" cy="10" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="25" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="40" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="55" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="70" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="85" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="100" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="115" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="130" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="143" r="4" fill="url(#metalPlate)" />
+  </g>
+  
+  <g font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">
+    <text x="26" y="58">READER POWER</text>
+    <text x="26" y="73">GROUND</text>
+    <text x="26" y="88">D0 / DAT / B</text>
+    <text x="26" y="103">D1 / CLK / A</text>
+    <text x="26" y="118">GROUND</text>
+    <text x="26" y="133">GREEN LED</text>
+    <text x="26" y="148">RED LED</text>
+    <text x="26" y="163">BEEPER</text>
+    <text x="26" y="178">NO CONNECTION</text>
+    <text x="26" y="191">GROUND</text>
+  </g>
+  <text x="96" y="125" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" transform="rotate(-90 96 125)">READER 1</text>
+
+  
+  <g transform="translate(0, 205)">
+    <rect x="0" y="0" width="22" height="60" fill="#0f172a" rx="2" />
+    <circle cx="11" cy="10" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="25" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="40" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="52" r="4" fill="url(#metalPlate)" />
+  </g>
+  <text x="26" y="218" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">+ IN 1 -</text>
+  <text x="26" y="248" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">+ IN 2 -</text>
+
+  
+  <g transform="translate(0, 275)">
+    <rect x="0" y="0" width="22" height="85" fill="#0f172a" rx="2" />
+    <circle cx="11" cy="10" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="23" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="36" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="49" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="62" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="75" r="4" fill="url(#metalPlate)" />
+  </g>
+  <g font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">
+    <text x="26" y="287">NO</text>
+    <text x="26" y="300">C</text>
+    <text x="26" y="313">NC</text>
+    <text x="26" y="326">NO</text>
+    <text x="26" y="339">C</text>
+    <text x="26" y="352">NC</text>
+  </g>
+
+  
+  
+  <g transform="translate(438, 45)">
+    <rect x="0" y="0" width="22" height="150" fill="#0f172a" rx="2" />
+    <circle cx="11" cy="10" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="25" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="40" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="55" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="70" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="85" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="100" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="115" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="130" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="143" r="4" fill="url(#metalPlate)" />
+  </g>
+  
+  <g font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a" text-anchor="end">
+    <text x="434" y="58">READER POWER</text>
+    <text x="434" y="73">GROUND</text>
+    <text x="434" y="88">D0 / DAT / B</text>
+    <text x="434" y="103">D1 / CLK / A</text>
+    <text x="434" y="118">GROUND</text>
+    <text x="434" y="133">GREEN LED</text>
+    <text x="434" y="148">RED LED</text>
+    <text x="434" y="163">BEEPER</text>
+    <text x="434" y="178">NO CONNECTION</text>
+    <text x="434" y="191">GROUND</text>
+  </g>
+  <text x="364" y="125" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a" transform="rotate(90 364 125)">READER 2</text>
+
+  
+  <g transform="translate(438, 205)">
+    <rect x="0" y="0" width="22" height="60" fill="#0f172a" rx="2" />
+    <circle cx="11" cy="10" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="25" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="40" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="52" r="4" fill="url(#metalPlate)" />
+  </g>
+  <text x="434" y="218" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a" text-anchor="end">+ IN 3 -</text>
+  <text x="434" y="248" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a" text-anchor="end">+ IN 4 -</text>
+
+  
+  <g transform="translate(438, 275)">
+    <rect x="0" y="0" width="22" height="85" fill="#0f172a" rx="2" />
+    <circle cx="11" cy="10" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="23" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="36" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="49" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="62" r="4" fill="url(#metalPlate)" />
+    <circle cx="11" cy="75" r="4" fill="url(#metalPlate)" />
+  </g>
+  <g font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a" text-anchor="end">
+    <text x="434" y="287">NO</text>
+    <text x="434" y="300">C</text>
+    <text x="434" y="313">NC</text>
+    <text x="434" y="326">NO</text>
+    <text x="434" y="339">C</text>
+    <text x="434" y="352">NC</text>
+  </g>
+
+  
+  <g transform="translate(260, 360)">
+    <rect x="0" y="0" width="90" height="20" fill="#0f172a" rx="2" />
+    <circle cx="15" cy="10" r="4" fill="url(#metalPlate)" />
+    <circle cx="30" cy="10" r="4" fill="url(#metalPlate)" />
+    <circle cx="45" cy="10" r="4" fill="url(#metalPlate)" />
+    <circle cx="60" cy="10" r="4" fill="url(#metalPlate)" />
+    <circle cx="75" cy="10" r="4.5" fill="url(#metalPlate)" />
+  </g>
+  <text x="180" y="357" font-family="Arial, sans-serif" font-weight="bold" font-size="7" fill="#0f172a">USB</text>
+  <text x="215" y="352" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">TCP/IP</text>
+  <text x="215" y="359" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">ETHERNET</text>
+</svg>
