@@ -56,7 +56,6 @@ export default function SimulatorCanvas({
     nodes,
     edges,
     validationResult,
-    electrical,
     onNodesChange,
     onEdgesChange,
     onConnect,
@@ -180,12 +179,12 @@ export default function SimulatorCanvas({
           <div>
             <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-ping" />
-              {mode === 'edit' ? t.creator.editModeTitle : t.simulator.wiringSimTitle}
+              {mode === 'edit' ? 'Modo Edición Sandbox' : 'Simulador Sandbox de Pruebas'}
             </h3>
             <p className="text-[10px] text-slate-500 dark:text-slate-400 hidden md:block">
               {mode === 'edit' 
-                ? t.creator.editModeSubtitle 
-                : t.simulator.wiringSimSubtitle}
+                ? 'Edita nodos y conexiones de prueba en el entorno sandbox aislado.' 
+                : 'Selecciona cables del sandbox para probar circuitos de experimentación.'}
             </p>
           </div>
         </div>
@@ -514,34 +513,16 @@ export default function SimulatorCanvas({
             }`}>
               <h4 className="text-sm font-bold flex items-center gap-2 mb-1">
                 {validationResult.isValid ? (
-                  <span>{t.simulator.circuitOk}</span>
+                  <span>Circuito Sandbox OK</span>
                 ) : (
-                  <span>{t.simulator.circuitError}</span>
+                  <span>Error en Circuito Sandbox</span>
                 )}
               </h4>
               <p className="text-xs">
                 {validationResult.isValid 
-                  ? t.simulator.validationSuccess
+                  ? 'Validación sandbox completada con éxito.' 
                   : validationResult.errors[0]?.message || 'Circuito incompleto.'}
               </p>
-            </div>
-          )}
-
-          {/* PANEL DE FALLAS ELÉCTRICAS (cortocircuito / polaridad invertida) — Motor eléctrico real */}
-          {electrical && electrical.faults.length > 0 && (
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-40 max-w-lg w-[90%] p-3.5 rounded-xl shadow-2xl border bg-red-950/95 border-red-500/60 text-red-200 animate-fadeIn">
-              <h4 className="text-xs font-extrabold uppercase tracking-wider flex items-center gap-2 mb-1.5">
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
-                <span>{t.sandbox.electricalFaults}</span>
-              </h4>
-              <ul className="space-y-1">
-                {electrical.faults.map((fault, i) => (
-                  <li key={i} className="text-[11px] font-mono leading-snug flex items-start gap-1.5">
-                    <span className="text-red-400 mt-0.5">▸</span>
-                    <span>{fault}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           )}
         </div>

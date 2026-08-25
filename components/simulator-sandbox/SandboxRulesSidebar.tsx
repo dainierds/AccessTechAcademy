@@ -134,7 +134,7 @@ export default function SandboxRulesSidebar({ isCollapsed, onToggleCollapse }: {
             <Plus className="w-3.5 h-3.5" />
             {t.sandbox.newRule}
           </span>
-          <span className="text-[10px] font-mono text-slate-500">Circuit Engine</span>
+          <span className="text-[10px] font-mono text-slate-500">Sandbox Engine</span>
         </div>
 
         {/* IF Section */}

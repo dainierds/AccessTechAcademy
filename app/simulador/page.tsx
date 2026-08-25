@@ -143,7 +143,7 @@ export default async function TechnicianOverviewPage() {
         </div>
 
         <SubscriptionManagerCard
-          plan={dbProfile?.stripe_subscription_id ? t.subscription.pro : t.subscription.freeSandbox}
+          plan={dbProfile?.stripe_subscription_id ? 'Pro' : 'Free Sandbox'}
           status={dbProfile?.subscription_status || 'trialing'}
           isCompany={false}
           hasSubscription={!!dbProfile?.stripe_subscription_id}

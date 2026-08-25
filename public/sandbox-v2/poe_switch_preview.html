@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switch PoE Gigabit Industrial - Componente Vectorial Profesional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #070d19;
+      --card-bg: #0f172a;
+      --card-border: #1e293b;
+      --accent: #38bdf8;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --accent-amber: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --font-ui: 'Outfit', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-ui);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-icon {
+      width: 40px; height: 40px; background: #0b1329;
+      border: 2px solid #ef4444; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; color: #ef4444;
+    }
+
+    .brand-title h1 { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
+    .brand-title span { font-size: 12px; font-family: var(--font-mono); color: var(--accent); }
+
+    .btn-group { display: flex; gap: 8px; }
+    .btn {
+      font-family: var(--font-ui); font-size: 13px; font-weight: 600;
+      padding: 8px 14px; border-radius: 8px; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: all 0.2s ease; border: none; text-decoration: none;
+    }
+
+    .btn-primary { background: #0284c7; color: #fff; }
+    .btn-primary:hover { background: #0369a1; }
+    .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--card-border); }
+    .btn-outline:hover { background: #1e293b; }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 20px;
+      padding: 20px 28px;
+      max-width: 1800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    @media (max-width: 1250px) { main { grid-template-columns: 1fr; } }
+
+    .viewport-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 20px; display: flex; flex-direction: column;
+      gap: 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .canvas-wrapper {
+      position: relative; background: #060b14; border: 1px solid #1e293b;
+      border-radius: 12px; padding: 20px; display: flex; align-items: center;
+      justify-content: center; min-height: 580px; overflow: hidden;
+    }
+
+    #svg-container { width: 100%; max-width: 980px; position: relative; user-select: none; }
+    #svg-container svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 14px 28px rgba(0,0,0,0.5)); }
+
+    .terminal-hitbox { cursor: crosshair; transition: transform 0.15s ease; }
+    .terminal-hitbox:hover rect:first-child {
+      stroke: #38bdf8 !important; stroke-width: 3px !important;
+      filter: drop-shadow(0 0 10px #38bdf8);
+    }
+
+    #interactive-wires-svg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 20;
+    }
+
+    .wire-controls {
+      display: flex; align-items: center; justify-content: space-between;
+      background: #090e1a; border: 1px solid #1e293b; border-radius: 10px;
+      padding: 10px 16px;
+    }
+
+    .color-picker { display: flex; align-items: center; gap: 8px; }
+    .color-btn {
+      width: 24px; height: 24px; border-radius: 50%; border: 2px solid transparent; cursor: pointer;
+    }
+    .color-btn.active { transform: scale(1.2); border-color: #fff; box-shadow: 0 0 8px var(--c); }
+
+    .sidebar { display: flex; flex-direction: column; gap: 16px; }
+    .card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 14px; padding: 16px; display: flex; flex-direction: column;
+      gap: 12px;
+    }
+
+    .card-title {
+      font-size: 14px; font-weight: 700; display: flex; align-items: center;
+      gap: 8px; color: #fff;
+    }
+
+    .action-btn-large {
+      width: 100%; padding: 12px; border: none; border-radius: 8px;
+      font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s;
+      background: #0284c7; color: white; display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .action-btn-large:hover { background: #0369a1; }
+
+    .code-modal {
+      position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center; z-index: 100;
+      opacity: 0; pointer-events: none; transition: opacity 0.25s ease; padding: 20px;
+    }
+    .code-modal.active { opacity: 1; pointer-events: auto; }
+    .modal-box {
+      background: #0f172a; border: 1px solid #334155; border-radius: 14px;
+      width: 100%; max-width: 800px; max-height: 85vh; display: flex;
+      flex-direction: column; overflow: hidden;
+    }
+    .modal-header { padding: 14px 20px; background: #1e293b; display: flex; justify-content: space-between; align-items: center; }
+    .modal-body { padding: 16px; overflow-y: auto; }
+    .modal-body textarea { width: 100%; height: 350px; background: #070d19; color: #38bdf8; border: 1px solid #1e293b; border-radius: 6px; padding: 10px; font-family: var(--font-mono); font-size: 11px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none">
+          <rect x="2" y="2" width="20" height="8" rx="2"></rect>
+          <rect x="2" y="14" width="20" height="8" rx="2"></rect>
+          <line x1="6" y1="6" x2="6.01" y2="6"></line>
+          <line x1="6" y1="18" x2="6.01" y2="18"></line>
+        </svg>
+      </div>
+      <div class="brand-title">
+        <h1>Switch PoE Gigabit Industrial</h1>
+        <span>6 PUERTOS (4 POE AF/AT + 1 UP-LINK GIGABIT + 1 SFP FIBRA) • 4KV SURGE</span>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-outline" id="btn-view-code">
+        <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        Ver / Copiar SVG
+      </button>
+      <a href="hid_aero_x100_preview.html" class="btn btn-outline">HID Aero X100</a>
+      <a href="door_controller_preview.html" class="btn btn-outline">Door Controller</a>
+      <a href="altronix_power_supply_preview.html" class="btn btn-outline">Altronix</a>
+      <a href="index.html" class="btn btn-primary">Simulador AccessLab</a>
+    </div>
+  </header>
+
+  <main>
+    
+    <!-- Left: Canvas Viewport -->
+    <section class="viewport-card">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h2>Switch PoE Gigabit con Puertos Modulares RJ45 (SVG)</h2>
+          <p style="font-size: 13px; color: var(--text-muted);">
+            Haz clic en los <strong>puertos RJ45 (UP-LINK y PoE 1..4) o en el Slot SFP</strong> para conectar cables de red Cat6 digitales en el simulador.
+          </p>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: 11px; background: rgba(239,68,68,0.15); color: #ef4444; padding: 4px 8px; border-radius: 4px;">4 POE + 1 UP-LINK + 1 SFP</span>
+      </div>
+
+      <div class="canvas-wrapper" id="canvas-wrapper">
+        <div id="svg-container"></div>
+        <svg id="interactive-wires-svg"></svg>
+      </div>
+
+      <div class="wire-controls">
+        <div class="color-picker">
+          <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Color de Cable Patch:</span>
+          <button class="color-btn active" data-color="#38bdf8" style="background: #38bdf8; --c: #38bdf8;" title="Cable Cat6 Azul (Datos / Red)"></button>
+          <button class="color-btn" data-color="#ef4444" style="background: #ef4444; --c: #ef4444;" title="Cable Cat6 Rojo (PoE Power 48V)"></button>
+          <button class="color-btn" data-color="#22c55e" style="background: #22c55e; --c: #22c55e;" title="Cable Cat6 Verde (Up-link IP)"></button>
+          <button class="color-btn" data-color="#f59e0b" style="background: #f59e0b; --c: #f59e0b;" title="Fibra SFP Ámbar"></button>
+        </div>
+        <button class="btn btn-outline" id="btn-clear-wires" style="padding: 5px 10px; font-size: 12px;">Limpiar Cables</button>
+      </div>
+    </section>
+
+    <!-- Right: Physics & Simulation Sidebar -->
+    <aside class="sidebar">
+      
+      <!-- Network Ports Simulation -->
+      <div class="card">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="#38bdf8" stroke-width="2" fill="none">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+          Simulación de Enlace y Tráfico
+        </div>
+
+        <button class="action-btn-large" id="btn-sim-traffic">
+          ⚡ GENERAR TRÁFICO Y ACTIVIDAD POE
+        </button>
+
+        <div style="font-size: 11.5px; font-family: var(--font-mono); display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: flex; justify-content: space-between; background: #090e1a; padding: 6px 10px; border-radius: 4px;">
+            <span>Potencia PoE Total:</span>
+            <span style="color: #22c55e; font-weight: 800;">65W Max (IEEE 802.3af/at)</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; background: #090e1a; padding: 6px 10px; border-radius: 4px;">
+            <span>Modo VLAN Aislamiento:</span>
+            <span id="vlan-status-label" style="color: #38bdf8; font-weight: 800;">OFF (Normal Switch)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pinout Matrix Summary -->
+      <div class="card">
+        <div class="card-title">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="#ef4444" stroke-width="2" fill="none">
+            <rect x="2" y="2" width="20" height="20" rx="4"></rect>
+          </svg>
+          Mapeo de Puertos de Red
+        </div>
+
+        <div style="font-size: 11px; font-family: var(--font-mono); display: flex; flex-direction: column; gap: 5px;">
+          <div style="background: #090e1a; padding: 6px 10px; border-radius: 4px; border-left: 3px solid #38bdf8;">
+            <strong style="color: #ffffff;">SFP Slot:</strong> Fibra Óptica 1.25Gbps (Backbone)
+          </div>
+          <div style="background: #090e1a; padding: 6px 10px; border-radius: 4px; border-left: 3px solid #22c55e;">
+            <strong style="color: #ffffff;">UP-LINK:</strong> RJ45 10/100/1000Mbps a Router / NVR
+          </div>
+          <div style="background: #090e1a; padding: 6px 10px; border-radius: 4px; border-left: 3px solid #ef4444;">
+            <strong style="color: #fca5a5;">POE 1:</strong> 48V DC / Conexión Controladora TCP/IP
+          </div>
+          <div style="background: #090e1a; padding: 6px 10px; border-radius: 4px; border-left: 3px solid #ef4444;">
+            <strong style="color: #fca5a5;">POE 2:</strong> 48V DC / Lector IP o Cámara CCTV
+          </div>
+          <div style="background: #090e1a; padding: 6px 10px; border-radius: 4px; border-left: 3px solid #ef4444;">
+            <strong style="color: #fca5a5;">POE 3:</strong> 48V DC / Intercomunicador SIP
+          </div>
+          <div style="background: #090e1a; padding: 6px 10px; border-radius: 4px; border-left: 3px solid #ef4444;">
+            <strong style="color: #fca5a5;">POE 4:</strong> 48V DC / Punto de Acceso WiFi
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <!-- SVG Modal -->
+  <div class="code-modal" id="code-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="font-size: 15px; font-weight: 700; color: #fff;">Código SVG - Switch PoE Gigabit Industrial</h3>
+        <button class="btn btn-outline" id="btn-close-modal" style="padding: 4px 8px;">✕</button>
+      </div>
+      <div class="modal-body">
+        <textarea id="svg-code-textarea" readonly></textarea>
+        <div style="margin-top: 12px; display: flex; justify-content: flex-end;">
+          <button class="btn btn-primary" id="btn-copy-code">Copiar Código SVG</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let rawSvgContent = '';
+    let selectedColor = '#38bdf8';
+    let wires = [];
+    let activeWireStart = null;
+    let vlanOn = false;
+
+    async function loadSvg() {
+      try {
+        const response = await fetch('poe_switch.svg');
+        rawSvgContent = await response.text();
+        document.getElementById('svg-container').innerHTML = rawSvgContent;
+        setupPorts();
+        setupVlanSwitch();
+        setupTrafficSimulation();
+      } catch (err) {
+        console.error('Error loading SVG:', err);
+      }
+    }
+
+    function setupPorts() {
+      const ports = document.querySelectorAll('.poe-port-hit');
+      ports.forEach(port => {
+        port.classList.add('terminal-hitbox');
+        port.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const portId = port.getAttribute('id');
+          const label = port.getAttribute('data-label');
+          const rect = port.getBoundingClientRect();
+          const containerRect = document.getElementById('canvas-wrapper').getBoundingClientRect();
+          
+          const point = {
+            x: rect.left + rect.width / 2 - containerRect.left,
+            y: rect.top + rect.height / 2 - containerRect.top,
+            id: portId,
+            label: label
+          };
+
+          if (!activeWireStart) {
+            activeWireStart = point;
+            port.style.filter = 'drop-shadow(0 0 12px #38bdf8)';
+          } else {
+            if (activeWireStart.id !== point.id) {
+              wires.push({ from: activeWireStart, to: point, color: selectedColor });
+              renderWires();
+            }
+            document.querySelectorAll('.poe-port-hit').forEach(t => t.style.filter = '');
+            activeWireStart = null;
+          }
+        });
+      });
+    }
+
+    function renderWires() {
+      const wiresSvg = document.getElementById('interactive-wires-svg');
+      let html = '';
+      wires.forEach(w => {
+        const dx = Math.abs(w.to.x - w.from.x);
+        const cpY = Math.max(dx * 0.4, 50);
+        const d = `M ${w.from.x} ${w.from.y} C ${w.from.x} ${w.from.y + cpY}, ${w.to.x} ${w.to.y - cpY}, ${w.to.x} ${w.to.y}`;
+        html += `<path d="${d}" stroke="${w.color}" stroke-width="6" stroke-linecap="round" fill="none" opacity="0.9" filter="drop-shadow(0 3px 6px rgba(0,0,0,0.7))" />`;
+        html += `<circle cx="${w.from.x}" cy="${w.from.y}" r="6" fill="${w.color}" />`;
+        html += `<circle cx="${w.to.x}" cy="${w.to.y}" r="6" fill="${w.color}" />`;
+      });
+      wiresSvg.innerHTML = html;
+    }
+
+    document.querySelectorAll('.color-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedColor = btn.getAttribute('data-color');
+      });
+    });
+
+    document.getElementById('btn-clear-wires').addEventListener('click', () => {
+      wires = [];
+      activeWireStart = null;
+      document.querySelectorAll('.poe-port-hit').forEach(t => t.style.filter = '');
+      renderWires();
+    });
+
+    function setupVlanSwitch() {
+      const slider = document.getElementById('poe-vlan-slider');
+      const knob = document.getElementById('poe-vlan-knob');
+      const notch = document.getElementById('poe-vlan-knob-notch');
+      const vlanLed = document.getElementById('poe-led-vlan');
+      const statusLabel = document.getElementById('vlan-status-label');
+
+      if (slider) {
+        slider.addEventListener('click', () => {
+          vlanOn = !vlanOn;
+          if (vlanOn) {
+            if (knob) knob.setAttribute('x', '0');
+            if (notch) { notch.setAttribute('x1', '8'); notch.setAttribute('x2', '8'); }
+            if (vlanLed) vlanLed.setAttribute('fill', '#f59e0b');
+            statusLabel.style.color = '#f59e0b';
+            statusLabel.innerText = 'ON (Puertos PoE Aislados)';
+          } else {
+            if (knob) knob.setAttribute('x', '-16');
+            if (notch) { notch.setAttribute('x1', '-8'); notch.setAttribute('x2', '-8'); }
+            if (vlanLed) vlanLed.setAttribute('fill', '#22c55e');
+            statusLabel.style.color = '#38bdf8';
+            statusLabel.innerText = 'OFF (Normal Switch)';
+          }
+        });
+      }
+    }
+
+    function setupTrafficSimulation() {
+      const btn = document.getElementById('btn-sim-traffic');
+      btn.addEventListener('click', () => {
+        const leds = ['poe-led-uplink', 'poe-led-p1', 'poe-led-p2', 'poe-led-p3', 'poe-led-p4'];
+        let count = 0;
+        const interval = setInterval(() => {
+          leds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.setAttribute('fill', Math.random() > 0.4 ? '#22c55e' : '#090e17');
+          });
+          count++;
+          if (count > 15) {
+            clearInterval(interval);
+            leds.forEach(id => {
+              const el = document.getElementById(id);
+              if (el) el.setAttribute('fill', '#22c55e');
+            });
+          }
+        }, 120);
+      });
+    }
+
+    // Modal
+    const modal = document.getElementById('code-modal');
+    const textarea = document.getElementById('svg-code-textarea');
+    document.getElementById('btn-view-code').addEventListener('click', () => {
+      textarea.value = rawSvgContent;
+      modal.classList.add('active');
+    });
+    document.getElementById('btn-close-modal').addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+    document.getElementById('btn-copy-code').addEventListener('click', () => {
+      navigator.clipboard.writeText(textarea.value);
+      alert('¡Código SVG del Switch PoE copiado al portapapeles!');
+    });
+
+    window.addEventListener('DOMContentLoaded', loadSvg);
+  </script>
+</body>
+</html>

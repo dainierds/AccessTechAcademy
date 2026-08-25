@@ -23,12 +23,10 @@ export async function saveScenarioAction(formData: FormData) {
   const nodes = JSON.parse(nodesJson);
   const edges = JSON.parse(edgesJson);
 
-  // Formatear correct_wiring con referencias a nodo + borne (formato que espera el motor eléctrico)
+  // Formatear correct_wiring como lista simple de origen/destino
   const correct_wiring = edges.map((e: any) => ({
-    sourceNode: e.source,
-    sourceHandle: e.sourceHandle,
-    targetNode: e.target,
-    targetHandle: e.targetHandle,
+    sourcePort: e.sourceHandle,
+    targetPort: e.targetHandle,
   }));
 
   // Crear la configuración del hardware
@@ -39,20 +37,18 @@ export async function saveScenarioAction(formData: FormData) {
   if (type === 'diagnostic' && faultWiringJson) {
     const faultEdges = JSON.parse(faultWiringJson);
     hardware_config.initial_wiring = faultEdges;
-
+    
     // Identificar el cable dañado
-    const correctWiringIds = edges.map((e: any) => `${e.source}:${e.sourceHandle}-${e.target}:${e.targetHandle}`);
-    const faultEdge = faultEdges.find((e: any) =>
-      !correctWiringIds.includes(`${e.source}:${e.sourceHandle}-${e.target}:${e.targetHandle}`)
+    const correctWiringIds = edges.map((e: any) => `${e.sourceHandle}-${e.targetHandle}`);
+    const faultEdge = faultEdges.find((e: any) => 
+      !correctWiringIds.includes(`${e.sourceHandle}-${e.targetHandle}`)
     );
     if (faultEdge) {
       fault_injection = {
         wiring: faultEdges,
         incorrect_connection: {
-          sourceNode: faultEdge.source,
-          sourceHandle: faultEdge.sourceHandle,
-          targetNode: faultEdge.target,
-          targetHandle: faultEdge.targetHandle,
+          sourcePort: faultEdge.sourceHandle,
+          targetPort: faultEdge.targetHandle
         }
       };
     }

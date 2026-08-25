@@ -22,7 +22,7 @@ function getHandleStyle(type: TerminalType | string) {
 }
 
 // 1. COMPONENTE RENDERIZADO POR CANVAS VECTORIAL EDUCATIVO (Clonado exactamente de devices.js)
-export function CanvasDeviceNode({ id, data, typeOverride }: { id: string; data: any; typeOverride?: string }) {
+export function CanvasDeviceNode({ data, typeOverride }: { data: any; typeOverride?: string }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const rawType = typeOverride || data?.type || 'power-supply';
   
@@ -39,22 +39,16 @@ export function CanvasDeviceNode({ id, data, typeOverride }: { id: string; data:
 
   const def: DeviceDef = SANDBOX_DEVICES[devKey] || SANDBOX_DEVICES['power-supply'];
 
-  // Estado eléctrico real calculado por el motor (Union-Find HOT/GND/SHORT/FLOAT)
-  const electrical = useSimulatorSandboxStore((s) => s.electrical);
-  const simStates = useSimulatorSandboxStore((s) => s.simStates);
-  const toggleSimState = useSimulatorSandboxStore((s) => s.toggleSimState);
-
-  // Estado de interacción del usuario (interruptor power, botón REX, puerta, movimiento)
-  const interactionState = simStates[id] || {};
-  // Estado eléctrico calculado (energized, relay, powered, pwrLed, reversed)
-  const electricalState = electrical?.devices?.[id] || {};
-
-  // Estado final de dibujo: eléctrico real + interacciones del usuario
-  const simState: Record<string, any> = {
-    ...(def.action && def.action.def !== undefined ? { [def.action.stateKey]: def.action.def } : {}),
-    ...electricalState,
-    ...interactionState,
-  };
+  const [simState, setSimState] = useState<any>(() => {
+    const st: any = {};
+    if (def.action && def.action.def !== undefined) {
+      st[def.action.stateKey] = def.action.def;
+    }
+    if (devKey === 'maglock') st.energized = true;
+    if (devKey === 'door-controller') { st.pwrLed = true; st.relay = true; }
+    if (devKey === 'motion-sensor') { st.powered = true; st.motion = false; }
+    return st;
+  });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -64,13 +58,14 @@ export function CanvasDeviceNode({ id, data, typeOverride }: { id: string; data:
 
     ctx.clearRect(0, 0, def.w, def.h);
     ctx.save();
-    def.draw(ctx, { id: id || 'dev', type: devKey }, simState);
+    def.draw(ctx, { id: data.id || 'dev', type: devKey }, simState);
     ctx.restore();
-  }, [devKey, id, def, simState]);
+  }, [devKey, simState, def, data.id]);
 
   const handleToggle = () => {
     if (def.action) {
-      toggleSimState(id, def.action.stateKey);
+      const k = def.action.stateKey;
+      setSimState((prev: any) => ({ ...prev, [k]: !prev[k] }));
     }
   };
 
@@ -291,34 +286,34 @@ export function DynamicHardwareNode({ data }: { data: any }) {
 }
 
 // Exportar Nodos Específicos Usando la Renderización Vectorial Directa Canvas
-export function PowerSupplyNode({ id, data }: { id: string; data: any }) {
-  return <CanvasDeviceNode id={id} data={data} typeOverride="power-supply" />;
+export function PowerSupplyNode({ data }: { data: any }) {
+  return <CanvasDeviceNode data={data} typeOverride="power-supply" />;
 }
 
-export function DoorControllerNode({ id, data }: { id: string; data: any }) {
-  return <CanvasDeviceNode id={id} data={data} typeOverride="door-controller" />;
+export function DoorControllerNode({ data }: { data: any }) {
+  return <CanvasDeviceNode data={data} typeOverride="door-controller" />;
 }
 
-export function ElectricStrikeNode({ id, data }: { id: string; data: any }) {
-  return <CanvasDeviceNode id={id} data={data} typeOverride="door-strike" />;
+export function ElectricStrikeNode({ data }: { data: any }) {
+  return <CanvasDeviceNode data={data} typeOverride="door-strike" />;
 }
 
-export function MaglockNode({ id, data }: { id: string; data: any }) {
-  return <CanvasDeviceNode id={id} data={data} typeOverride="maglock" />;
+export function MaglockNode({ data }: { data: any }) {
+  return <CanvasDeviceNode data={data} typeOverride="maglock" />;
 }
 
-export function PanicBarNode({ id, data }: { id: string; data: any }) {
-  return <CanvasDeviceNode id={id} data={data} typeOverride="crashbar" />;
+export function PanicBarNode({ data }: { data: any }) {
+  return <CanvasDeviceNode data={data} typeOverride="crashbar" />;
 }
 
-export function DPSNode({ id, data }: { id: string; data: any }) {
-  return <CanvasDeviceNode id={id} data={data} typeOverride="door-position" />;
+export function DPSNode({ data }: { data: any }) {
+  return <CanvasDeviceNode data={data} typeOverride="door-position" />;
 }
 
-export function REXButtonNode({ id, data }: { id: string; data: any }) {
-  return <CanvasDeviceNode id={id} data={data} typeOverride="push-to-exit" />;
+export function REXButtonNode({ data }: { data: any }) {
+  return <CanvasDeviceNode data={data} typeOverride="push-to-exit" />;
 }
 
-export function PIRSensorNode({ id, data }: { id: string; data: any }) {
-  return <CanvasDeviceNode id={id} data={data} typeOverride="motion-sensor" />;
+export function PIRSensorNode({ data }: { data: any }) {
+  return <CanvasDeviceNode data={data} typeOverride="motion-sensor" />;
 }

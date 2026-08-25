@@ -1,0 +1,582 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 950" width="100%" height="100%" class="hid-aero-x100-svg">
+  <defs>
+    <!-- Light Grey Satin Faceplate Gradients -->
+    <linearGradient id="x100c-faceplate-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="25%" stop-color="#edf2f7" />
+      <stop offset="75%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#cbd5e1" />
+    </linearGradient>
+
+    <!-- Dark Black Industrial Polycarbonate Chassis -->
+    <linearGradient id="x100c-chassis-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="30%" stop-color="#1e293b" />
+      <stop offset="80%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- Black Euroblock Terminal Housing Gradient -->
+    <linearGradient id="x100c-termblock-black" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#475569" />
+      <stop offset="30%" stop-color="#1e293b" />
+      <stop offset="80%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <linearGradient id="x100c-metal-screw" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="50%" stop-color="#cbd5e1" />
+      <stop offset="100%" stop-color="#64748b" />
+    </linearGradient>
+
+    <linearGradient id="x100c-chassis-screw" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#94a3b8" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+
+    <!-- Omron Relay Semi-gloss Plastic Gradient -->
+    <linearGradient id="x100c-omron-relay" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a3441" />
+      <stop offset="50%" stop-color="#18202c" />
+      <stop offset="100%" stop-color="#0b1017" />
+    </linearGradient>
+
+    <!-- Shadows & Glow Filters -->
+    <filter id="x100c-shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="16" stdDeviation="16" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+
+    <filter id="x100c-led-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Reusable Physical Slotted Screw Terminal -->
+    <g id="x100c-term-screw">
+      <!-- Screw cavity -->
+      <circle cx="0" cy="0" r="13" fill="#090e17" stroke="#334155" stroke-width="1.5" />
+      <!-- Metallic head -->
+      <circle cx="0" cy="0" r="10" fill="url(#x100c-metal-screw)" stroke="#475569" stroke-width="1" />
+      <!-- Screw Slot & Central Snap Dot -->
+      <circle cx="0" cy="0" r="4.5" fill="#090e17" />
+      <circle cx="0" cy="0" r="2.2" fill="#38bdf8" />
+      <line x1="-7" y1="-2" x2="7" y2="2" stroke="#090e17" stroke-width="2.2" stroke-linecap="round" />
+    </g>
+
+    <!-- Reusable Corner Phillips Chassis Screw -->
+    <g id="x100c-corner-screw">
+      <circle cx="0" cy="0" r="16" fill="#0f172a" stroke="#475569" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="12" fill="url(#x100c-chassis-screw)" stroke="#1e293b" stroke-width="1" />
+      <!-- Phillips Cross Head -->
+      <line x1="-6" y1="0" x2="6" y2="0" stroke="#090e17" stroke-width="2.5" />
+      <line x1="0" y1="-6" x2="0" y2="6" stroke="#090e17" stroke-width="2.5" />
+      <circle cx="0" cy="0" r="2" fill="#f8fafc" opacity="0.6" />
+    </g>
+
+    <!-- Reusable Square LED Unit -->
+    <g id="x100c-square-led">
+      <rect x="-7" y="-7" width="14" height="14" rx="2" fill="#090e17" stroke="#475569" stroke-width="1.2" />
+      <rect x="-5" y="-5" width="10" height="10" rx="1.5" fill="#1e293b" />
+    </g>
+  </defs>
+
+  <!-- Dark Background Canvas -->
+  <rect width="1100" height="950" fill="#0b1329" rx="16" />
+
+  <!-- ================================================================= -->
+  <!-- MAIN HID AERO X100 CONTROLLER ENCLOSURE                           -->
+  <!-- ================================================================= -->
+  <g filter="url(#x100c-shadow)" transform="translate(65, 30)" id="hid-aero-device">
+    
+    <!-- ------------------------------------------------------------- -->
+    <!-- 0. HEAVY-DUTY BLACK CHASSIS BACKPLATE & MOUNTING TABS         -->
+    <!-- ------------------------------------------------------------- -->
+    <rect x="30" y="20" width="910" height="850" rx="28" fill="url(#x100c-chassis-grad)" stroke="#090e17" stroke-width="3" />
+    
+    <!-- Top & Bottom Mounting Flanges with Oval Screw Slots -->
+    <rect x="50" y="32" width="28" height="12" rx="6" fill="#0b1329" stroke="#64748b" stroke-width="1.5" />
+    <rect x="892" y="32" width="28" height="12" rx="6" fill="#0b1329" stroke="#64748b" stroke-width="1.5" />
+    <rect x="50" y="846" width="28" height="12" rx="6" fill="#0b1329" stroke="#64748b" stroke-width="1.5" />
+    <rect x="892" y="846" width="28" height="12" rx="6" fill="#0b1329" stroke="#64748b" stroke-width="1.5" />
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 1. TOP TERMINAL BLOCK (8 SCREW TERMINALS)                     -->
+    <!-- ------------------------------------------------------------- -->
+    <g transform="translate(375, -5)">
+      <rect x="0" y="0" width="220" height="74" rx="5" fill="url(#x100c-termblock-black)" stroke="#090e17" stroke-width="2" />
+      <g stroke="#090e17" stroke-width="1.5">
+        <line x1="27" y1="0" x2="27" y2="74" />
+        <line x1="55" y1="0" x2="55" y2="74" />
+        <line x1="82" y1="0" x2="82" y2="74" />
+        <line x1="110" y1="0" x2="110" y2="74" />
+        <line x1="137" y1="0" x2="137" y2="74" />
+        <line x1="165" y1="0" x2="165" y2="74" />
+        <line x1="192" y1="0" x2="192" y2="74" />
+      </g>
+      <g class="x100-term" id="term-x100c-top-1" data-label="TAMPER (+)" transform="translate(14, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-top-2" data-label="TAMPER (-)" transform="translate(41, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-top-3" data-label="AC FAIL (+)" transform="translate(68, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-top-4" data-label="AC FAIL (-)" transform="translate(96, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-top-5" data-label="BATT FAIL (+)" transform="translate(124, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-top-6" data-label="BATT FAIL (-)" transform="translate(151, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-top-7" data-label="12-24VDC (-)" transform="translate(178, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-top-8" data-label="12-24VDC (+)" transform="translate(206, 37)"><use href="#x100c-term-screw" /></g>
+    </g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 2. LEFT TERMINAL BLOCKS (20 SCREW TERMINALS)                  -->
+    <!-- ------------------------------------------------------------- -->
+    <!-- Block 1: READER 1 (10 Pins) -->
+    <g transform="translate(-25, 95)">
+      <rect x="0" y="0" width="76" height="345" rx="5" fill="url(#x100c-termblock-black)" stroke="#090e17" stroke-width="2" />
+      <g stroke="#090e17" stroke-width="1.5">
+        <line x1="0" y1="34" x2="76" y2="34" /><line x1="0" y1="69" x2="76" y2="69" />
+        <line x1="0" y1="103" x2="76" y2="103" /><line x1="0" y1="138" x2="76" y2="138" />
+        <line x1="0" y1="172" x2="76" y2="172" /><line x1="0" y1="207" x2="76" y2="207" />
+        <line x1="0" y1="241" x2="76" y2="241" /><line x1="0" y1="276" x2="76" y2="276" />
+        <line x1="0" y1="310" x2="76" y2="310" />
+      </g>
+      <g class="x100-term" id="term-x100c-rdr1-pwr" data-label="RDR 1: READER POWER" transform="translate(38, 17)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr1-gnd1" data-label="RDR 1: GROUND" transform="translate(38, 51)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr1-d0" data-label="RDR 1: D0 / DAT / B" transform="translate(38, 86)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr1-d1" data-label="RDR 1: D1 / CLK / A" transform="translate(38, 120)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr1-gnd2" data-label="RDR 1: GROUND" transform="translate(38, 155)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr1-grnled" data-label="RDR 1: GREEN LED" transform="translate(38, 189)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr1-redled" data-label="RDR 1: RED LED" transform="translate(38, 224)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr1-beep" data-label="RDR 1: BEEPER" transform="translate(38, 258)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr1-nc" data-label="RDR 1: NO CONNECTION" transform="translate(38, 293)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr1-gnd3" data-label="RDR 1: GROUND" transform="translate(38, 327)"><use href="#x100c-term-screw" /></g>
+    </g>
+
+    <!-- Block 2: INPUTS 1 & 2 (4 Pins) -->
+    <g transform="translate(-25, 460)">
+      <rect x="0" y="0" width="76" height="142" rx="5" fill="url(#x100c-termblock-black)" stroke="#090e17" stroke-width="2" />
+      <g stroke="#090e17" stroke-width="1.5">
+        <line x1="0" y1="35" x2="76" y2="35" /><line x1="0" y1="71" x2="76" y2="71" /><line x1="0" y1="106" x2="76" y2="106" />
+      </g>
+      <g class="x100-term" id="term-x100c-in1-pos" data-label="IN 1 (+)" transform="translate(38, 17)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-in1-neg" data-label="IN 1 (-)" transform="translate(38, 53)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-in2-pos" data-label="IN 2 (+)" transform="translate(38, 88)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-in2-neg" data-label="IN 2 (-)" transform="translate(38, 124)"><use href="#x100c-term-screw" /></g>
+    </g>
+
+    <!-- Block 3: RELAY 1 & RELAY 2 (6 Pins) -->
+    <g transform="translate(-25, 620)">
+      <rect x="0" y="0" width="76" height="212" rx="5" fill="url(#x100c-termblock-black)" stroke="#090e17" stroke-width="2" />
+      <g stroke="#090e17" stroke-width="1.5">
+        <line x1="0" y1="35" x2="76" y2="35" /><line x1="0" y1="70" x2="76" y2="70" />
+        <line x1="0" y1="106" x2="76" y2="106" /><line x1="0" y1="141" x2="76" y2="141" /><line x1="0" y1="176" x2="76" y2="176" />
+      </g>
+      <g class="x100-term" id="term-x100c-rly1-no" data-label="RELAY 1: NO" transform="translate(38, 17)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rly1-c" data-label="RELAY 1: COM (C)" transform="translate(38, 52)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rly1-nc" data-label="RELAY 1: NC" transform="translate(38, 88)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rly2-no" data-label="RELAY 2: NO" transform="translate(38, 123)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rly2-c" data-label="RELAY 2: COM (C)" transform="translate(38, 158)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rly2-nc" data-label="RELAY 2: NC" transform="translate(38, 194)"><use href="#x100c-term-screw" /></g>
+    </g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 3. RIGHT TERMINAL BLOCKS (20 SCREW TERMINALS)                 -->
+    <!-- ------------------------------------------------------------- -->
+    <!-- Block 1: READER 2 (10 Pins) -->
+    <g transform="translate(919, 95)">
+      <rect x="0" y="0" width="76" height="345" rx="5" fill="url(#x100c-termblock-black)" stroke="#090e17" stroke-width="2" />
+      <g stroke="#090e17" stroke-width="1.5">
+        <line x1="0" y1="34" x2="76" y2="34" /><line x1="0" y1="69" x2="76" y2="69" />
+        <line x1="0" y1="103" x2="76" y2="103" /><line x1="0" y1="138" x2="76" y2="138" />
+        <line x1="0" y1="172" x2="76" y2="172" /><line x1="0" y1="207" x2="76" y2="207" />
+        <line x1="0" y1="241" x2="76" y2="241" /><line x1="0" y1="276" x2="76" y2="276" />
+        <line x1="0" y1="310" x2="76" y2="310" />
+      </g>
+      <g class="x100-term" id="term-x100c-rdr2-pwr" data-label="RDR 2: READER POWER" transform="translate(38, 17)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr2-gnd1" data-label="RDR 2: GROUND" transform="translate(38, 51)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr2-d0" data-label="RDR 2: D0 / DAT / B" transform="translate(38, 86)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr2-d1" data-label="RDR 2: D1 / CLK / A" transform="translate(38, 120)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr2-gnd2" data-label="RDR 2: GROUND" transform="translate(38, 155)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr2-grnled" data-label="RDR 2: GREEN LED" transform="translate(38, 189)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr2-redled" data-label="RDR 2: RED LED" transform="translate(38, 224)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr2-beep" data-label="RDR 2: BEEPER" transform="translate(38, 258)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr2-nc" data-label="RDR 2: NO CONNECTION" transform="translate(38, 293)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rdr2-gnd3" data-label="RDR 2: GROUND" transform="translate(38, 327)"><use href="#x100c-term-screw" /></g>
+    </g>
+
+    <!-- Block 2: INPUTS 3 & 4 (4 Pins) -->
+    <g transform="translate(919, 460)">
+      <rect x="0" y="0" width="76" height="142" rx="5" fill="url(#x100c-termblock-black)" stroke="#090e17" stroke-width="2" />
+      <g stroke="#090e17" stroke-width="1.5">
+        <line x1="0" y1="35" x2="76" y2="35" /><line x1="0" y1="71" x2="76" y2="71" /><line x1="0" y1="106" x2="76" y2="106" />
+      </g>
+      <g class="x100-term" id="term-x100c-in3-pos" data-label="IN 3 (+)" transform="translate(38, 17)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-in3-neg" data-label="IN 3 (-)" transform="translate(38, 53)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-in4-pos" data-label="IN 4 (+)" transform="translate(38, 88)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-in4-neg" data-label="IN 4 (-)" transform="translate(38, 124)"><use href="#x100c-term-screw" /></g>
+    </g>
+
+    <!-- Block 3: RELAY 3 & RELAY 4 (6 Pins) -->
+    <g transform="translate(919, 620)">
+      <rect x="0" y="0" width="76" height="212" rx="5" fill="url(#x100c-termblock-black)" stroke="#090e17" stroke-width="2" />
+      <g stroke="#090e17" stroke-width="1.5">
+        <line x1="0" y1="35" x2="76" y2="35" /><line x1="0" y1="70" x2="76" y2="70" />
+        <line x1="0" y1="106" x2="76" y2="106" /><line x1="0" y1="141" x2="76" y2="141" /><line x1="0" y1="176" x2="76" y2="176" />
+      </g>
+      <g class="x100-term" id="term-x100c-rly3-no" data-label="RELAY 3: NO" transform="translate(38, 17)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rly3-c" data-label="RELAY 3: COM (C)" transform="translate(38, 52)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rly3-nc" data-label="RELAY 3: NC" transform="translate(38, 88)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rly4-no" data-label="RELAY 4: NO" transform="translate(38, 123)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rly4-c" data-label="RELAY 4: COM (C)" transform="translate(38, 158)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-rly4-nc" data-label="RELAY 4: NC" transform="translate(38, 194)"><use href="#x100c-term-screw" /></g>
+    </g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 4. BOTTOM TERMINAL BLOCK (8 SCREW TERMINALS)                  -->
+    <!-- ------------------------------------------------------------- -->
+    <g transform="translate(365, 825)">
+      <rect x="0" y="0" width="240" height="74" rx="5" fill="url(#x100c-termblock-black)" stroke="#090e17" stroke-width="2" />
+      <g stroke="#090e17" stroke-width="1.5">
+        <line x1="30" y1="0" x2="30" y2="74" />
+        <line x1="60" y1="0" x2="60" y2="74" />
+        <line x1="90" y1="0" x2="90" y2="74" />
+        <line x1="120" y1="0" x2="120" y2="74" />
+        <line x1="150" y1="0" x2="150" y2="74" />
+        <line x1="180" y1="0" x2="180" y2="74" />
+        <line x1="210" y1="0" x2="210" y2="74" />
+      </g>
+      <g class="x100-term" id="term-x100c-btm-in-a" data-label="IO IN: A" transform="translate(15, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-btm-in-b" data-label="IO IN: B" transform="translate(45, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-btm-in-gnd" data-label="IO IN: GND" transform="translate(75, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-btm-out-a" data-label="IO OUT: A" transform="translate(105, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-btm-out-b" data-label="IO OUT: B" transform="translate(135, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-btm-out-gnd" data-label="IO OUT: GND" transform="translate(165, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-btm-pwr-neg" data-label="12-24VDC (-)" transform="translate(195, 37)"><use href="#x100c-term-screw" /></g>
+      <g class="x100-term" id="term-x100c-btm-pwr-pos" data-label="12-24VDC (+)" transform="translate(225, 37)"><use href="#x100c-term-screw" /></g>
+    </g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 5. MAIN LIGHT-GREY POWDER-COATED SHIELD FACEPLATE             -->
+    <!-- ------------------------------------------------------------- -->
+    <rect x="52" y="55" width="866" height="780" rx="14" fill="url(#x100c-faceplate-grad)" stroke="#94a3b8" stroke-width="1.5" />
+
+    <!-- Top 2 Corner Fastening Screws (Bottom screws removed as requested) -->
+    <g transform="translate(80, 80)"><use href="#x100c-corner-screw" /></g>
+    <g transform="translate(890, 80)"><use href="#x100c-corner-screw" /></g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 6. 4 RECTANGULAR CUTOUTS WITH PHYSICAL OMRON RELAYS           -->
+    <!-- ------------------------------------------------------------- -->
+    <!-- Lower Left Cutouts: Relay 1 & Relay 2 -->
+    <g transform="translate(170, 595)">
+      <rect x="0" y="0" width="130" height="74" rx="4" fill="#090e17" stroke="#334155" stroke-width="1.5" />
+      <rect x="3" y="3" width="124" height="68" rx="3" fill="url(#x100c-omron-relay)" />
+      <text x="12" y="24" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#94a3b8">OMRON</text>
+      <text x="12" y="38" font-family="'JetBrains Mono', monospace" font-size="9" fill="#64748b">G5Q-14</text>
+      <text x="12" y="52" font-family="'JetBrains Mono', monospace" font-size="8" fill="#475569">10A 250VAC / 5VDC</text>
+
+      <rect x="0" y="85" width="130" height="74" rx="4" fill="#090e17" stroke="#334155" stroke-width="1.5" />
+      <rect x="3" y="88" width="124" height="68" rx="3" fill="url(#x100c-omron-relay)" />
+      <text x="12" y="109" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#94a3b8">OMRON</text>
+      <text x="12" y="123" font-family="'JetBrains Mono', monospace" font-size="9" fill="#64748b">G5Q-14</text>
+      <text x="12" y="137" font-family="'JetBrains Mono', monospace" font-size="8" fill="#475569">10A 250VAC / 5VDC</text>
+    </g>
+
+    <!-- Lower Right Cutouts: Relay 3 & Relay 4 -->
+    <g transform="translate(670, 595)">
+      <rect x="0" y="0" width="130" height="74" rx="4" fill="#090e17" stroke="#334155" stroke-width="1.5" />
+      <rect x="3" y="3" width="124" height="68" rx="3" fill="url(#x100c-omron-relay)" />
+      <text x="12" y="24" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#94a3b8">OMRON</text>
+      <text x="12" y="38" font-family="'JetBrains Mono', monospace" font-size="9" fill="#64748b">G5Q-14</text>
+      <text x="12" y="52" font-family="'JetBrains Mono', monospace" font-size="8" fill="#475569">10A 250VAC / 5VDC</text>
+
+      <rect x="0" y="85" width="130" height="74" rx="4" fill="#090e17" stroke="#334155" stroke-width="1.5" />
+      <rect x="3" y="88" width="124" height="68" rx="3" fill="url(#x100c-omron-relay)" />
+      <text x="12" y="109" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#94a3b8">OMRON</text>
+      <text x="12" y="123" font-family="'JetBrains Mono', monospace" font-size="9" fill="#64748b">G5Q-14</text>
+      <text x="12" y="137" font-family="'JetBrains Mono', monospace" font-size="8" fill="#475569">10A 250VAC / 5VDC</text>
+    </g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 7. CENTER BLUE HID LOGO BADGE                                 -->
+    <!-- ------------------------------------------------------------- -->
+    <g transform="translate(435, 270)">
+      <rect x="0" y="0" width="130" height="52" rx="4" fill="#00529b" stroke="#003e75" stroke-width="1.5" />
+      <text x="65" y="38" font-family="'Arial Black', 'Impact', sans-serif" font-size="34" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">HID</text>
+    </g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 8. STATUS LED MATRIX (CENTER COLUMN + RELAY LEDS)             -->
+    <!-- ------------------------------------------------------------- -->
+    <g transform="translate(325, 385)" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#0f172a">
+      
+      <!-- 1. ONLINE -->
+      <g transform="translate(0, 0)">
+        <use href="#x100c-square-led" />
+        <rect x="-4" y="-4" width="8" height="8" fill="#22c55e" id="led-x100c-online" filter="url(#x100c-led-glow)" />
+        <text x="24" y="5">ONLINE</text>
+      </g>
+
+      <!-- 2. COMM -->
+      <g transform="translate(0, 26)">
+        <use href="#x100c-square-led" />
+        <rect x="-4" y="-4" width="8" height="8" fill="#eab308" id="led-x100c-comm" filter="url(#x100c-led-glow)" />
+        <text x="24" y="5">COMM</text>
+      </g>
+
+      <!-- 3. BATT FAIL -->
+      <g transform="translate(0, 52)">
+        <use href="#x100c-square-led" />
+        <rect x="-4" y="-4" width="8" height="8" fill="#ef4444" id="led-x100c-battfail" opacity="0.3" />
+        <text x="24" y="5">BATT FAIL</text>
+      </g>
+
+      <!-- 4. AC FAIL -->
+      <g transform="translate(0, 78)">
+        <use href="#x100c-square-led" />
+        <rect x="-4" y="-4" width="8" height="8" fill="#ef4444" id="led-x100c-acfail" opacity="0.3" />
+        <text x="24" y="5">AC FAIL</text>
+      </g>
+
+      <!-- 5. TAMPER -->
+      <g transform="translate(0, 104)">
+        <use href="#x100c-square-led" />
+        <rect x="-4" y="-4" width="8" height="8" fill="#ef4444" id="led-x100c-tamper" opacity="0.3" />
+        <text x="24" y="5">TAMPER</text>
+      </g>
+
+      <!-- 6. IN 1 -->
+      <g transform="translate(0, 130)">
+        <use href="#x100c-square-led" />
+        <rect x="-4" y="-4" width="8" height="8" fill="#22c55e" id="led-x100c-in1" opacity="0.4" />
+        <text x="24" y="5">IN 1</text>
+      </g>
+
+      <!-- 7. IN 2 -->
+      <g transform="translate(0, 156)">
+        <use href="#x100c-square-led" />
+        <rect x="-4" y="-4" width="8" height="8" fill="#22c55e" id="led-x100c-in2" opacity="0.4" />
+        <text x="24" y="5">IN 2</text>
+      </g>
+
+      <!-- 8. IN 3 -->
+      <g transform="translate(0, 182)">
+        <use href="#x100c-square-led" />
+        <rect x="-4" y="-4" width="8" height="8" fill="#22c55e" id="led-x100c-in3" opacity="0.4" />
+        <text x="24" y="5">IN 3</text>
+      </g>
+
+      <!-- 9. IN 4 -->
+      <g transform="translate(0, 208)">
+        <use href="#x100c-square-led" />
+        <rect x="-4" y="-4" width="8" height="8" fill="#22c55e" id="led-x100c-in4" opacity="0.4" />
+        <text x="24" y="5">IN 4</text>
+      </g>
+
+      <!-- 10. READER 1 -->
+      <g transform="translate(0, 234)">
+        <use href="#x100c-square-led" />
+        <rect x="-4" y="-4" width="8" height="8" fill="#22c55e" id="led-x100c-rdr1" opacity="0.9" filter="url(#x100c-led-glow)" />
+        <text x="24" y="5">READER 1</text>
+      </g>
+
+      <!-- 11. READER 2 -->
+      <g transform="translate(0, 260)">
+        <use href="#x100c-square-led" />
+        <rect x="-4" y="-4" width="8" height="8" fill="#22c55e" id="led-x100c-rdr2" opacity="0.9" filter="url(#x100c-led-glow)" />
+        <text x="24" y="5">READER 2</text>
+      </g>
+
+    </g>
+
+    <!-- RELAY STATUS LEDS -->
+    <g transform="translate(325, 672)">
+      <use href="#x100c-square-led" />
+      <rect x="-4" y="-4" width="8" height="8" fill="#ef4444" id="led-x100c-rly1" />
+      <path d="M 12 0 L 22 0 L 22 10" fill="none" stroke="#0f172a" stroke-width="1.5" />
+      <text x="26" y="14" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#0f172a">RELAY 1</text>
+    </g>
+
+    <g transform="translate(325, 742)">
+      <use href="#x100c-square-led" />
+      <rect x="-4" y="-4" width="8" height="8" fill="#ef4444" id="led-x100c-rly2" />
+      <text x="26" y="5" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#0f172a">RELAY 2</text>
+    </g>
+
+    <g transform="translate(650, 655)">
+      <text x="-16" y="5" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#0f172a" text-anchor="end">RELAY 3</text>
+      <use href="#x100c-square-led" />
+      <rect x="-4" y="-4" width="8" height="8" fill="#ef4444" id="led-x100c-rly3" />
+    </g>
+
+    <g transform="translate(650, 742)">
+      <text x="-16" y="5" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="900" fill="#0f172a" text-anchor="end">RELAY 4</text>
+      <use href="#x100c-square-led" />
+      <rect x="-4" y="-4" width="8" height="8" fill="#ef4444" id="led-x100c-rly4" />
+    </g>
+
+    <!-- ------------------------------------------------------------- -->
+    <!-- 9. SILKSCREEN TEXT LABELS (UNBLOCKED & 100% VISIBLE)          -->
+    <!-- ------------------------------------------------------------- -->
+    <!-- TOP HEADERS -->
+    <g transform="translate(370, 95)" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#0f172a" text-anchor="middle">
+      <g transform="translate(26, 0)">
+        <text x="-13" y="0">+</text><text x="13" y="0">-</text>
+        <text x="0" y="16">TAMPER</text>
+      </g>
+      <g transform="translate(80, 0)">
+        <text x="-13" y="0">+</text><text x="13" y="0">-</text>
+        <text x="0" y="16">AC</text>
+        <text x="0" y="28">FAIL</text>
+      </g>
+      <g transform="translate(136, 0)">
+        <text x="-13" y="0">+</text><text x="13" y="0">-</text>
+        <text x="0" y="16">BATT</text>
+        <text x="0" y="28">FAIL</text>
+      </g>
+      <g transform="translate(196, 0)">
+        <text x="-13" y="0">-</text><text x="13" y="0">+</text>
+        <text x="0" y="16">12 - 24</text>
+        <text x="0" y="28">VDC</text>
+      </g>
+    </g>
+
+    <!-- LEFT LABELS: READER 1, IN 1/2, RELAY 1/2 -->
+    <g transform="translate(75, 115)" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="900" fill="#0f172a">
+      <text x="0" y="0">READER POWER</text>
+      <text x="0" y="34">GROUND</text>
+      <text x="0" y="69">D0 / DAT / B</text>
+      <text x="0" y="103">D1 / CLK / A</text>
+      <text x="0" y="138">GROUND</text>
+      <text x="0" y="172">GREEN LED</text>
+      <text x="0" y="207">RED LED</text>
+      <text x="0" y="241">BEEPER</text>
+      <text x="0" y="276">NO CONNECTION</text>
+      <text x="0" y="310">GROUND</text>
+
+      <!-- READER 1 Vertical Bracket -->
+      <path d="M 160 -10 L 170 -10 L 170 320 L 160 320" fill="none" stroke="#0f172a" stroke-width="1.5" />
+      <text x="186" y="160" font-size="13" font-weight="900" fill="#0f172a" transform="rotate(90 186 160)" text-anchor="middle">READER 1</text>
+
+      <!-- IN 1 & IN 2 Labels -->
+      <g transform="translate(0, 360)">
+        <text x="0" y="0">+</text>
+        <text x="16" y="12">IN 1</text>
+        <text x="0" y="24">-</text>
+
+        <text x="0" y="55">+</text>
+        <text x="16" y="67">IN 2</text>
+        <text x="0" y="79">-</text>
+      </g>
+
+      <!-- RELAY 1 & RELAY 2 Labels (NC is now 100% visible and unblocked) -->
+      <g transform="translate(0, 520)">
+        <text x="0" y="0">NO</text>
+        <text x="0" y="35">C</text>
+        <text x="0" y="70">NC</text>
+        <!-- Relay 1 Bracket -->
+        <path d="M 28 -8 L 36 -8 L 36 78 L 28 78" fill="none" stroke="#0f172a" stroke-width="1.2" />
+        <text x="46" y="38" font-size="11" transform="rotate(90 46 38)" text-anchor="middle">RELAY 1</text>
+
+        <text x="0" y="105">NO</text>
+        <text x="0" y="140">C</text>
+        <text x="0" y="175" font-size="13" font-weight="900" fill="#0f172a">NC</text>
+        <!-- Relay 2 Bracket -->
+        <path d="M 28 97 L 36 97 L 36 183 L 28 183" fill="none" stroke="#0f172a" stroke-width="1.2" />
+        <text x="46" y="143" font-size="11" transform="rotate(90 46 143)" text-anchor="middle">RELAY 2</text>
+      </g>
+    </g>
+
+    <!-- RIGHT LABELS: READER 2, IN 3/4, RELAY 3/4 -->
+    <g transform="translate(895, 115)" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="900" fill="#0f172a" text-anchor="end">
+      <text x="0" y="0">READER POWER</text>
+      <text x="0" y="34">GROUND</text>
+      <text x="0" y="69">D0 / DAT / B</text>
+      <text x="0" y="103">D1 / CLK / A</text>
+      <text x="0" y="138">GROUND</text>
+      <text x="0" y="172">GREEN LED</text>
+      <text x="0" y="207">RED LED</text>
+      <text x="0" y="241">BEEPER</text>
+      <text x="0" y="276">NO CONNECTION</text>
+      <text x="0" y="310">GROUND</text>
+
+      <!-- READER 2 Vertical Bracket -->
+      <path d="M -160 -10 L -170 -10 L -170 320 L -160 320" fill="none" stroke="#0f172a" stroke-width="1.5" />
+      <text x="-186" y="160" font-size="13" font-weight="900" fill="#0f172a" transform="rotate(-90 -186 160)" text-anchor="middle">READER 2</text>
+
+      <!-- IN 3 & IN 4 Labels -->
+      <g transform="translate(0, 360)">
+        <text x="0" y="0">+</text>
+        <text x="-16" y="12">IN 3</text>
+        <text x="0" y="24">-</text>
+
+        <text x="0" y="55">+</text>
+        <text x="-16" y="67">IN 4</text>
+        <text x="0" y="79">-</text>
+      </g>
+
+      <!-- RELAY 3 & RELAY 4 Labels (NC is now 100% visible and unblocked) -->
+      <g transform="translate(0, 520)">
+        <text x="0" y="0">NO</text>
+        <text x="0" y="35">C</text>
+        <text x="0" y="70">NC</text>
+        <!-- Relay 3 Bracket -->
+        <path d="M -28 -8 L -36 -8 L -36 78 L -28 78" fill="none" stroke="#0f172a" stroke-width="1.2" />
+        <text x="-46" y="38" font-size="11" transform="rotate(-90 -46 38)" text-anchor="middle">RELAY 3</text>
+
+        <text x="0" y="105">NO</text>
+        <text x="0" y="140">C</text>
+        <text x="0" y="175" font-size="13" font-weight="900" fill="#0f172a">NC</text>
+        <!-- Relay 4 Bracket -->
+        <path d="M -28 97 L -36 97 L -36 183 L -28 183" fill="none" stroke="#0f172a" stroke-width="1.2" />
+        <text x="-46" y="143" font-size="11" transform="rotate(-90 -46 143)" text-anchor="middle">RELAY 4</text>
+      </g>
+    </g>
+
+    <!-- BOTTOM SILK: IO MODULE, TERM, 12-24VDC, DIP SWITCH & AERO X100 -->
+    <!-- Model Title Bottom Left -->
+    <text x="125" y="818" font-family="'Outfit', 'Impact', sans-serif" font-size="20" font-weight="900" fill="#0f172a" letter-spacing="1">AERO X100</text>
+
+    <!-- IO Module Section Silk -->
+    <g transform="translate(300, 785)" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="900" fill="#0f172a">
+      <!-- TERM IN OUT -->
+      <g transform="translate(0, 0)">
+        <text x="16" y="-8" text-anchor="middle">TERM</text>
+        <rect x="2" y="-4" width="28" height="42" fill="none" stroke="#0f172a" stroke-width="1.2" />
+        <text x="8" y="24" transform="rotate(-90 8 24)">IN</text>
+        <text x="24" y="28" transform="rotate(-90 24 28)">OUT</text>
+      </g>
+
+      <!-- IO MODULE (IN & OUT) -->
+      <g transform="translate(45, 0)">
+        <text x="100" y="-12" font-size="12" text-anchor="middle">IO MODULE</text>
+        <rect x="0" y="-4" width="90" height="42" fill="none" stroke="#0f172a" stroke-width="1.2" />
+        <text x="45" y="8" font-size="10" text-anchor="middle">IN</text>
+        <text x="15" y="28" transform="rotate(-90 15 28)">A</text>
+        <text x="45" y="28" transform="rotate(-90 45 28)">B</text>
+        <text x="75" y="32" transform="rotate(-90 75 32)">GND</text>
+
+        <rect x="94" y="-4" width="90" height="42" fill="none" stroke="#0f172a" stroke-width="1.2" />
+        <text x="139" y="8" font-size="10" text-anchor="middle">OUT</text>
+        <text x="109" y="28" transform="rotate(-90 109 28)">A</text>
+        <text x="139" y="28" transform="rotate(-90 139 28)">B</text>
+        <text x="169" y="32" transform="rotate(-90 169 32)">GND</text>
+      </g>
+
+      <!-- 12-24VDC -->
+      <g transform="translate(235, 0)">
+        <text x="22" y="5" font-size="10" text-anchor="middle">12-24</text>
+        <text x="22" y="18" font-size="10" text-anchor="middle">VDC</text>
+        <text x="12" y="32" text-anchor="middle">-</text>
+        <text x="32" y="32" text-anchor="middle">+</text>
+      </g>
+    </g>
+
+    <!-- DIP SWITCH (8 POSITIONS) BOTTOM RIGHT -->
+    <g transform="translate(605, 775)" font-family="'JetBrains Mono', monospace">
+      <text x="70" y="5" font-size="11" font-weight="900" fill="#0f172a" text-anchor="middle">DIP SWITCH</text>
+      <rect x="0" y="10" width="140" height="30" fill="none" stroke="#0f172a" stroke-width="1.2" />
+      <text x="70" y="30" font-size="11" font-weight="900" fill="#0f172a" letter-spacing="4" text-anchor="middle">1 2 3 4 5 6 7 8</text>
+    </g>
+
+  </g>
+
+</svg>
