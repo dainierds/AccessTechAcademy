@@ -55,7 +55,6 @@ const SIDEBAR_TRANSLATIONS: Record<string, { en: string; es: string }> = {
   '/marketplace': { en: 'Marketplace', es: 'Marketplace' },
   '/simulador': { en: 'Portal', es: 'Portal' },
   '/simulador/certificacion': { en: 'Certifications', es: 'Certificaciones' },
-  '/admin/sandbox': { en: 'Sandbox', es: 'Sandbox' },
   '/admin/components': { en: 'Components IA', es: 'Componentes IA' },
   '/creador': { en: 'Dashboard', es: 'Dashboard' },
   '/creador/escenarios': { en: 'Scenarios', es: 'Escenarios' },

@@ -1,5 +1,12 @@
 import { create } from 'zustand';
 import { Connection, Edge, EdgeChange, Node, NodeChange, addEdge, applyEdgeChanges, applyNodeChanges } from '@xyflow/react';
+import { buildModel, scenarioFromFlow, mergeSimStates } from '@/lib/sandboxEngine';
+
+export interface ElectricalState {
+  devices: Record<string, any>;
+  faults: string[];
+  netClass: Record<string, string>;
+}
 
 export interface SandboxRuleCondition {
   sourceNodeId: string;
@@ -76,6 +83,9 @@ interface SimulatorSandboxState {
   rules: SandboxRule[];
   multimeter: MultimeterState;
   nodeColorOverrides: Record<string, string>; // nodeId -> colorHex
+  // Estado eléctrico real calculado por el motor (Union-Find HOT/GND/SHORT/FLOAT)
+  simStates: Record<string, Record<string, any>>; // estados de interacción por nodo (power, pressed, motion, doorClosed)
+  electrical: ElectricalState | null;
   validationResult: {
     isValid: boolean;
     correctEdges: string[];
@@ -96,6 +106,10 @@ interface SimulatorSandboxState {
   setMode: (mode: 'play' | 'edit') => void;
   updateNodePosition: (id: string, x: number, y: number) => void;
 
+  // Motor eléctrico
+  recomputeElectrical: () => void;
+  toggleSimState: (nodeId: string, stateKey: string) => void;
+
   // Sandbox Rules & Multimeter Actions
   addRule: (rule: Omit<SandboxRule, 'id'>) => void;
   removeRule: (ruleId: string) => void;
@@ -109,6 +123,8 @@ export const useSimulatorSandboxStore = create<SimulatorSandboxState>((set, get)
   edges: [],
   rules: [],
   nodeColorOverrides: {},
+  simStates: {},
+  electrical: null,
   multimeter: {
     isPowered: true,
     mode: 'DCV',
@@ -129,6 +145,7 @@ export const useSimulatorSandboxStore = create<SimulatorSandboxState>((set, get)
       edges: applyEdgeChanges(changes, get().edges),
     });
     get().evaluateRules();
+    get().recomputeElectrical();
   },
 
   onConnect: (connection) => {
@@ -163,12 +180,14 @@ export const useSimulatorSandboxStore = create<SimulatorSandboxState>((set, get)
     set({
       edges: addEdge(newEdge, get().edges),
     });
+    get().recomputeElectrical();
   },
 
   addNode: (node) => {
     set({
       nodes: [...get().nodes, node],
     });
+    get().recomputeElectrical();
   },
 
   removeNode: (nodeId) => {
@@ -176,18 +195,22 @@ export const useSimulatorSandboxStore = create<SimulatorSandboxState>((set, get)
       nodes: get().nodes.filter((node) => node.id !== nodeId),
       edges: get().edges.filter((edge) => edge.source !== nodeId && edge.target !== nodeId),
     });
+    get().recomputeElectrical();
   },
 
   removeEdge: (edgeId) => {
     set({
       edges: get().edges.filter((edge) => edge.id !== edgeId),
     });
+    get().recomputeElectrical();
   },
 
   resetSimulator: () => {
     set({
       nodes: [],
       edges: [],
+      simStates: {},
+      electrical: null,
       validationResult: null,
       validationRules: null,
       mode: 'play',
@@ -204,6 +227,7 @@ export const useSimulatorSandboxStore = create<SimulatorSandboxState>((set, get)
       edges,
       validationResult: null,
     });
+    get().recomputeElectrical();
   },
 
   setMode: (mode) => {
@@ -216,6 +240,36 @@ export const useSimulatorSandboxStore = create<SimulatorSandboxState>((set, get)
         node.id === id ? { ...node, position: { x, y } } : node
       ),
     });
+  },
+
+  /* ---------- MOTOR ELÉCTRICO ---------- */
+  recomputeElectrical: () => {
+    const { nodes, edges, simStates } = get();
+    if (nodes.length === 0) {
+      set({ electrical: null });
+      return;
+    }
+    const scenario = scenarioFromFlow(nodes, edges);
+    const simState = mergeSimStates(scenario, simStates);
+    const model = buildModel(scenario, simState);
+    set({
+      electrical: {
+        devices: model.devices,
+        faults: model.faults,
+        netClass: model.netClass,
+      },
+    });
+  },
+
+  toggleSimState: (nodeId, stateKey) => {
+    const current = get().simStates[nodeId] || {};
+    set({
+      simStates: {
+        ...get().simStates,
+        [nodeId]: { ...current, [stateKey]: !current[stateKey] },
+      },
+    });
+    get().recomputeElectrical();
   },
 
   validateCircuit: () => {
