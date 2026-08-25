@@ -553,9 +553,6 @@ export const SANDBOX_DEVICES: Record<string, DeviceDef> = {
       line(ctx, 98, 86, 106, 86);
       if (on) {
         ctx.fillStyle = 'rgba(57,217,138,.35)'; ctx.fillRect(6, 68, 192, 6);
-        label(ctx, '● BLOQUEADA', 30, 37, '#39d98a', 9, 'left', '800');
-      } else {
-        label(ctx, '○ LIBRE', 30, 37, '#ffb020', 9, 'left', '800');
       }
       ctx.fillStyle = '#14171c'; ctx.beginPath(); ctx.arc(172, 37, 7, 0, 7); ctx.fill();
       ctx.strokeStyle = '#3c4452'; ctx.lineWidth = 1; ctx.stroke();
@@ -598,7 +595,7 @@ export const SANDBOX_DEVICES: Record<string, DeviceDef> = {
       ctx.strokeStyle = '#3c4452'; ctx.lineWidth = 1; rrect(ctx, 20, 158, 38, 24, 3); ctx.stroke();
       ctx.strokeStyle = 'rgba(200,169,74,.6)'; ctx.lineWidth = 1.5;
       for (let i = 0; i < 4; i++) { ctx.beginPath(); ctx.moveTo(24, 162 + i * 5); ctx.lineTo(54, 162 + i * 5); ctx.stroke(); }
-      label(ctx, on ? 'ABIERTO' : 'CERRADO', 39, 34, on ? '#1e6b3e' : '#7a5a10', 7, 'center', '800');
+      led(ctx, 39, 30, on ? '#39d98a' : '#2c3833', on);
       euroBlock(ctx, 84, 36, '#c0392b', '+');
       euroBlock(ctx, 84, 164, '#20242a', '−');
     }
@@ -664,7 +661,6 @@ export const SANDBOX_DEVICES: Record<string, DeviceDef> = {
       ctx.fillStyle = '#8a8578'; rrect(ctx, 64 + gap, 40, 8, 46, 2); ctx.fill();
       label(ctx, 'REED', 35, 102, '#8b94a3', 8, 'center', '700');
       label(ctx, 'MAGNET', 87 + gap, 102, '#8b94a3', 8, 'center', '700');
-      label(ctx, closed ? 'PUERTA CERRADA' : 'PUERTA ABIERTA', 70, 116, closed ? '#39d98a' : '#ffb020', 8, 'center', '700');
       led(ctx, 142, 110, closed ? '#39d98a' : '#2c3833', closed);
       euroBlock(ctx, 142, 46, '#8a6d1f', 'C');
       euroBlock(ctx, 142, 84, '#2e7d46', 'NO');
@@ -701,7 +697,6 @@ export const SANDBOX_DEVICES: Record<string, DeviceDef> = {
       ctx.beginPath(); ctx.arc(46, 66, pressed ? 17 : 20, 0, 7); ctx.stroke();
       label(ctx, 'EXIT', 46, 70, '#eafff2', 11, 'center', '800');
       label(ctx, 'PUSH TO EXIT', 46, 36, 'rgba(20,24,30,.55)', 7, 'center', '800');
-      if (pressed) label(ctx, 'CONTACTO CERRADO', 46, 108, '#14532d', 7, 'center', '800');
       euroBlock(ctx, 100, 46, '#8a6d1f', 'C');
       euroBlock(ctx, 100, 96, '#2e7d46', 'NO');
     }
@@ -746,7 +741,6 @@ export const SANDBOX_DEVICES: Record<string, DeviceDef> = {
       label(ctx, 'PWR', 34, 126, '#6a6d73', 7, 'center');
       led(ctx, 90, 112, (pw && mv) ? '#ffb020' : '#b8b5ac', pw && mv);
       label(ctx, 'DET', 90, 126, '#6a6d73', 7, 'center');
-      label(ctx, !pw ? 'SIN ALIMENTACIÓN' : (mv ? 'MOVIMIENTO' : 'SIN MOVIMIENTO'), 62, 104, !pw ? '#c0392b' : '#6a6d73', 7, 'center', '800');
       euroBlock(ctx, 144, 32, '#c0392b', '+');
       euroBlock(ctx, 144, 60, '#20242a', '−');
       euroBlock(ctx, 144, 94, '#8a6d1f', 'C');
@@ -821,11 +815,25 @@ export function euroBlock(ctx: CanvasRenderingContext2D, x: number, y: number, c
 
 export function led(ctx: CanvasRenderingContext2D, x: number, y: number, color: string, on: boolean) {
   if (on) {
-    const g = ctx.createRadialGradient(x, y, 1, x, y, 11);
-    g.addColorStop(0, color); g.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, 11, 0, 7); ctx.fill();
+    // Halo de brillo suave
+    const halo = ctx.createRadialGradient(x, y, 1, x, y, 13);
+    halo.addColorStop(0, color);
+    halo.addColorStop(0.5, color + '99');
+    halo.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = halo;
+    ctx.beginPath(); ctx.arc(x, y, 13, 0, 7); ctx.fill();
   }
-  ctx.fillStyle = color; ctx.beginPath(); ctx.arc(x, y, 4, 0, 7); ctx.fill();
-  ctx.strokeStyle = 'rgba(0,0,0,.5)'; ctx.lineWidth = 1; ctx.stroke();
-  if (on) { ctx.fillStyle = 'rgba(255,255,255,.7)'; ctx.beginPath(); ctx.arc(x - 1.2, y - 1.2, 1.2, 0, 7); ctx.fill(); }
+  // Lente / housing del LED
+  ctx.fillStyle = on ? color : '#262c33';
+  ctx.beginPath(); ctx.arc(x, y, 4.5, 0, 7); ctx.fill();
+  ctx.strokeStyle = '#0b0e13'; ctx.lineWidth = 1; ctx.stroke();
+  if (on) {
+    // Núcleo brillante con punto caliente
+    const core = ctx.createRadialGradient(x - 1.2, y - 1.2, 0.3, x, y, 3);
+    core.addColorStop(0, '#ffffff');
+    core.addColorStop(0.5, color);
+    core.addColorStop(1, color);
+    ctx.fillStyle = core;
+    ctx.beginPath(); ctx.arc(x, y, 3.4, 0, 7); ctx.fill();
+  }
 }
