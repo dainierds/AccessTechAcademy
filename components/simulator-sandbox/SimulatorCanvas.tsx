@@ -56,6 +56,7 @@ export default function SimulatorCanvas({
     nodes,
     edges,
     validationResult,
+    electrical,
     onNodesChange,
     onEdgesChange,
     onConnect,
@@ -523,6 +524,24 @@ export default function SimulatorCanvas({
                   ? 'Validación sandbox completada con éxito.' 
                   : validationResult.errors[0]?.message || 'Circuito incompleto.'}
               </p>
+            </div>
+          )}
+
+          {/* PANEL DE FALLAS ELÉCTRICAS (cortocircuito / polaridad invertida) — Motor eléctrico real */}
+          {electrical && electrical.faults.length > 0 && (
+            <div className="absolute top-4 left-1/2 -translate-x-1/2 z-40 max-w-lg w-[90%] p-3.5 rounded-xl shadow-2xl border bg-red-950/95 border-red-500/60 text-red-200 animate-fadeIn">
+              <h4 className="text-xs font-extrabold uppercase tracking-wider flex items-center gap-2 mb-1.5">
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
+                <span>{t.sandbox.electricalFaults}</span>
+              </h4>
+              <ul className="space-y-1">
+                {electrical.faults.map((fault, i) => (
+                  <li key={i} className="text-[11px] font-mono leading-snug flex items-start gap-1.5">
+                    <span className="text-red-400 mt-0.5">▸</span>
+                    <span>{fault}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
         </div>

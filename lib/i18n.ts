@@ -637,6 +637,7 @@ export const translations = {
       activeConductor: "Active Wire Conductor",
       loadingCables: "Loading cable palette...",
       threads: "conductors",
+      electricalFaults: "Electrical Faults Detected",
     },
     footer: {
       description: "Wiring simulation and training platform for electronic security and Physical Access Control Systems (PACS).",
@@ -1284,6 +1285,7 @@ export const translations = {
       activeConductor: "Conductor de Hilo Activo",
       loadingCables: "Cargando paleta de cables...",
       threads: "hilos",
+      electricalFaults: "Fallas Eléctricas Detectadas",
     },
     footer: {
       description: "Plataforma de simulación de cableado y entrenamiento en seguridad electrónica y sistemas de control de acceso (PACS).",
