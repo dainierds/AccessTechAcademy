@@ -606,12 +606,10 @@ const DEVICES = {
         ctx.fillStyle = '#020617';
         ctx.fillRect(62, 148, 44, 84);
 
-        // 2. Pestillo retraído / abierto (Keeper pivoteado)
+        // 2. Pestillo retraído / abierto (Keeper pivoteado) — animación física sin glow verde
         ctx.save();
-        ctx.shadowColor = '#22c55e';
-        ctx.shadowBlur = 16;
         ctx.fillStyle = '#64748b';
-        ctx.strokeStyle = '#4ade80';
+        ctx.strokeStyle = '#3c424c';
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.moveTo(54, 154);
@@ -620,46 +618,6 @@ const DEVICES = {
         ctx.closePath();
         ctx.fill();
         ctx.stroke();
-        ctx.restore();
-
-        // 3. Resplandor electromagnético en la bobina
-        ctx.strokeStyle = 'rgba(74, 222, 128, 0.4)';
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.arc(84, 190, 24, 0, Math.PI * 2);
-        ctx.stroke();
-
-        // 4. Badge animado de estado DESBLOQUEADO (UNLOCKED)
-        ctx.save();
-        ctx.shadowColor = '#22c55e';
-        ctx.shadowBlur = 10;
-        ctx.fillStyle = '#14532d';
-        ctx.strokeStyle = '#4ade80';
-        ctx.lineWidth = 1.5;
-        rrect(ctx, 25, 432, 150, 26, 4);
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.fillStyle = '#86efac';
-        ctx.font = 'bold 10px monospace';
-        ctx.textAlign = 'center';
-        ctx.shadowBlur = 0;
-        ctx.fillText('⚡ UNLOCKED (12V)', 100, 448);
-        ctx.restore();
-      } else {
-        // Badge de estado BLOQUEADO (LOCKED)
-        ctx.save();
-        ctx.fillStyle = 'rgba(15, 23, 42, 0.88)';
-        ctx.strokeStyle = '#475569';
-        ctx.lineWidth = 1;
-        rrect(ctx, 25, 432, 150, 24, 4);
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.fillStyle = '#94a3b8';
-        ctx.font = 'bold 9.5px monospace';
-        ctx.textAlign = 'center';
-        ctx.fillText('🔒 LOCKED (FAIL-SECURE)', 100, 447);
         ctx.restore();
       }
       ctx.restore();
@@ -831,13 +789,24 @@ function registerCustomDevice(def){
 })();
 function led(ctx,x,y,color,on){
   if(on){
-    const g=ctx.createRadialGradient(x,y,1,x,y,11);
-    g.addColorStop(0,color);g.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,11,0,7);ctx.fill();
+    const halo=ctx.createRadialGradient(x,y,1,x,y,13);
+    halo.addColorStop(0,color);
+    halo.addColorStop(0.5,color+'99');
+    halo.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=halo;
+    ctx.beginPath();ctx.arc(x,y,13,0,7);ctx.fill();
   }
-  ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,4,0,7);ctx.fill();
-  ctx.strokeStyle='rgba(0,0,0,.5)';ctx.lineWidth=1;ctx.stroke();
-  if(on){ctx.fillStyle='rgba(255,255,255,.7)';ctx.beginPath();ctx.arc(x-1.2,y-1.2,1.2,0,7);ctx.fill();}
+  ctx.fillStyle=on?color:'#262c33';
+  ctx.beginPath();ctx.arc(x,y,4.5,0,7);ctx.fill();
+  ctx.strokeStyle='#0b0e13';ctx.lineWidth=1;ctx.stroke();
+  if(on){
+    const core=ctx.createRadialGradient(x-1.2,y-1.2,0.3,x,y,3);
+    core.addColorStop(0,'#ffffff');
+    core.addColorStop(0.5,color);
+    core.addColorStop(1,color);
+    ctx.fillStyle=core;
+    ctx.beginPath();ctx.arc(x,y,3.4,0,7);ctx.fill();
+  }
 }
 
 /* ============================================================
