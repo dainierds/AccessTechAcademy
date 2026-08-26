@@ -514,17 +514,28 @@ const DEVICES = {
     draw(ctx,d,st){
       drawNativeVector(ctx, 'push-to-exit-lateral', 230, 280, st);
 
-      // Animación física del botón al presionarlo (hundimiento + sombra del bisel)
+      // Animación de hundimiento físico del botón al presionarlo
       if (st.pressed) {
         ctx.save();
-        // Oscurecer el botón central (efecto de hundirse)
-        ctx.fillStyle = 'rgba(2, 12, 6, 0.5)';
+        // 1. Sombra suave del bisel sobre la parte superior del botón hundido (gradiente, no caja)
+        const g = ctx.createLinearGradient(29, 89, 29, 89 + 26);
+        g.addColorStop(0, 'rgba(0,0,0,0.55)');
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g;
+        rrect(ctx, 29, 89, 77, 26, 8);
+        ctx.fill();
+
+        // 2. Receso/gap del botón al retraerse: borde interior oscuro sutil
+        ctx.strokeStyle = 'rgba(0,0,0,0.45)';
+        ctx.lineWidth = 2;
+        rrect(ctx, 29, 89, 77, 77, 8);
+        ctx.stroke();
+
+        // 3. Ligero oscurecimiento global (muy sutil) para dar sensación de presión
+        ctx.fillStyle = 'rgba(0,0,0,0.14)';
         rrect(ctx, 29, 89, 77, 77, 8);
         ctx.fill();
-        // Sombra superior del bisel (el botón se hunde)
-        ctx.fillStyle = 'rgba(0,0,0,0.32)';
-        rrect(ctx, 29, 89, 77, 24, 8);
-        ctx.fill();
+
         ctx.restore();
       }
     }
