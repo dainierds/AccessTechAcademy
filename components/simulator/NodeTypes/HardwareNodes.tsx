@@ -204,8 +204,8 @@ export function PowerSupplyNode({ data }: { data: any }) {
     <DynamicHardwareNode 
       data={{
         ...data,
-        name: data?.name || 'Altronix AL175',
-        brand: data?.brand || 'Altronix',
+        name: data?.name || 'Fuente de Poder 12V/24V',
+        brand: data?.brand || 'Genérico',
         svg_url: '/svgs/altronix_al175_v2.svg',
         default_width: 320,
         default_height: 360,
@@ -223,8 +223,8 @@ export function ElectricStrikeNode({ data }: { data: any }) {
     <DynamicHardwareNode 
       data={{
         ...data,
-        name: data?.name || 'HES 5000',
-        brand: data?.brand || 'HES',
+        name: data?.name || 'Cerradero Eléctrico',
+        brand: data?.brand || 'Genérico',
         svg_url: '/svgs/hes_5000_v2.svg',
         default_width: 160,
         default_height: 380,
@@ -243,8 +243,8 @@ export function DoorControllerNode({ data }: { data: any }) {
     <DynamicHardwareNode 
       data={{
         ...data,
-        name: data?.name || 'Accentra NTX700',
-        brand: data?.brand || 'ASSA ABLOY',
+        name: data?.name || 'Controladora de Puerta',
+        brand: data?.brand || 'Genérico',
         svg_url: '/svgs/accentra_controller_v2.svg',
         default_width: 460,
         default_height: 380,

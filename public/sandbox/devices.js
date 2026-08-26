@@ -270,9 +270,9 @@ const DEVICES = {
 
   /* ---------------- HID AERO X100 DUAL READER CONTROLLER (EXACT SVG HD) ---------------- */
   'hid-aero-x100': {
-    name:'Controladora HID Aero X100',
+    name:'Controladora de Acceso (2 Lectores)',
     tag:'Control · Multi-puerta OSDP/Wiegand',
-    desc:'Controladora de acceso profesional de 2 lectores (OSDP/Wiegand), 4 relés Omron de salida para cerraduras, 4 entradas supervisadas, tamper, alarma de fuego e indicadores LED de diagnóstico on-board.',
+    desc:'Controladora de acceso profesional de 2 lectores (OSDP/Wiegand), 4 relés de salida para cerraduras, 4 entradas supervisadas, tamper, alarma de fuego e indicadores LED de diagnóstico on-board.',
     tips:'Conecta alimentación 12-24VDC en la parte superior. Alimenta Reader 1/2 con GND/PWR/D0/D1/LED. Cablea las cerraduras a los relés K1..K4 (C/NO/NC).',
     w:550, h:475,
     terminals:[
@@ -356,7 +356,7 @@ const DEVICES = {
 
   /* ---------------- CAMDEN CX-12 PLUS LOGIC RELAY (EXACT SVG HD EMBEDDED) ---------------- */
   'camden-relay': {
-    name:'Camden CX-12 Plus Logic Relay',
+    name:'Módulo de Relé Lógico',
     tag:'Lógica de Control · Relé',
     desc:'Módulo de control de puertas y lógica de esclusa (interlock/mantrap). Posee 2 relés Form-C independientes, entradas DRY 1 / DRY 2 y WET 1 / WET 2, potenciómetros de temporización, switch DIP y LEDs de estado.',
     tips:'Alimenta 12–24V en POWER (Pins 1-2). Dispara la secuencia mediante DRY 1 (11-12) o DRY 2 (15-16). Controla cerraduras o automatismos con Relay 1 (3-5) y Relay 2 (6-8).',
@@ -387,9 +387,9 @@ const DEVICES = {
 
   /* ---------------- ALTRONIX POWER SUPPLY (EXACT SVG HD) ---------------- */
   'altronix-power-supply': {
-    name:'Fuente Altronix AL600ULXB',
+    name:'Fuente de Poder (12V/24V)',
     tag:'Fuentes de poder · Supervisada',
-    desc:'Fuente de poder y cargador supervisado profesional Altronix de 12V/24V @ 6A. Gabinete metálico con cerradura, transformador toroidal, supervisión de pérdida de CA y batería baja.',
+    desc:'Fuente de poder y cargador supervisado profesional de 12V/24V @ 6A. Gabinete metálico con cerradura, transformador toroidal, supervisión de pérdida de CA y batería baja.',
     tips:'Alimenta controladoras y cerraduras magnéticas de alta potencia. Conecta salida DC (+) y (-) a las barras de distribución.',
     w:440, h:552,
     terminals:[
@@ -502,9 +502,9 @@ const DEVICES = {
 
   /* ---------------- FUENTE ALTRONIX AL175 (12V / 24V DUAL) ---------------- */
   'altronix-al175': {
-    name:'Altronix AL175 (12V/24V)',
+    name:'Fuente de Poder 12V/24V',
     tag:'Fuentes de poder · Supervisada',
-    desc:'Fuente de poder supervisada lineal Altronix AL175 de 12VDC/24VDC seleccionable con switch conmutable y salida directa de 2 bornes: Rojo (+VDC) y Negro (GND).',
+    desc:'Fuente de poder supervisada lineal de 12VDC/24VDC seleccionable con switch conmutable y salida directa de 2 bornes: Rojo (+VDC) y Negro (GND).',
     tips:'Haz clic en el switch para alternar entre 12V y 24V. Conecta el cable Rojo a +VDC y el cable Negro a GND.',
     w:320, h:360,
     terminals:[
@@ -584,7 +584,7 @@ const DEVICES = {
 
   /* ---------------- CERRADERO ELECTRICO HES 5000 ---------------- */
   'hes-5000': {
-    name:'HES 5000',
+    name:'Cerradero Eléctrico',
     tag:'Cerraderos · Fail-Secure',
     desc:'Cerradero eléctrico de perfil bajo para marcos estrechos con alimentación de 12V/24VDC y contacto de monitoreo.',
     tips:'Apertura mediante pulso de 12VDC en bornes POS(+) y NEG(-).',

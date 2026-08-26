@@ -83,6 +83,12 @@ class Workbench {
     this._bindEvents();
     this._bindUiControls();
     this.resize();
+
+    // Mantener el canvas sincronizado con el tamaño real del contenedor
+    if (typeof ResizeObserver !== 'undefined' && this.canvas.parentElement) {
+      this._resizeObserver = new ResizeObserver(() => this.resize());
+      this._resizeObserver.observe(this.canvas.parentElement);
+    }
   }
 
   /* Gestion del Historial de Deshacer (Undo / Redo) */
@@ -235,9 +241,17 @@ class Workbench {
   resize(){
     if(!this.canvas || !this.canvas.parentElement) return;
     const r = this.canvas.parentElement.getBoundingClientRect();
-    this.canvas.width = r.width || window.innerWidth;
-    this.canvas.height = r.height || window.innerHeight;
-    this.render();
+    // Usar el tamaño REAL del contenedor (clientWidth/Height) para evitar el desfase
+    // vertical que causaba el fallback de window.innerWidth/innerHeight cuando el
+    // layout aún no estaba asentado al iniciar.
+    const w = Math.round(r.width || this.canvas.clientWidth || window.innerWidth);
+    const h = Math.round(r.height || this.canvas.clientHeight || window.innerHeight);
+    if (w <= 0 || h <= 0) return;
+    if (this.canvas.width !== w || this.canvas.height !== h) {
+      this.canvas.width = w;
+      this.canvas.height = h;
+      this.render();
+    }
   }
 
   /* Control de Zoom y Pan */
@@ -711,6 +725,16 @@ class Workbench {
 
     this.canvas.addEventListener('contextmenu', e => {
       e.preventDefault();
+
+      // Click derecho durante una conexión pendiente: cancelar SOLO ese conductor (no el cable completo)
+      if (this.mode === 'editor' && this.pending) {
+        this.pending = null;
+        this.hasMovedDuringClick = false;
+        this.canvas.style.cursor = '';
+        this.render();
+        return;
+      }
+
       if (this.hasMovedDuringClick) return;
 
       if(this.mode === 'editor'){

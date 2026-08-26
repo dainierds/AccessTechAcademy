@@ -50,7 +50,7 @@
   <circle cx="112.5" cy="445" r="6" fill="#000000" />
 
   
-  <text x="112.5" y="75" font-family="'Segoe UI', Roboto, Inter, sans-serif" font-weight="700" font-size="21" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">HES 5000</text>
+  <text x="112.5" y="75" font-family="'Segoe UI', Roboto, Inter, sans-serif" font-weight="700" font-size="21" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">Door Strike</text>
 
   
   <rect x="12" y="100" width="64" height="180" rx="8" fill="url(#blackLipGrad)" stroke="#020617" stroke-width="2.5" />

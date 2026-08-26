@@ -1,4 +1,5 @@
 import DashboardSidebar, { NavItem } from '@/components/simulator/DashboardSidebar';
+import SessionTimeoutManager from '@/components/simulator/SessionTimeoutManager';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
@@ -60,6 +61,7 @@ export default async function EmpresaLayout({
       <main className="flex-1 min-w-0 p-4 sm:p-8">
         {children}
       </main>
+      <SessionTimeoutManager />
     </div>
   );
 }

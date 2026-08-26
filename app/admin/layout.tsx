@@ -1,4 +1,5 @@
 import DashboardSidebar, { NavItem } from '@/components/simulator/DashboardSidebar';
+import SessionTimeoutManager from '@/components/simulator/SessionTimeoutManager';
 import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
@@ -8,6 +9,7 @@ const navItems: NavItem[] = [
   { label: 'Dashboard', href: '/admin', iconName: 'dashboard' },
   { label: 'Empresas', href: '/admin/empresas', iconName: 'building' },
   { label: 'Usuarios', href: '/admin/usuarios', iconName: 'users' },
+  { label: 'Solicitudes', href: '/admin/solicitudes', iconName: 'users' },
   { label: 'Biblioteca', href: '/admin/biblioteca', iconName: 'library' },
   { label: 'Escenarios', href: '/admin/escenarios', iconName: 'boxes' },
   { label: 'Certificaciones', href: '/admin/certificaciones', iconName: 'award' },
@@ -64,6 +66,7 @@ export default async function AdminLayout({
       <main className="flex-1 min-w-0 p-4 sm:p-8">
         {children}
       </main>
+      <SessionTimeoutManager />
     </div>
   );
 }

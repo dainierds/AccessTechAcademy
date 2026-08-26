@@ -49,6 +49,7 @@ const SIDEBAR_TRANSLATIONS: Record<string, { en: string; es: string }> = {
   '/admin': { en: 'Dashboard', es: 'Dashboard' },
   '/admin/empresas': { en: 'Companies', es: 'Empresas' },
   '/admin/usuarios': { en: 'Users', es: 'Usuarios' },
+  '/admin/solicitudes': { en: 'Requests', es: 'Solicitudes' },
   '/admin/biblioteca': { en: 'Library', es: 'Biblioteca' },
   '/admin/escenarios': { en: 'Scenarios', es: 'Escenarios' },
   '/admin/certificaciones': { en: 'Certifications', es: 'Certificaciones' },

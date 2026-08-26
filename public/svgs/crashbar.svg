@@ -78,7 +78,7 @@
         <circle cx="0" cy="0" r="6" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
         <circle cx="0" cy="0" r="4" fill="#22c55e" id="cb-el-led" filter="url(#cb-led-glow)" />
       </g>
-      <text x="56" y="96" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#0f172a" text-anchor="middle" letter-spacing="1">VON DUPRIN</text>
+      <text x="56" y="96" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="900" fill="#0f172a" text-anchor="middle" letter-spacing="1">PANIC BAR</text>
       <text x="56" y="108" font-family="'JetBrains Mono', monospace" font-size="6" font-weight="800" fill="#334155" text-anchor="middle">75 / 99 SERIES</text>
       <text x="56" y="145" font-family="'JetBrains Mono', monospace" font-size="5.5" font-weight="800" fill="#059669" text-anchor="middle" id="cb-status-text">LATCHED</text>
     </g>

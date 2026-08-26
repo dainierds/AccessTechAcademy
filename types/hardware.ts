@@ -96,8 +96,8 @@ export const PRESET_SANDBOX_COMPONENTS: HardwareComponent[] = [
   },
   {
     id: 'preset-hid-aero-x100',
-    name: 'Controladora HID Aero X100',
-    brand: 'HID GLOBAL',
+    name: 'Controladora de Acceso (2 Lectores)',
+    brand: 'Genérico',
     category: 'controller',
     svg_url: '/svgs/hid_aero_x100.svg',
     default_width: 550,
@@ -156,8 +156,8 @@ export const PRESET_SANDBOX_COMPONENTS: HardwareComponent[] = [
   },
   {
     id: 'preset-camden-cx12',
-    name: 'Camden CX-12 Plus Logic Relay',
-    brand: 'CAMDEN',
+    name: 'Módulo de Relé Lógico',
+    brand: 'Genérico',
     category: 'controller',
     svg_url: '/svgs/camden_relay.svg',
     default_width: 550,
@@ -184,8 +184,8 @@ export const PRESET_SANDBOX_COMPONENTS: HardwareComponent[] = [
   },
   {
     id: 'preset-altronix-al600',
-    name: 'Fuente Altronix AL600ULXB',
-    brand: 'Altronix',
+    name: 'Fuente de Poder (12V/24V)',
+    brand: 'Genérico',
     category: 'power_supply',
     svg_url: '/svgs/altronix_power_supply.svg',
     default_width: 1100,
@@ -203,7 +203,7 @@ export const PRESET_SANDBOX_COMPONENTS: HardwareComponent[] = [
   {
     id: 'preset-maglock-600-lateral',
     name: 'Maglock 600 lbs con Bornera Lateral',
-    brand: 'SECURITRON',
+    brand: 'Genérico',
     category: 'maglock',
     svg_url: '/svgs/maglock_lateral.svg',
     default_width: 1080,
@@ -217,7 +217,7 @@ export const PRESET_SANDBOX_COMPONENTS: HardwareComponent[] = [
   {
     id: 'preset-crashbar-elr',
     name: 'Crash Bar Electrificado (ELR/QEL)',
-    brand: 'VON DUPRIN',
+    brand: 'Genérico',
     category: 'panic_bar',
     svg_url: '/svgs/crashbar.svg',
     default_width: 500,
@@ -231,7 +231,7 @@ export const PRESET_SANDBOX_COMPONENTS: HardwareComponent[] = [
   {
     id: 'preset-push-to-exit-lateral',
     name: 'Botón Push-to-Exit con Bornera Lateral',
-    brand: 'CAMDEN',
+    brand: 'Genérico',
     category: 'rex_button',
     svg_url: '/svgs/pushtoexit_lateral.svg',
     default_width: 460,
@@ -248,7 +248,7 @@ export const PRESET_SANDBOX_COMPONENTS: HardwareComponent[] = [
   {
     id: 'preset-rfid-reader-lateral',
     name: 'Lector RFID / Teclado con Bornera Lateral',
-    brand: 'HID SIGNOC',
+    brand: 'Genérico',
     category: 'reader',
     svg_url: '/svgs/rfid_reader_lateral.svg',
     default_width: 500,
@@ -266,7 +266,7 @@ export const PRESET_SANDBOX_COMPONENTS: HardwareComponent[] = [
   {
     id: 'preset-door-position',
     name: 'Sensor de Contacto Magnético (DPS)',
-    brand: 'GRI',
+    brand: 'Genérico',
     category: 'dps',
     svg_url: '/svgs/magnetic_door_sensor.svg',
     default_width: 480,
@@ -279,8 +279,8 @@ export const PRESET_SANDBOX_COMPONENTS: HardwareComponent[] = [
   },
   {
     id: 'preset-altronix',
-    name: 'Altronix AL175',
-    brand: 'Altronix',
+    name: 'Fuente de Poder 12V/24V',
+    brand: 'Genérico',
     category: 'power_supply',
     svg_url: '/svgs/altronix_al175_v2.svg',
     default_width: 320,
@@ -293,8 +293,8 @@ export const PRESET_SANDBOX_COMPONENTS: HardwareComponent[] = [
   },
   {
     id: 'preset-hes',
-    name: 'HES 5000',
-    brand: 'HES',
+    name: 'Cerradero Eléctrico',
+    brand: 'Genérico',
     category: 'strike',
     svg_url: '/svgs/hes_5000_v2.svg',
     default_width: 200,

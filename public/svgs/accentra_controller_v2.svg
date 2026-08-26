@@ -33,8 +33,8 @@
 
   
   <rect x="170" y="32" width="120" height="30" fill="#ffffff" stroke="#0f172a" stroke-width="1.5" rx="1" />
-  <text x="230" y="47" font-family="Arial, sans-serif" font-weight="900" font-size="11" fill="#0f172a" text-anchor="middle" letter-spacing="1">ACCENTRA</text>
-  <text x="230" y="58" font-family="Arial, sans-serif" font-weight="bold" font-size="8" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">ASSA ABLOY</text>
+  <text x="230" y="47" font-family="Arial, sans-serif" font-weight="900" font-size="11" fill="#0f172a" text-anchor="middle" letter-spacing="1">DOOR CONTROLLER</text>
+  <text x="230" y="58" font-family="Arial, sans-serif" font-weight="bold" font-size="8" fill="#0f172a" text-anchor="middle" letter-spacing="0.5"></text>
 
   
   <g transform="translate(130, 30)">
@@ -115,7 +115,7 @@
   
   <g transform="translate(60, 288)">
     <rect x="0" y="0" width="90" height="32" fill="#ffffff" stroke="#94a3b8" stroke-width="1" rx="2" />
-    <text x="5" y="10" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">P/N: NTX700-CTLR</text>
+    <text x="5" y="10" font-family="Courier New, monospace" font-weight="bold" font-size="6" fill="#0f172a">P/N: -CTLR</text>
     <text x="5" y="18" font-family="Arial, sans-serif" font-size="5" fill="#475569">Product Tech Support</text>
     <text x="5" y="26" font-family="Arial, sans-serif" font-weight="bold" font-size="5" fill="#0f172a">Call: 1-800-810-WIRE</text>
   </g>
