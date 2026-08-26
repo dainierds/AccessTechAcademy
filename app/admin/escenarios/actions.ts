@@ -15,6 +15,7 @@ export async function saveScenarioAction(formData: FormData) {
   const nodesJson = formData.get('nodesJson') as string;
   const edgesJson = formData.get('edgesJson') as string;
   const faultWiringJson = formData.get('faultWiringJson') as string;
+  const legacyScenarioJson = formData.get('legacyScenarioJson') as string;
 
   if (!title || !type || !nodesJson) {
     throw new Error('Título, Tipo y Hardware son requeridos.');
@@ -31,6 +32,11 @@ export async function saveScenarioAction(formData: FormData) {
 
   // Crear la configuración del hardware
   const hardware_config: any = { nodes };
+
+  // Escenario del editor legacy (Sandbox V1): devices + cables para la simulación realista
+  if (legacyScenarioJson) {
+    try { hardware_config.legacy = JSON.parse(legacyScenarioJson); } catch (e) {}
+  }
 
   // Si hay inyección de fallas configurada (modo diagnóstico)
   let fault_injection = null;

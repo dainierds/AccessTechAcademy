@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle2, Save, Cpu, Layers } from 'lucide-react';
 import { saveScenarioAction } from '@/app/admin/escenarios/actions';
@@ -12,15 +12,33 @@ export default function ScenarioEditorForm({
   scenario: any | null; // null si es nuevo
 }) {
   const { t } = useI18n();
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [title, setTitle] = useState(scenario?.title || t.creator.newSandboxScenario);
   const [description, setDescription] = useState(scenario?.description || t.creator.sandboxTestScenario);
   const [type, setType] = useState<string>(scenario?.type || 'guided');
   const [difficulty, setDifficulty] = useState<number>(scenario?.difficulty_level || 1);
   const [saving, setSaving] = useState(false);
 
+  // Captura el escenario actual del editor legacy (mismo origen) para guardarlo
+  const captureLegacyScenario = () => {
+    try {
+      const anyWin = iframeRef.current?.contentWindow as any;
+      const editor = anyWin?.editor;
+      if (editor && typeof editor.scenario === 'object' && editor.scenario) {
+        return {
+          name: editor.scenario.name || '',
+          devices: editor.scenario.devices || [],
+          cables: editor.scenario.cables || [],
+        };
+      }
+    } catch (e) {}
+    return null;
+  };
+
   const handleSubmitForm = async (publishedState: boolean) => {
     setSaving(true);
     try {
+      const legacy = captureLegacyScenario();
       const formData = new FormData();
       if (scenario?.id) {
         formData.append('id', scenario.id);
@@ -33,6 +51,7 @@ export default function ScenarioEditorForm({
       formData.append('nodesJson', JSON.stringify([]));
       formData.append('edgesJson', JSON.stringify([]));
       formData.append('faultWiringJson', JSON.stringify([]));
+      formData.append('legacyScenarioJson', JSON.stringify(legacy || {}));
 
       await saveScenarioAction(formData);
       alert(t.creator.savedOk);
@@ -102,6 +121,7 @@ export default function ScenarioEditorForm({
       {/* Editor Sandbox V1 en Pantalla Completa (Imagen 2) */}
       <div className="flex-1 w-full h-full relative">
         <iframe
+          ref={iframeRef}
           src="/sandbox/index.html"
           className="w-full h-full border-none"
           title="Sandbox Workspace"

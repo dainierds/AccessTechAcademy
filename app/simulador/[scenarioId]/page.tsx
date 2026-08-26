@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
-import SimulatorSessionWrapper from '@/components/simulator/SimulatorSessionWrapper';
+import ScenarioSimulationIframe from '@/components/simulator/ScenarioSimulationIframe';
 
 export default async function PracticeSessionPage({
   params,
@@ -12,7 +12,6 @@ export default async function PracticeSessionPage({
 
   // 1. Obtener usuario autenticado
   const { data: { user } } = await supabase.auth.getUser();
-  const userId = user?.id || '';
 
   // 2. Traer escenario de Supabase
   const { data: scenario } = await supabase
@@ -26,8 +25,7 @@ export default async function PracticeSessionPage({
   }
 
   return (
-    <SimulatorSessionWrapper
-      userId={userId}
+    <ScenarioSimulationIframe
       scenario={scenario}
     />
   );

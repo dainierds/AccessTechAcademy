@@ -31,7 +31,28 @@ window.addEventListener('message', (e) => {
   if (e.data && e.data.type === 'THEME_CHANGE') {
     document.documentElement.setAttribute('data-theme', e.data.theme);
   }
+  // Cargar un escenario directamente en la vista Simulación
+  if (e.data && e.data.type === 'LOAD_SIM_SCENARIO' && e.data.scenario) {
+    activateSimulatorView(e.data.scenario);
+  }
 });
+
+/* Activa la vista "Simulador" y carga un escenario en él */
+function activateSimulatorView(sc) {
+  $$('.view').forEach(v => v.classList.remove('active'));
+  const simView = $('#view-simulator');
+  if (simView) simView.classList.add('active');
+  const topbar = $('#topbar');
+  if (topbar) topbar.style.display = 'none';
+  setTimeout(() => {
+    if (window.sim) {
+      if (sc && typeof window.sim.setScenario === 'function') {
+        window.sim.setScenario(sc);
+      }
+      window.sim.resize();
+    }
+  }, 120);
+}
 
 /* ---------------- Tabs ---------------- */
 $$('.tab').forEach(b=>b.addEventListener('click',()=>{
