@@ -514,6 +514,33 @@ const DEVICES = {
     draw(ctx,d,st){
       drawNativeVector(ctx, 'push-to-exit-lateral', 230, 280, st);
 
+      const ledOn = !!st.pwrLed; // LED interno iluminado por LED+/LED-
+
+      // Fondo verde del botón: se ilumina como LED interno al recibir corriente
+      if (ledOn) {
+        // LED encendido: resplandor brillante dentro de la lente
+        ctx.save();
+        const glow = ctx.createRadialGradient(77.5, 137.5, 4, 77.5, 137.5, 46);
+        glow.addColorStop(0, 'rgba(74, 222, 128, 0.6)');
+        glow.addColorStop(1, 'rgba(74, 222, 128, 0)');
+        ctx.fillStyle = glow;
+        rrect(ctx, 39, 99, 77, 77, 8);
+        ctx.fill();
+        // Borde luminoso
+        ctx.strokeStyle = 'rgba(74, 222, 128, 0.7)';
+        ctx.lineWidth = 1.5;
+        rrect(ctx, 39, 99, 77, 77, 8);
+        ctx.stroke();
+        ctx.restore();
+      } else {
+        // LED apagado: lente oscurecida (botón sin alimentación)
+        ctx.save();
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+        rrect(ctx, 39, 99, 77, 77, 8);
+        ctx.fill();
+        ctx.restore();
+      }
+
       // Animación de hundimiento físico del botón al presionarlo
       if (st.pressed) {
         ctx.save();

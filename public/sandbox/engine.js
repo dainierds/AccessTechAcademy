@@ -227,6 +227,12 @@ function buildModel(scenario, simState){
           if(pw!==st.powered){ st.powered=pw; changed=true; }
           break;
         }
+        case 'push-to-exit-lateral': {
+          // LED interno iluminado: LED+ y LED- reciben alimentación
+          const ledOn = coil('ledp','ledn');
+          if(ledOn !== st.pwrLed){ st.pwrLed=ledOn; changed=true; }
+          break;
+        }
         case 'panel-4door': {
           const powered = coil('pwrp','pwrn');
           if(rev('pwrp','pwrn')){
