@@ -478,19 +478,22 @@ const DEVICES = {
     action:{label:'Alimentación Maglock', kind:'toggle', stateKey:'energized', def:true},
     draw(ctx,d,st){
       drawNativeVector(ctx, 'maglock-lateral', 540, 120, st);
-      // LED de estado (fail-safe): verde = energizado (bloqueado), apagado = libre
+      // LED de estado (fail-safe) en el punto "STATUS" (SVG 846,104 → canvas 423,52)
+      const sx = 423, sy = 52;
       if (st.energized) {
-        led(ctx, 418, 47, '#22c55e', true);
+        // Energizado: LED verde encendido con anillo
+        ctx.save();
+        ctx.fillStyle = '#1e293b';
+        ctx.beginPath(); ctx.arc(sx, sy, 7, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5; ctx.stroke();
+        ctx.restore();
+        led(ctx, sx, sy, '#22c55e', true);
       } else {
         // Desmagnetizado: apagar el LED del SVG
         ctx.save();
         ctx.fillStyle = '#1e293b';
-        ctx.beginPath();
-        ctx.arc(418, 47, 6, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.strokeStyle = '#334155';
-        ctx.lineWidth = 1;
-        ctx.stroke();
+        ctx.beginPath(); ctx.arc(sx, sy, 7, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = '#334155'; ctx.lineWidth = 1.5; ctx.stroke();
         ctx.restore();
       }
     }
