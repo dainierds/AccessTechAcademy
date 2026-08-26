@@ -311,7 +311,7 @@
     
     <g transform="translate(435, 270)">
       <rect x="0" y="0" width="130" height="52" rx="4" fill="#00529b" stroke="#003e75" stroke-width="1.5" />
-      <text x="65" y="38" font-family="'Arial Black', 'Impact', sans-serif" font-size="34" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2">/text>
+      <text x="65" y="38" font-family="'Arial Black', 'Impact', sans-serif" font-size="34" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="2"></text>
     </g>
 
     
