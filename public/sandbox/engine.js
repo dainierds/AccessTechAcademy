@@ -61,7 +61,7 @@ function internalBridges(d, devState, simSt){
       B.push(relayOn ? ['com','no'] : ['com','nc']);
       break;
     }
-    case 'push-to-exit':
+    case 'push-to-exit': case 'push-to-exit-lateral':
       if(simSt.pressed) B.push(['c','no']);
       break;
     case 'door-position':
@@ -74,7 +74,7 @@ function internalBridges(d, devState, simSt){
       // tamper antisabotaje: siempre cerrado (supervisión)
       B.push(['c2','nc2']);
       break;
-    case 'prox-reader':
+    case 'prox-reader': case 'rfid-reader-lateral':
       // tarjeta válida: el lector baja D0 a GND (colector abierto)
       if(devState.powered && simSt.card) B.push(['d0','pwrn']);
       break;
@@ -100,6 +100,31 @@ function internalBridges(d, devState, simSt){
       for(let i=1;i<=8;i++){
         const on = devState.relay && devState.relay[i];
         B.push(on ? ['o'+i+'c','o'+i+'no'] : ['o'+i+'c','o'+i+'nc']);
+      }
+      break;
+    }
+    case 'hid-aero-x100': {
+      // rieles de alimentación de lectores (cuando el panel está energizado)
+      if(devState.powered){
+        for(const r of [1,2]){
+          B.push(['r'+r+'_pwr','top_pwr_pos']);
+          B.push(['r'+r+'_gnd1','top_pwr_neg']);
+          B.push(['r'+r+'_gnd2','top_pwr_neg']);
+          B.push(['r'+r+'_gnd3','top_pwr_neg']);
+        }
+      }
+      // relés de contacto seco K1..K4: activo C→NO, reposo C→NC
+      for(let i=1;i<=4;i++){
+        const on = devState.relay && devState.relay[i];
+        B.push(on ? ['rly'+i+'_c','rly'+i+'_no'] : ['rly'+i+'_c','rly'+i+'_nc']);
+      }
+      break;
+    }
+    case 'camden-relay': {
+      // 2 relés Form-C independientes: activo C→NO, reposo C→NC
+      for(let i=1;i<=2;i++){
+        const on = devState.relay && devState.relay[i];
+        B.push(on ? ['r'+i+'_c','r'+i+'_no'] : ['r'+i+'_c','r'+i+'_nc']);
       }
       break;
     }
@@ -197,7 +222,7 @@ function buildModel(scenario, simState){
           if(pw!==st.powered){ st.powered=pw; changed=true; }
           break;
         }
-        case 'prox-reader': {
+        case 'prox-reader': case 'rfid-reader-lateral': {
           const pw = coil('pwrp','pwrn');
           if(pw!==st.powered){ st.powered=pw; changed=true; }
           break;
@@ -246,6 +271,37 @@ function buildModel(scenario, simState){
               st.reversed=rev(tp.id,tn.id);
             }
           }
+          break;
+        }
+        case 'hid-aero-x100': {
+          const powered = coil('top_pwr_pos','top_pwr_neg');
+          if(rev('top_pwr_pos','top_pwr_neg')){
+            const msg='Polaridad inversa en Controladora de Acceso.';
+            if(!faults.includes(msg)) faults.push(msg);
+          }
+          const relay=[null], rex=[null], rd=[null];
+          for(let i=1;i<=4;i++){
+            // IN supervisada: activa cuando su + y su − quedan puenteados (contacto externo, ej. botón REX)
+            rex[i] = powered && uf.find(termKey(d.id,'in'+i+'_pos'))===uf.find(termKey(d.id,'in'+i+'_neg'));
+            // data de lector: puertas 1-2 → Reader 1 (D0), puertas 3-4 → Reader 2 (D0)
+            const rport = i<=2 ? 'r1_d0' : 'r2_d0';
+            rd[i]  = powered && netOf(rport)==='GND';
+            relay[i] = powered && (rex[i] || rd[i]);   // acceso concedido → energizar relé (NO)
+          }
+          const sig = JSON.stringify([powered,relay,rex,rd]);
+          if(st._sig!==sig){ st._sig=sig; st.powered=powered; st.pwrLed=powered; st.relay=relay; st.rex=rex; st.rd=rd; changed=true; }
+          break;
+        }
+        case 'camden-relay': {
+          const powered = coil('pwr1','pwr2');
+          const ss = simState[d.id] || {};
+          const relay=[null];
+          // Relé 1: dispara con DRY1 (puente externo) o el pulsador de prueba
+          relay[1] = powered && (uf.find(termKey(d.id,'dry1_a'))===uf.find(termKey(d.id,'dry1_b')) || !!ss.dry1_trg);
+          // Relé 2: dispara con DRY2
+          relay[2] = powered && uf.find(termKey(d.id,'dry2_a'))===uf.find(termKey(d.id,'dry2_b'));
+          const sig = JSON.stringify([powered,relay]);
+          if(st._sig!==sig){ st._sig=sig; st.powered=powered; st.pwrLed=powered; st.relay=relay; changed=true; }
           break;
         }
       }

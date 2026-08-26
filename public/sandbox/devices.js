@@ -351,6 +351,16 @@ const DEVICES = {
     action:{label:'Alimentación Controlador', kind:'toggle', stateKey:'powered', def:true},
     draw(ctx,d,st){
       drawNativeVector(ctx, 'hid-aero-x100', 550, 475, st);
+
+      // LED de alimentación (verde = energizada)
+      led(ctx, 275, 16, '#39d98a', !!st.pwrLed);
+
+      // LEDs de estado de relés K1..K4 (ámbar = relé activo / acceso concedido)
+      const relays = st.relay || [];
+      led(ctx, 23, 351, '#ffb020', !!relays[1]);
+      led(ctx, 23, 404, '#ffb020', !!relays[2]);
+      led(ctx, 527, 351, '#ffb020', !!relays[3]);
+      led(ctx, 527, 404, '#ffb020', !!relays[4]);
     }
   },
 
@@ -382,6 +392,14 @@ const DEVICES = {
     action:{label:'Disparo Entrada DRY 1', kind:'momentary', stateKey:'dry1_trg'},
     draw(ctx,d,st){
       drawNativeVector(ctx, 'camden-relay', 550, 374, st);
+
+      // LED de alimentación (verde = energizado)
+      led(ctx, 75, 260, '#39d98a', !!st.pwrLed);
+
+      // LEDs de estado de relés R1 y R2 (ámbar = relé activo)
+      const relays = st.relay || [];
+      led(ctx, 161, 260, '#ffb020', !!relays[1]);
+      led(ctx, 247, 260, '#ffb020', !!relays[2]);
     }
   },
 
@@ -421,6 +439,8 @@ const DEVICES = {
     action:{label:'Pulso Retracción / Empuje', kind:'momentary', stateKey:'energized'},
     draw(ctx,d,st){
       drawNativeVector(ctx, 'crashbar', 550, 176, st);
+      // LED de estado: verde = energizado (pestillo retraído)
+      led(ctx, 41, 68, st.energized ? '#39d98a' : '#262c33', !!st.energized);
     }
   },
 
@@ -438,6 +458,9 @@ const DEVICES = {
     action:{label:'Abrir/Cerrar Puerta', kind:'toggle', stateKey:'doorClosed', def:true},
     draw(ctx,d,st){
       drawNativeVector(ctx, 'door-position', 480, 190, st);
+      // Indicador de estado: verde = puerta cerrada, rojo = puerta abierta (alarma)
+      const closed = st.doorClosed !== false;
+      led(ctx, 20, 20, closed ? '#39d98a' : '#ef4444', true);
     }
   },
 
@@ -455,6 +478,21 @@ const DEVICES = {
     action:{label:'Alimentación Maglock', kind:'toggle', stateKey:'energized', def:true},
     draw(ctx,d,st){
       drawNativeVector(ctx, 'maglock-lateral', 540, 120, st);
+      // LED de estado (fail-safe): verde = energizado (bloqueado), apagado = libre
+      if (st.energized) {
+        led(ctx, 418, 47, '#22c55e', true);
+      } else {
+        // Desmagnetizado: apagar el LED del SVG
+        ctx.save();
+        ctx.fillStyle = '#1e293b';
+        ctx.beginPath();
+        ctx.arc(418, 47, 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#334155';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.restore();
+      }
     }
   },
 
@@ -475,6 +513,20 @@ const DEVICES = {
     action:{label:'Presionar Botón EXIT', kind:'momentary', stateKey:'pressed'},
     draw(ctx,d,st){
       drawNativeVector(ctx, 'push-to-exit-lateral', 230, 280, st);
+
+      // Animación física del botón al presionarlo (hundimiento + sombra del bisel)
+      if (st.pressed) {
+        ctx.save();
+        // Oscurecer el botón central (efecto de hundirse)
+        ctx.fillStyle = 'rgba(2, 12, 6, 0.5)';
+        rrect(ctx, 29, 89, 77, 77, 8);
+        ctx.fill();
+        // Sombra superior del bisel (el botón se hunde)
+        ctx.fillStyle = 'rgba(0,0,0,0.32)';
+        rrect(ctx, 29, 89, 77, 24, 8);
+        ctx.fill();
+        ctx.restore();
+      }
     }
   },
 
@@ -496,6 +548,10 @@ const DEVICES = {
     action:{label:'Presentar Tarjeta RFID', kind:'momentary', stateKey:'card'},
     draw(ctx,d,st){
       drawNativeVector(ctx, 'rfid-reader-lateral', 250, 290, st);
+      // LED verde cuando se presenta una tarjeta válida (acceso concedido)
+      if (st.card) {
+        led(ctx, 125, 20, '#39d98a', true);
+      }
     }
   },
 
