@@ -518,22 +518,22 @@ const DEVICES = {
       if (st.pressed) {
         ctx.save();
         // 1. Sombra suave del bisel sobre la parte superior del botón hundido (gradiente, no caja)
-        const g = ctx.createLinearGradient(29, 89, 29, 89 + 26);
-        g.addColorStop(0, 'rgba(0,0,0,0.55)');
+        const g = ctx.createLinearGradient(39, 99, 39, 99 + 26);
+        g.addColorStop(0, 'rgba(0,0,0,0.6)');
         g.addColorStop(1, 'rgba(0,0,0,0)');
         ctx.fillStyle = g;
-        rrect(ctx, 29, 89, 77, 26, 8);
+        rrect(ctx, 39, 99, 77, 26, 8);
         ctx.fill();
 
         // 2. Receso/gap del botón al retraerse: borde interior oscuro sutil
-        ctx.strokeStyle = 'rgba(0,0,0,0.45)';
+        ctx.strokeStyle = 'rgba(0,0,0,0.5)';
         ctx.lineWidth = 2;
-        rrect(ctx, 29, 89, 77, 77, 8);
+        rrect(ctx, 39, 99, 77, 77, 8);
         ctx.stroke();
 
         // 3. Ligero oscurecimiento global (muy sutil) para dar sensación de presión
         ctx.fillStyle = 'rgba(0,0,0,0.14)';
-        rrect(ctx, 29, 89, 77, 77, 8);
+        rrect(ctx, 39, 99, 77, 77, 8);
         ctx.fill();
 
         ctx.restore();
