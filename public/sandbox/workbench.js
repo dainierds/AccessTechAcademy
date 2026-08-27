@@ -521,59 +521,7 @@ class Workbench {
               // Si se hace clic en otro borne para conectar
               if(hit.dev.id !== this.pending.a.dev || hit.term.id !== this.pending.a.term){
                 this._recordState();
-                const devAId = this.pending.a.dev;
-                const devBId = hit.dev.id;
-                const termAId = this.pending.a.term;
-                const termBId = hit.term.id;
-
-                // Buscar un cable existente compatible entre estos dos dispositivos del tipo seleccionado
-                let cb = this.scenario.cables.find(c =>
-                  c.id === this.activeCableId &&
-                  c.type === this.cableType &&
-                  (!c.conductors.length ||
-                    (c.conductors.some(cond =>
-                      (cond.a.dev === devAId && cond.b.dev === devBId) ||
-                      (cond.a.dev === devBId && cond.b.dev === devAId)
-                    ))
-                  )
-                );
-
-                // Si no hay cable activo que coincida con estos 2 dispositivos, buscar cualquier cable existente entre ellos
-                if(!cb) {
-                  cb = this.scenario.cables.find(c =>
-                    c.type === this.cableType &&
-                    c.conductors.some(cond =>
-                      (cond.a.dev === devAId && cond.b.dev === devBId) ||
-                      (cond.a.dev === devBId && cond.b.dev === devAId)
-                    )
-                  );
-                }
-
-                // Si aún no existe, crear uno nuevo
-                if(!cb) {
-                  this.newCable();
-                  cb = this.scenario.cables.find(c => c.id === this.activeCableId);
-                } else {
-                  this.activeCableId = cb.id;
-                }
-
-                if(cb) {
-                  // Si ya existía este par EXACTO de bornes, actualizar color; si no, agregar nuevo conductor al cable
-                  const existingIdx = cb.conductors.findIndex(cond =>
-                    (cond.a.dev === devAId && cond.a.term === termAId && cond.b.dev === devBId && cond.b.term === termBId) ||
-                    (cond.a.dev === devBId && cond.a.term === termBId && cond.b.dev === devAId && cond.b.term === termAId)
-                  );
-
-                  if (existingIdx >= 0) {
-                    cb.conductors[existingIdx].color = this.conductorColor;
-                  } else {
-                    cb.conductors.push({
-                      color: this.conductorColor,
-                      a: { dev: devAId, term: termAId },
-                      b: { dev: devBId, term: termBId }
-                    });
-                  }
-                }
+                this._connect(this.pending.a.dev, this.pending.a.term, hit.dev.id, hit.term.id);
                 this.pending = null;
                 if(this.hooks.onChange) this.hooks.onChange();
               }
@@ -602,7 +550,20 @@ class Workbench {
           }
         }
         else if(this.tool === 'interact'){
-          if(hit.dev){
+          // Cableado en modo simulación: toca un borne para empezar, otro para conectar.
+          if(hit.term){
+            if(!this.pending){
+              if(!this.activeCableId) this.newCable();
+              this.pending = { a: { dev: hit.dev.id, term: hit.term.id } };
+              this.canvas.style.cursor = 'crosshair';
+            } else if(hit.dev.id !== this.pending.a.dev || hit.term.id !== this.pending.a.term){
+              this._recordState();
+              this._connect(this.pending.a.dev, this.pending.a.term, hit.dev.id, hit.term.id);
+              this.pending = null;
+              if(this.hooks.onChange) this.hooks.onChange();
+            }
+          }
+          else if(hit.dev){
             const def = DEVICES[hit.dev.type];
             if(def && def.action){
               if(!this.simState[hit.dev.id]) this.simState[hit.dev.id] = {};
@@ -653,60 +614,12 @@ class Workbench {
       }
 
       // Soporte drag-and-drop: si se estaba arrastrando un cable desde un borne y se suelta sobre otro borne
-      if (this.mode === 'editor' && this.pending && this.hasMovedDuringClick) {
+      if ((this.mode === 'editor' || this.mode === 'sim') && this.pending && this.hasMovedDuringClick) {
         const p = getPos(e);
         const hit = this.hitTest(p.x, p.y);
         if (hit.term && (hit.dev.id !== this.pending.a.dev || hit.term.id !== this.pending.a.term)) {
           this._recordState();
-          const devAId = this.pending.a.dev;
-          const devBId = hit.dev.id;
-          const termAId = this.pending.a.term;
-          const termBId = hit.term.id;
-
-          let cb = this.scenario.cables.find(c =>
-            c.id === this.activeCableId &&
-            c.type === this.cableType &&
-            (!c.conductors.length ||
-              (c.conductors.some(cond =>
-                (cond.a.dev === devAId && cond.b.dev === devBId) ||
-                (cond.a.dev === devBId && cond.b.dev === devAId)
-              ))
-            )
-          );
-
-          if(!cb) {
-            cb = this.scenario.cables.find(c =>
-              c.type === this.cableType &&
-              c.conductors.some(cond =>
-                (cond.a.dev === devAId && cond.b.dev === devBId) ||
-                (cond.a.dev === devBId && cond.b.dev === devAId)
-              )
-            );
-          }
-
-          if(!cb) {
-            this.newCable();
-            cb = this.scenario.cables.find(c => c.id === this.activeCableId);
-          } else {
-            this.activeCableId = cb.id;
-          }
-
-          if (cb) {
-            const existingIdx = cb.conductors.findIndex(cond =>
-              (cond.a.dev === devAId && cond.a.term === termAId && cond.b.dev === devBId && cond.b.term === termBId) ||
-              (cond.a.dev === devBId && cond.a.term === termBId && cond.b.dev === devAId && cond.b.term === termAId)
-            );
-
-            if (existingIdx >= 0) {
-              cb.conductors[existingIdx].color = this.conductorColor;
-            } else {
-              cb.conductors.push({
-                color: this.conductorColor,
-                a: { dev: devAId, term: termAId },
-                b: { dev: devBId, term: termBId }
-              });
-            }
-          }
+          this._connect(this.pending.a.dev, this.pending.a.term, hit.dev.id, hit.term.id);
           this.pending = null;
           if (this.hooks.onChange) this.hooks.onChange();
           this.render();
@@ -727,7 +640,7 @@ class Workbench {
       e.preventDefault();
 
       // Click derecho durante una conexión pendiente: cancelar SOLO ese conductor (no el cable completo)
-      if (this.mode === 'editor' && this.pending) {
+      if ((this.mode === 'editor' || this.mode === 'sim') && this.pending) {
         this.pending = null;
         this.hasMovedDuringClick = false;
         this.canvas.style.cursor = '';
@@ -737,7 +650,7 @@ class Workbench {
 
       if (this.hasMovedDuringClick) return;
 
-      if(this.mode === 'editor'){
+      if(this.mode === 'editor' || this.mode === 'sim'){
         const p = getPos(e);
         const hit = this.hitTest(p.x, p.y);
 
@@ -762,8 +675,8 @@ class Workbench {
           return;
         }
 
-        if(hit.dev){
-          // Click derecho sobre el cuerpo: borrar componente y todos sus cables
+        if(hit.dev && this.mode === 'editor'){
+          // Click derecho sobre el cuerpo: borrar componente y todos sus cables (SOLO editor)
           this._recordState();
           this.scenario.devices = this.scenario.devices.filter(d => d.id !== hit.dev.id);
           this.scenario.cables  = this.scenario.cables.filter(c =>
@@ -940,6 +853,47 @@ class Workbench {
   newCable(){
     this.activeCableId = 'cab_' + Math.random().toString(36).substr(2,4);
     this.scenario.cables.push({ id: this.activeCableId, type: this.cableType, conductors: [] });
+  }
+
+  /* Conecta dos bornes (crea/actualiza el conductor del cable activo). Usado por editor y simulación. */
+  _connect(devAId, termAId, devBId, termBId){
+    let cb = this.scenario.cables.find(c =>
+      c.id === this.activeCableId &&
+      c.type === this.cableType &&
+      (!c.conductors.length ||
+        (c.conductors.some(cond =>
+          (cond.a.dev === devAId && cond.b.dev === devBId) ||
+          (cond.a.dev === devBId && cond.b.dev === devAId)
+        ))
+      )
+    );
+    if(!cb) {
+      cb = this.scenario.cables.find(c =>
+        c.type === this.cableType &&
+        c.conductors.some(cond =>
+          (cond.a.dev === devAId && cond.b.dev === devBId) ||
+          (cond.a.dev === devBId && cond.b.dev === devAId)
+        )
+      );
+    }
+    if(!cb) { this.newCable(); cb = this.scenario.cables.find(c => c.id === this.activeCableId); }
+    else { this.activeCableId = cb.id; }
+
+    if(cb) {
+      const existingIdx = cb.conductors.findIndex(cond =>
+        (cond.a.dev === devAId && cond.a.term === termAId && cond.b.dev === devBId && cond.b.term === termBId) ||
+        (cond.a.dev === devBId && cond.a.term === termBId && cond.b.dev === devAId && cond.b.term === termAId)
+      );
+      if(existingIdx >= 0) {
+        cb.conductors[existingIdx].color = this.conductorColor;
+      } else {
+        cb.conductors.push({
+          color: this.conductorColor,
+          a: { dev: devAId, term: termAId },
+          b: { dev: devBId, term: termBId }
+        });
+      }
+    }
   }
 
   _recalcModel(){

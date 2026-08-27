@@ -31,25 +31,49 @@ window.addEventListener('message', (e) => {
   if (e.data && e.data.type === 'THEME_CHANGE') {
     document.documentElement.setAttribute('data-theme', e.data.theme);
   }
-  // Cargar un escenario directamente en la vista Simulación
+  // Cargar un escenario en el editor (modo edición)
+  if (e.data && e.data.type === 'LOAD_EDITOR_SCENARIO' && e.data.scenario) {
+    activateEditor(e.data.scenario, 'editor');
+  }
+  // Cargar un escenario en el editor en modo "Probar Simulación" (no añadir/quitar componentes)
   if (e.data && e.data.type === 'LOAD_SIM_SCENARIO' && e.data.scenario) {
-    activateSimulatorView(e.data.scenario);
+    activateEditor(e.data.scenario, 'sim');
   }
 });
 
-/* Activa la vista "Simulador" y carga un escenario en él */
-function activateSimulatorView(sc) {
+/* Activa la vista editor y carga un escenario. mode='sim' bloquea añadir/quitar componentes. */
+function activateEditor(sc, mode) {
   $$('.view').forEach(v => v.classList.remove('active'));
-  const simView = $('#view-simulator');
-  if (simView) simView.classList.add('active');
+  const edView = $('#view-editor');
+  if (edView) edView.classList.add('active');
   const topbar = $('#topbar');
   if (topbar) topbar.style.display = 'none';
+
+  // Ocultar/mostrar la biblioteca de componentes según el modo
+  const panelLibrary = $('#panel-library');
+  const btnLibrary = $('#btn-toggle-library');
+  const btnSimMode = $('#btn-toggle-sim-mode');
+  if (mode === 'sim') {
+    if (panelLibrary) panelLibrary.classList.add('closed');
+    if (btnLibrary) btnLibrary.style.display = 'none';
+    if (btnSimMode) { btnSimMode.textContent = '🛠️ Volver a Modo Edición'; btnSimMode.classList.add('active'); }
+  } else {
+    if (panelLibrary) panelLibrary.classList.remove('closed');
+    if (btnLibrary) btnLibrary.style.display = '';
+    if (btnSimMode) { btnSimMode.textContent = '▶️ Probar Simulación'; btnSimMode.classList.remove('active'); }
+  }
+
   setTimeout(() => {
-    if (window.sim) {
-      if (sc && typeof window.sim.setScenario === 'function') {
-        window.sim.setScenario(sc);
+    if (window.editor) {
+      if (sc && typeof window.editor.setScenario === 'function') {
+        window.editor.setScenario(sc);
       }
-      window.sim.resize();
+      if (mode === 'sim') {
+        window.editor.setMode('sim');
+      } else {
+        window.editor.setMode('editor');
+      }
+      window.editor.resize();
     }
   }, 120);
 }

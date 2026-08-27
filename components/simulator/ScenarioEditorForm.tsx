@@ -19,6 +19,27 @@ export default function ScenarioEditorForm({
   const [difficulty, setDifficulty] = useState<number>(scenario?.difficulty_level || 1);
   const [saving, setSaving] = useState(false);
 
+  // Escenario guardado (devices + cables) para cargarlo al editar
+  const legacy = scenario?.hardware_config?.legacy;
+
+  // Al cargar el iframe, inyectamos el escenario guardado en el editor legacy
+  const handleIframeLoad = () => {
+    if (!scenario?.id || !legacy) return; // solo al editar un escenario existente con datos
+    const iframe = iframeRef.current;
+    if (!iframe?.contentWindow) return;
+    iframe.contentWindow.postMessage(
+      {
+        type: 'LOAD_EDITOR_SCENARIO',
+        scenario: {
+          name: title,
+          devices: legacy.devices || [],
+          cables: legacy.cables || [],
+        },
+      },
+      '*'
+    );
+  };
+
   // Captura el escenario actual del editor legacy (mismo origen) para guardarlo
   const captureLegacyScenario = () => {
     try {
@@ -125,6 +146,7 @@ export default function ScenarioEditorForm({
           src="/sandbox/index.html"
           className="w-full h-full border-none"
           title="Sandbox Workspace"
+          onLoad={handleIframeLoad}
         />
       </div>
     </div>

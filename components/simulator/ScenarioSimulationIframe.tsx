@@ -12,7 +12,7 @@ export default function ScenarioSimulationIframe({ scenario }: { scenario: any }
   const title = scenario?.title || '';
   const legacy = scenario?.hardware_config?.legacy;
 
-  // Al cargar el iframe, enviamos el escenario del editor legacy a la vista Simulación
+  // Al cargar el iframe, enviamos el escenario al editor legacy en modo "Probar Simulación"
   const handleLoad = () => {
     const iframe = iframeRef.current;
     if (!iframe?.contentWindow) return;
@@ -49,11 +49,11 @@ export default function ScenarioSimulationIframe({ scenario }: { scenario: any }
         </span>
       </div>
 
-      {/* Sandbox legacy en vista Simulación */}
+      {/* Sandbox legacy en modo "Probar Simulación" */}
       <div className="flex-1 w-full h-full relative">
         <iframe
           ref={iframeRef}
-          src="/sandbox/index.html?view=simulator"
+          src="/sandbox/index.html"
           className="w-full h-full border-none"
           title="Simulación de Escenario"
           onLoad={handleLoad}
