@@ -49,17 +49,23 @@ function activateEditor(sc, mode) {
   const topbar = $('#topbar');
   if (topbar) topbar.style.display = 'none';
 
-  // Ocultar/mostrar la biblioteca de componentes según el modo
+  // Ocultar/mostrar la biblioteca de componentes y el motor IF/THEN según el modo
   const panelLibrary = $('#panel-library');
   const btnLibrary = $('#btn-toggle-library');
+  const panelIfThen = $('#panel-ifthen');
+  const btnIfThen = $('#btn-toggle-ifthen');
   const btnSimMode = $('#btn-toggle-sim-mode');
   if (mode === 'sim') {
     if (panelLibrary) panelLibrary.classList.add('closed');
     if (btnLibrary) btnLibrary.style.display = 'none';
+    if (panelIfThen) panelIfThen.classList.add('closed');
+    if (btnIfThen) btnIfThen.style.display = 'none';
     if (btnSimMode) { btnSimMode.textContent = '🛠️ Volver a Modo Edición'; btnSimMode.classList.add('active'); }
   } else {
     if (panelLibrary) panelLibrary.classList.remove('closed');
     if (btnLibrary) btnLibrary.style.display = '';
+    if (panelIfThen) panelIfThen.classList.remove('closed');
+    if (btnIfThen) btnIfThen.style.display = '';
     if (btnSimMode) { btnSimMode.textContent = '▶️ Probar Simulación'; btnSimMode.classList.remove('active'); }
   }
 
